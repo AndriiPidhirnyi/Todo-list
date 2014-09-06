@@ -235,3 +235,152 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
 .form-icon.pswd-icon {
   top: 168px;
 }
+
+/* line 3, ../sass/index.scss */
+body {
+  background: url("../images/bg-page.png");
+}
+
+/* line 7, ../sass/index.scss */
+.page-width {
+  min-width: 800px;
+  width: 800px;
+  margin: 0 auto;
+}
+
+/*header block*/
+/* line 15, ../sass/index.scss */
+.header-holder {
+  width: 100%;
+  margin: 0 0 30px;
+  background: #cdcfd3;
+}
+
+/* line 21, ../sass/index.scss */
+#header {
+  overflow: hidden;
+  padding: 7px 0;
+}
+/* line 25, ../sass/index.scss */
+#header h1 {
+  padding: 0 0 0 40px;
+  font: 24px/30px Arial, Verdana, sans-serif;
+  color: #444;
+  background: url("../images/logo.png") no-repeat;
+}
+
+/* line 33, ../sass/index.scss */
+.user-info-block {
+  float: right;
+}
+
+/* line 39, ../sass/index.scss */
+.logout-form label {
+  margin: 0 10px 0 0;
+  padding: 6px 16px 6px 40px;
+  font: 16px/32px Arial, Verdana, sans-serif;
+  background: url("../images/user-logo.png") 0 0 no-repeat;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+}
+/* line 47, ../sass/index.scss */
+.logout-form input {
+  float: right;
+  width: 25px;
+  margin: 0;
+  text-indent: -9999px;
+  line-height: 30px;
+  background: url("../images/logout-icon.png") 0 50% no-repeat;
+  outline: none;
+  border: none;
+}
+/* line 57, ../sass/index.scss */
+.logout-form input:hover {
+  cursor: pointer;
+}
+
+/*main block*/
+/* line 64, ../sass/index.scss */
+.block-item {
+  padding: 10px 20px;
+  margin: 0 0 10px;
+  background: #f8e281;
+  border: 1px solid #222;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+  -moz-box-shadow: rgba(200, 200, 200, 0.4) 4px 4px 2px 2px;
+  -webkit-box-shadow: rgba(200, 200, 200, 0.4) 4px 4px 2px 2px;
+  box-shadow: rgba(200, 200, 200, 0.4) 4px 4px 2px 2px;
+}
+
+/* line 75, ../sass/index.scss */
+.task-form .users-list-block {
+  font: 14px/16px Arial, Verdana, sans-serif;
+  margin: 0 4px 10px 0;
+}
+/* line 79, ../sass/index.scss */
+.task-form .users-list-block:after {
+  content: "";
+  display: block;
+  clear: both;
+}
+/* line 85, ../sass/index.scss */
+.task-form .users-list-block label {
+  float: left;
+  margin: 0 5px 0 0;
+  line-height: 24px;
+}
+/* line 91, ../sass/index.scss */
+.task-form .users-list-block input#users-list {
+  float: left;
+  width: 120px;
+  padding: 2px;
+  margin: 0;
+  font: 14px/16px Arial, Verdana, sans-serif;
+}
+/* line 100, ../sass/index.scss */
+.task-form textarea {
+  padding: 5px;
+  margin: 0 0 10px;
+  overflow: auto;
+  font: 18px/20px Arial, Verdana, sans-serif;
+  resize: none;
+}
+/* line 108, ../sass/index.scss */
+.task-form input[type="submit"] {
+  float: right;
+  margin: 0 2px 0 0;
+  padding: 5px 10px;
+  background: #e0e0e0;
+  font: 18px/20px Arial, Verdana, sans-serif;
+  outline: none;
+  border: 2px solid #929292;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+}
+/* line 118, ../sass/index.scss */
+.task-form input[type="submit"]:hover {
+  cursor: pointer;
+}
+
+/* line 125, ../sass/index.scss */
+.task-list:after {
+  content: "";
+  display: block;
+  clear: both;
+}
+/* line 131, ../sass/index.scss */
+.task-list p {
+  float: left;
+  width: 500px;
+}
+
+/*task check form*/
+/* line 138, ../sass/index.scss */
+.check-task-form {
+  float: left;
+  padding: 0 10px;
+}

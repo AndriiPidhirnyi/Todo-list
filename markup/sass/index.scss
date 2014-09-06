@@ -1,0 +1,141 @@
+@import "compass/css3";
+
+body {
+	background: url("../images/bg-page.png");
+}
+
+.page-width {
+	min-width: 800px;
+	width: 800px;
+	margin: 0 auto;
+}
+
+/*header block*/
+
+.header-holder {
+	width: 100%;
+	margin: 0 0 30px;
+	background: #cdcfd3;
+}
+
+#header {
+	overflow: hidden;
+	padding: 7px 0;
+
+	h1 {
+		padding: 0 0 0 40px;
+		font: 24px/30px Arial, Verdana, sans-serif;
+		color: #444;
+		background: url("../images/logo.png") no-repeat;
+	}
+}
+
+.user-info-block {
+	float: right;
+}
+
+.logout-form {
+
+	label {
+		margin: 0 10px 0 0;
+		padding: 6px 16px 6px 40px;
+		font: 16px/32px Arial, Verdana, sans-serif;
+		background: url("../images/user-logo.png") 0 0 no-repeat;
+		@include border-radius(5px);
+	}
+
+	input {
+		float: right;
+		width: 25px;
+		margin: 0;
+		text-indent: -9999px;
+		line-height: 30px;
+		background: url("../images/logout-icon.png") 0 50% no-repeat;
+		outline: none;
+		border: none;
+
+		&:hover {
+			cursor: pointer;
+		}
+	}
+}
+
+/*main block*/
+.block-item {
+	padding: 10px 20px;
+	margin: 0 0 10px;
+	background: #f8e281;
+	border: 1px solid #222;
+	@include border-radius(10px);
+	@include box-shadow(rgba(200,200,200,0.4) 4px 4px 2px 2px);
+}
+
+.task-form {
+
+	.users-list-block {
+		font: 14px/16px Arial, Verdana, sans-serif;
+		margin: 0 4px 10px 0;
+
+		&:after {
+			content:"";
+			display: block;
+			clear: both;
+		}
+
+		label {
+			float: left;
+			margin: 0 5px 0 0;
+			line-height: 24px;
+		}
+
+		input#users-list {
+			float: left;
+			width: 120px;
+			padding: 2px;
+			margin: 0;
+			font: 14px/16px Arial, Verdana, sans-serif;
+		}
+	}
+
+	textarea {
+		padding: 5px;
+		margin: 0 0 10px;
+		overflow: auto;
+		font: 18px/20px Arial, Verdana, sans-serif;
+		resize: none;
+	}
+
+	input[type="submit"]{
+		float:right;
+		margin: 0 2px 0 0;
+		padding: 5px 10px;
+		background: #e0e0e0;
+		font: 18px/20px Arial, Verdana, sans-serif;
+		outline: none;
+		border: 2px solid #929292;
+		@include border-radius(5px);
+
+		&:hover {
+			cursor:pointer;
+		}
+	}
+}
+
+.task-list {
+	&:after {
+		content:"";
+		display: block;
+		clear: both;
+	}
+
+	p {
+		float: left;
+		width: 500px;
+	}
+}
+
+/*task check form*/
+.check-task-form {
+	float: left;
+	padding: 0 10px;
+}

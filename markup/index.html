@@ -7,7 +7,53 @@
 </head>
 <body>
 	<div id="wrapper">
-
+		<div class="header-holder">
+			<header id="header" class="page-width">
+				<!-- start user ingo block -->
+				<div class="user-info-block">
+					<form action="#" class="logout-form">
+						<fieldset>
+							<input id="logout-btn" type="submit" value="Logout"/>
+							<label>al'truistik</label>
+						</fieldset>
+					</form>
+				</div>
+				<!-- end user ingo block -->
+				<h1>Simple TODO list</h1>
+			</header>
+		</div>
+		<!-- main start -->
+		<div id="main" class="page-width">
+			<section class="block-item">
+				<form action="#" class="task-form">
+					<fieldset>
+						<div class="users-list-block">
+							<label for="users-list">Who add the task:</label>
+							<input type="text" id="users-list" value="">
+						</div>
+						<textarea name="task-item" id="task-item" cols="91" rows="3" placeholder="Type new task"></textarea>
+						<input type="submit" id="add-task-btn" value="Add task"/>
+					</fieldset>
+				</form>
+			</section>
+			<section class="block-item task-list">
+				<form action="#" class="check-task-form">
+					<fieldset>
+						<input type="checkbox" value=""/>
+					</fieldset>
+				</form>
+				<span class="separator">|</span>
+				<p>Some task</p>
+				<span class="separator">|</span>
+				<p>05.05.2014</p>
+				<form action="#" class="remove-task-form">
+					<fieldset>
+						<input type="submit" name="delete-task-btn" id="del-task-btn" value="remove task">
+					</fieldset>
+				</form>
+			</section>
+		</div>
+		<!-- main end -->
 	</div>
 	<script type="template/javascript" id="login-form-block">
 			<div class="form-holder">
