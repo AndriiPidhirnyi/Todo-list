@@ -12,7 +12,6 @@
 				"breeserif/breeserif-regular-webfont.ttf",
 				"breeserif/breeserif-regular-webfont.woff"));
 
-
 #login-form-block {
 	position: absolute;
 	left: 0;
@@ -31,6 +30,12 @@
 	width: 300px - 2px;
 	padding: 0 1px;
 	@include transform(translate(-50%, -50%));
+
+	&:hover {
+		.user-icon {
+			left: -45px;
+		}
+	}
 }
 
 .login-form {
@@ -52,7 +57,14 @@
 		color: #414848;
 	}
 
-	.row {
+	label {
+		display: inline-block;
+		margin: 0 0 5px;
+		font: 18px/20px "BreeSerif Regular", Georgia, serif;
+		color: #707070;
+	}
+
+	.input-box {
 		padding: 3px 2px 0 1px;
 		margin: 0 0 20px;
 		border: 1px solid #fff;
@@ -125,8 +137,8 @@
 	background: rgba(65,72,72,0.75);
 	padding: 12px 15px;
 	height: 48px - 12px - 12px;
-	@include border-radius(4px);
-
+	@include border-radius(4px 0 0 4px);
+	transition: all 0.5s;
 
 	image {
 		vertical-align: top;

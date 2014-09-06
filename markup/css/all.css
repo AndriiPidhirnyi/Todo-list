@@ -71,7 +71,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   font-family: "BreeSerif Regular";
   src: url('../fonts/breeserif/breeserif-regular-webfont.eot?1409667179') format('embedded-opentype'), url('../fonts/breeserif/breeserif-regular-webfont.svg?1409667179') format('svg'), url('../fonts/breeserif/breeserif-regular-webfont.ttf?1409667179') format('truetype'), url('../fonts/breeserif/breeserif-regular-webfont.woff?1409667179') format('woff');
 }
-/* line 16, ../sass/all.scss */
+/* line 15, ../sass/all.scss */
 #login-form-block {
   position: absolute;
   left: 0;
@@ -82,7 +82,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   z-index: 1;
 }
 
-/* line 26, ../sass/all.scss */
+/* line 25, ../sass/all.scss */
 .form-holder {
   position: absolute;
   top: 50%;
@@ -95,8 +95,12 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   -webkit-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
 }
+/* line 35, ../sass/all.scss */
+.form-holder:hover .user-icon {
+  left: -45px;
+}
 
-/* line 36, ../sass/all.scss */
+/* line 41, ../sass/all.scss */
 .login-form {
   width: 296px;
   position: relative;
@@ -110,18 +114,25 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   -webkit-box-shadow: rgba(250, 250, 250, 0.4) 0 0 2px 2px;
   box-shadow: rgba(250, 250, 250, 0.4) 0 0 2px 2px;
 }
-/* line 45, ../sass/all.scss */
+/* line 50, ../sass/all.scss */
 .login-form .input-holder {
   padding: 37px 27px 10px 32px;
 }
-/* line 49, ../sass/all.scss */
+/* line 54, ../sass/all.scss */
 .login-form h2 {
   margin: 0 0 30px;
   font: 28px/30px "BreeSerif Regular", Georgia, serif;
   color: #414848;
 }
-/* line 55, ../sass/all.scss */
-.login-form .row {
+/* line 60, ../sass/all.scss */
+.login-form label {
+  display: inline-block;
+  margin: 0 0 5px;
+  font: 18px/20px "BreeSerif Regular", Georgia, serif;
+  color: #707070;
+}
+/* line 67, ../sass/all.scss */
+.login-form .input-box {
   padding: 3px 2px 0 1px;
   margin: 0 0 20px;
   border: 1px solid #fff;
@@ -132,7 +143,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   -webkit-border-radius: 5px;
   border-radius: 5px;
 }
-/* line 63, ../sass/all.scss */
+/* line 75, ../sass/all.scss */
 .login-form .login-field {
   width: 192px;
   padding: 14px 20px;
@@ -146,7 +157,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   -webkit-border-radius: 3px;
   border-radius: 3px 3px 2px 2px;
 }
-/* line 75, ../sass/all.scss */
+/* line 87, ../sass/all.scss */
 .login-form .action-row {
   padding: 25px 30px;
   text-align: center;
@@ -157,18 +168,18 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   -webkit-border-radius: 0;
   border-radius: 0 0 6px 6px;
 }
-/* line 83, ../sass/all.scss */
+/* line 95, ../sass/all.scss */
 .login-form .action-row a {
   font: 18px/20px "BreeSerif Regular", Georgia, serif;
   color: #414848;
   margin: 0 20px 0 0;
   text-decoration: none;
 }
-/* line 89, ../sass/all.scss */
+/* line 101, ../sass/all.scss */
 .login-form .action-row a:hover {
   text-decoration: underline;
 }
-/* line 95, ../sass/all.scss */
+/* line 107, ../sass/all.scss */
 .login-form .btn-holder {
   display: inline-block;
   padding: 1px;
@@ -178,7 +189,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   -webkit-border-radius: 3px;
   border-radius: 3px;
 }
-/* line 102, ../sass/all.scss */
+/* line 114, ../sass/all.scss */
 .login-form .btn-holder input {
   margin: 0;
   padding: 10px 15px;
@@ -193,13 +204,13 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   border-radius: 2px;
   outline: none;
 }
-/* line 113, ../sass/all.scss */
+/* line 125, ../sass/all.scss */
 .login-form .btn-holder input:hover {
   cursor: pointer;
   background: #2bb2d9;
 }
 
-/* line 121, ../sass/all.scss */
+/* line 133, ../sass/all.scss */
 .form-icon {
   position: absolute;
   left: 1px;
@@ -207,19 +218,20 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   background: rgba(65, 72, 72, 0.75);
   padding: 12px 15px;
   height: 24px;
-  -moz-border-radius: 4px;
+  -moz-border-radius: 4px 0 0 4px;
   -webkit-border-radius: 4px;
-  border-radius: 4px;
+  border-radius: 4px 0 0 4px;
+  transition: all 0.5s;
 }
-/* line 131, ../sass/all.scss */
+/* line 143, ../sass/all.scss */
 .form-icon image {
   vertical-align: top;
 }
-/* line 135, ../sass/all.scss */
+/* line 147, ../sass/all.scss */
 .form-icon.user-icon {
   top: 99px;
 }
-/* line 139, ../sass/all.scss */
+/* line 151, ../sass/all.scss */
 .form-icon.pswd-icon {
   top: 168px;
 }
