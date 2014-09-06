@@ -1,0 +1,149 @@
+
+@import "compass/css3";
+
+@include font-face("BreeSerif Regular",
+	font-files("breeserif/breeserif-regular-webfont.eot",
+				"breeserif/breeserif-regular-webfont.svg",
+				"breeserif/breeserif-regular-webfont.ttf",
+				"breeserif/breeserif-regular-webfont.woff"));
+
+#login-form-block {
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	background: #3f5995 url("../images/bg-login.jpg");
+	z-index: 1;
+}
+
+.form-holder {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	z-index: 100;
+	width: 300px - 2px;
+	padding: 0 1px;
+	@include transform(translate(-50%, -50%));
+
+	&:hover {
+		.user-icon {
+			left: -45px;
+		}
+	}
+}
+
+.login-form {
+	width: 296px;
+	position: relative;
+	z-index: 9999;
+	background: #f3f3f3;
+	border: 1px solid #f9f9f9;
+	@include border-radius(7px);
+	@include box-shadow(rgba(250,250,250, 0.4) 0 0 2px 2px);
+
+	.input-holder {
+		padding: 37px 27px 10px 32px;
+	}
+
+	h2 {
+		margin: 0 0 30px;
+		font: 28px/30px "BreeSerif Regular", Georgia, serif;
+		color: #414848;
+	}
+
+	label {
+		display: inline-block;
+		margin: 0 0 5px;
+		font: 18px/20px "BreeSerif Regular", Georgia, serif;
+		color: #707070;
+	}
+
+	.input-box {
+		padding: 3px 2px 0 1px;
+		margin: 0 0 20px;
+		border: 1px solid #fff;
+		@include box-shadow(#ccc 1px 1px 2px 2px inset);
+		@include border-radius(5px);
+	}
+
+	.login-field {
+		width: 192px;
+		padding: 14px 20px;
+		margin: 0;
+		font: 14px/16px Arial, Verdana, sans-serif;
+		color: #777;
+		background: #fff;
+		border: none;
+		outline: none;
+		@include border-radius(3px 3px 2px 2px);
+	}
+
+	.action-row {
+		padding: 25px 30px;
+		text-align: center;
+		border: 1px solid #bec7c8;
+		border-width: 1px 0 0;
+		background: #d4dedf;
+		@include border-radius(0 0 6px 6px);
+
+		a {
+			font: 18px/20px "BreeSerif Regular", Georgia, serif;
+			color: #414848;
+			margin: 0 20px 0 0;
+			text-decoration: none;
+
+			&:hover {
+				text-decoration: underline;
+			}
+		}
+	}
+
+	.btn-holder {
+		display: inline-block;
+		padding: 1px;
+		border: 1px solid #46b3d3;
+		background: #89d4ea;
+		@include border-radius(3px);
+
+		input {
+			margin: 0;
+			padding: 10px 15px;
+			font: 18px/20px "BreeSerif Regular", Georgia, serif;
+			color: #fff;
+			@include text-shadow(#4091a9 0 1px 1px 1px);
+			background: #56c2e1;
+			border: none;
+			@include border-radius(2px);
+			outline: none;
+
+			&:hover {
+				cursor:pointer;
+				background: darken(#56c2e1, 10%);
+			}
+		}
+	}
+}
+
+.form-icon {
+	position: absolute;
+	left: 1px;
+	z-index: 10;
+	background: rgba(65,72,72,0.75);
+	padding: 12px 15px;
+	height: 48px - 12px - 12px;
+	@include border-radius(4px 0 0 4px);
+	transition: all 0.5s;
+
+	image {
+		vertical-align: top;
+	}
+
+	&.user-icon {
+		top: 99px;
+	}
+
+	&.pswd-icon {
+		top: 168px;
+	}
+}
