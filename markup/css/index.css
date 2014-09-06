@@ -78,24 +78,24 @@ body {
 }
 
 /* line 75, ../sass/index.scss */
-.task-form .users-list-block {
+.task-add-form .users-list-block {
   font: 14px/16px Arial, Verdana, sans-serif;
   margin: 0 4px 10px 0;
 }
 /* line 79, ../sass/index.scss */
-.task-form .users-list-block:after {
+.task-add-form .users-list-block:after {
   content: "";
   display: block;
   clear: both;
 }
 /* line 85, ../sass/index.scss */
-.task-form .users-list-block label {
+.task-add-form .users-list-block label {
   float: left;
   margin: 0 5px 0 0;
   line-height: 24px;
 }
 /* line 91, ../sass/index.scss */
-.task-form .users-list-block input#users-list {
+.task-add-form .users-list-block input#users-list {
   float: left;
   width: 120px;
   padding: 2px;
@@ -103,7 +103,7 @@ body {
   font: 14px/16px Arial, Verdana, sans-serif;
 }
 /* line 100, ../sass/index.scss */
-.task-form textarea {
+.task-add-form textarea {
   padding: 5px;
   margin: 0 0 10px;
   overflow: auto;
@@ -111,7 +111,7 @@ body {
   resize: none;
 }
 /* line 108, ../sass/index.scss */
-.task-form input[type="submit"] {
+.task-add-form input[type="submit"] {
   float: right;
   margin: 0 2px 0 0;
   padding: 5px 10px;
@@ -124,25 +124,71 @@ body {
   border-radius: 5px;
 }
 /* line 118, ../sass/index.scss */
-.task-form input[type="submit"]:hover {
+.task-add-form input[type="submit"]:hover {
   cursor: pointer;
 }
 
-/* line 125, ../sass/index.scss */
+/* line 124, ../sass/index.scss */
+.task-list {
+  position: relative;
+  width: 100%;
+  margin: 0 0 10px;
+  padding: 0 0 5px;
+  border: 1px solid #000;
+  border-width: 0 0 1px 0;
+}
+/* line 132, ../sass/index.scss */
 .task-list:after {
   content: "";
   display: block;
   clear: both;
 }
-/* line 131, ../sass/index.scss */
+/* line 138, ../sass/index.scss */
 .task-list p {
   float: left;
-  width: 500px;
+  width: 100px;
+  padding: 0 0 0 10px;
+  font: 18px/20px Arial, Verdana, sans-serif;
+  background: url("../images/task-sep.jpg") no-repeat;
+}
+/* line 146, ../sass/index.scss */
+.task-list .complited-task {
+  position: absolute;
+  top: 40%;
+  left: 0;
+  float: none;
+  width: 100%;
+  padding: 0;
+  text-indent: -9999px;
+  border: solid #111;
+  border-width: 2px 0 0 0;
+  background: none;
 }
 
 /*task check form*/
-/* line 138, ../sass/index.scss */
-.check-task-form {
+/* line 162, ../sass/index.scss */
+.task-form {
   float: left;
-  padding: 0 10px;
+  padding: 0 10px 0 0;
+}
+/* line 166, ../sass/index.scss */
+.task-form input {
+  float: left;
+  padding: 0;
+  margin: 0 10px 0 0;
+  width: 20px;
+  height: 20px;
+  vertical-align: top;
+}
+/* line 175, ../sass/index.scss */
+.task-form label {
+  float: left;
+  width: 550px;
+  padding: 0 0 0 10px;
+  font: italic 18px/20px Arial, Verdana, sans-serif;
+  background: url("../images/task-sep.jpg") no-repeat;
+}
+/* line 182, ../sass/index.scss */
+.task-form label.task-date {
+  width: 120px;
 }

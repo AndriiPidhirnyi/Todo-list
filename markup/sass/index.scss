@@ -70,7 +70,7 @@ body {
 	@include box-shadow(rgba(200,200,200,0.4) 4px 4px 2px 2px);
 }
 
-.task-form {
+.task-add-form {
 
 	.users-list-block {
 		font: 14px/16px Arial, Verdana, sans-serif;
@@ -122,6 +122,13 @@ body {
 }
 
 .task-list {
+	position: relative;
+	width: 100%;
+	margin: 0 0 10px;
+	padding: 0 0 5px;
+	border: 1px solid #000;
+	border-width: 0 0 1px 0;
+
 	&:after {
 		content:"";
 		display: block;
@@ -130,12 +137,50 @@ body {
 
 	p {
 		float: left;
-		width: 500px;
+		width: 100px;
+		padding: 0 0 0 10px;
+		font: 18px/20px Arial, Verdana, sans-serif;
+		background: url("../images/task-sep.jpg") no-repeat;
+	}
+
+	.complited-task {
+		position: absolute;
+		top: 40%;
+		left: 0;
+		float: none;
+		width: 100%;
+		padding: 0;
+		text-indent: -9999px;
+		border: solid #111;
+		border-width: 2px 0 0 0;
+		background: none;
 	}
 }
 
+
 /*task check form*/
-.check-task-form {
+.task-form {
 	float: left;
-	padding: 0 10px;
+	padding: 0 10px 0 0;
+
+	input {
+		float: left;
+		padding: 0;
+		margin: 0 10px 0 0;
+		width: 20px;
+		height: 20px;
+		vertical-align: top;
+	}
+
+	label {
+		float: left;
+		width: 550px;
+		padding: 0 0 0 10px;
+		font: italic 18px/20px Arial, Verdana, sans-serif;
+		background: url("../images/task-sep.jpg") no-repeat;
+
+		&.task-date {
+			width: 120px;
+		}
+	}
 }
