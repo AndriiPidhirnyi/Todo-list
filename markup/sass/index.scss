@@ -123,11 +123,16 @@ body {
 
 .task-list {
 	position: relative;
+	z-index: 1;
 	width: 100%;
 	margin: 0 0 10px;
 	padding: 0 0 5px;
 	border: 1px solid #000;
 	border-width: 0 0 1px 0;
+
+	&:hover input[type="submit"] {
+		display: block;
+	}
 
 	&:after {
 		content:"";
@@ -145,10 +150,12 @@ body {
 
 	.complited-task {
 		position: absolute;
+		z-index: 9999;
 		top: 40%;
 		left: 0;
 		float: none;
 		width: 100%;
+		height: 0;
 		padding: 0;
 		text-indent: -9999px;
 		border: solid #111;
@@ -163,7 +170,7 @@ body {
 	float: left;
 	padding: 0 10px 0 0;
 
-	input {
+	input[type="checkbox"] {
 		float: left;
 		padding: 0;
 		margin: 0 10px 0 0;
@@ -181,6 +188,23 @@ body {
 
 		&.task-date {
 			width: 120px;
+		}
+	}
+
+	input[type="submit"] {
+		display: none;
+		float: right;
+		padding: 0;
+		margin: 0;
+		width: 20px;
+		height: 20px;
+		text-indent: -9999px;
+		border: none;
+		background: url("../images/delete-icon.png") no-repeat;
+		outline: none;
+
+		&:hover {
+			cursor: pointer;
 		}
 	}
 }
