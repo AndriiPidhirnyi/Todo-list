@@ -104,7 +104,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
 .login-form {
   width: 296px;
   position: relative;
-  z-index: 9999;
+  z-index: 1000;
   background: #f3f3f3;
   border: 1px solid #f9f9f9;
   -moz-border-radius: 7px;
@@ -236,6 +236,77 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   top: 168px;
 }
 
+/*modal window*/
+/* line 152, ../sass/login-form.scss */
+#modal-window-holder {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 9000;
+  background: rgba(10, 10, 10, 0.3);
+}
+
+/* line 162, ../sass/login-form.scss */
+.modal-window {
+  width: 300px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 9500;
+  padding: 10px;
+  -moz-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  background: #fff;
+  border: 4px solid #ff5b53;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+}
+/* line 175, ../sass/login-form.scss */
+.modal-window h2 {
+  margin: 0 0 10px;
+  font: bold 20px/22px "BreeSerif Regular", Georgia, serif;
+  text-align: center;
+}
+/* line 181, ../sass/login-form.scss */
+.modal-window p {
+  text-align: center;
+  margin: 0 0 10px;
+}
+
+/* line 187, ../sass/login-form.scss */
+.info-form {
+  text-align: center;
+}
+/* line 190, ../sass/login-form.scss */
+.info-form button {
+  margin: 0 10px;
+  padding: 6px 15px;
+  font: 16px/18px Arial, Verdana, sans-serif;
+  color: #fff;
+  border: none;
+  -moz-border-radius: 2px;
+  -webkit-border-radius: 2px;
+  border-radius: 2px;
+}
+/* line 198, ../sass/login-form.scss */
+.info-form button.confirm-btn {
+  background: #f78f00;
+}
+/* line 202, ../sass/login-form.scss */
+.info-form button.cancel-btn {
+  background: #24aafe;
+}
+/* line 206, ../sass/login-form.scss */
+.info-form button:hover {
+  background: #565656;
+  cursor: pointer;
+}
+
 /* line 3, ../sass/index.scss */
 body {
   background: url("../images/bg-page.png");
@@ -315,24 +386,29 @@ body {
   box-shadow: rgba(200, 200, 200, 0.4) 4px 4px 2px 2px;
 }
 
-/* line 75, ../sass/index.scss */
+/* line 73, ../sass/index.scss */
+.list-grad {
+  background: linear-gradient(#f8e281, #ff661a);
+}
+
+/* line 79, ../sass/index.scss */
 .task-add-form .users-list-block {
   font: 14px/16px Arial, Verdana, sans-serif;
   margin: 0 4px 10px 0;
 }
-/* line 79, ../sass/index.scss */
+/* line 83, ../sass/index.scss */
 .task-add-form .users-list-block:after {
   content: "";
   display: block;
   clear: both;
 }
-/* line 85, ../sass/index.scss */
+/* line 89, ../sass/index.scss */
 .task-add-form .users-list-block label {
   float: left;
   margin: 0 5px 0 0;
   line-height: 24px;
 }
-/* line 91, ../sass/index.scss */
+/* line 95, ../sass/index.scss */
 .task-add-form .users-list-block input#users-list {
   float: left;
   width: 120px;
@@ -340,7 +416,7 @@ body {
   margin: 0;
   font: 14px/16px Arial, Verdana, sans-serif;
 }
-/* line 100, ../sass/index.scss */
+/* line 104, ../sass/index.scss */
 .task-add-form textarea {
   padding: 5px;
   margin: 0 0 10px;
@@ -348,7 +424,7 @@ body {
   font: 18px/20px Arial, Verdana, sans-serif;
   resize: none;
 }
-/* line 108, ../sass/index.scss */
+/* line 112, ../sass/index.scss */
 .task-add-form input[type="submit"] {
   float: right;
   margin: 0 2px 0 0;
@@ -361,12 +437,12 @@ body {
   -webkit-border-radius: 5px;
   border-radius: 5px;
 }
-/* line 118, ../sass/index.scss */
+/* line 122, ../sass/index.scss */
 .task-add-form input[type="submit"]:hover {
   cursor: pointer;
 }
 
-/* line 124, ../sass/index.scss */
+/* line 128, ../sass/index.scss */
 .task-list {
   position: relative;
   z-index: 1;
@@ -376,17 +452,17 @@ body {
   border: 1px solid #000;
   border-width: 0 0 1px 0;
 }
-/* line 133, ../sass/index.scss */
+/* line 137, ../sass/index.scss */
 .task-list:hover input[type="submit"] {
   display: block;
 }
-/* line 137, ../sass/index.scss */
+/* line 141, ../sass/index.scss */
 .task-list:after {
   content: "";
   display: block;
   clear: both;
 }
-/* line 143, ../sass/index.scss */
+/* line 147, ../sass/index.scss */
 .task-list p {
   float: left;
   width: 100px;
@@ -394,10 +470,10 @@ body {
   font: 18px/20px Arial, Verdana, sans-serif;
   background: url("../images/task-sep.jpg") no-repeat;
 }
-/* line 151, ../sass/index.scss */
+/* line 155, ../sass/index.scss */
 .task-list .complited-task {
   position: absolute;
-  z-index: 9999;
+  z-index: 500;
   top: 40%;
   left: 0;
   float: none;
@@ -411,12 +487,12 @@ body {
 }
 
 /*task check form*/
-/* line 169, ../sass/index.scss */
+/* line 173, ../sass/index.scss */
 .task-form {
   float: left;
   padding: 0 10px 0 0;
 }
-/* line 173, ../sass/index.scss */
+/* line 177, ../sass/index.scss */
 .task-form input[type="checkbox"] {
   float: left;
   padding: 0;
@@ -425,7 +501,7 @@ body {
   height: 20px;
   vertical-align: top;
 }
-/* line 182, ../sass/index.scss */
+/* line 186, ../sass/index.scss */
 .task-form label {
   float: left;
   width: 550px;
@@ -433,11 +509,11 @@ body {
   font: italic 18px/20px Arial, Verdana, sans-serif;
   background: url("../images/task-sep.jpg") no-repeat;
 }
-/* line 189, ../sass/index.scss */
+/* line 193, ../sass/index.scss */
 .task-form label.task-date {
   width: 120px;
 }
-/* line 194, ../sass/index.scss */
+/* line 198, ../sass/index.scss */
 .task-form input[type="submit"] {
   display: none;
   float: right;
@@ -450,7 +526,7 @@ body {
   background: url("../images/delete-icon.png") no-repeat;
   outline: none;
 }
-/* line 206, ../sass/index.scss */
+/* line 210, ../sass/index.scss */
 .task-form input[type="submit"]:hover {
   cursor: pointer;
 }

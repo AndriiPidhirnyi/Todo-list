@@ -36,7 +36,7 @@
 .login-form {
 	width: 296px;
 	position: relative;
-	z-index: 9999;
+	z-index: 1000;
 	background: #f3f3f3;
 	border: 1px solid #f9f9f9;
 	@include border-radius(7px);
@@ -145,5 +145,67 @@
 
 	&.pswd-icon {
 		top: 168px;
+	}
+}
+
+/*modal window*/
+#modal-window-holder {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	z-index: 9000;
+	background: rgba(10,10,10,0.3);
+}
+
+.modal-window {
+	width: 300px;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	z-index: 9500;
+	padding: 10px;
+	@include transform(translate(-50%, -50%));
+
+	background: #fff;
+	border: 4px solid #ff5b53;
+	@include border-radius(5px);
+
+	h2 {
+		margin: 0 0 10px;
+		font: bold 20px/22px "BreeSerif Regular", Georgia, serif;
+		text-align: center;
+	}
+
+	p {
+		text-align: center;
+		margin: 0 0 10px;
+	}
+}
+
+.info-form {
+	text-align: center;
+
+	button {
+		margin: 0 10px;
+		padding: 6px 15px;
+		font: 16px/18px Arial, Verdana, sans-serif;
+		color: #fff;
+		border: none;
+		@include border-radius(2px);
+
+		&.confirm-btn {
+			background: #f78f00;
+		}
+
+		&.cancel-btn {
+			background: #24aafe;
+		}
+
+		&:hover {
+			background: #565656;
+			cursor: pointer;
+		}
 	}
 }
