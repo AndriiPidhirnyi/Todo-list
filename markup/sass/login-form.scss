@@ -160,7 +160,7 @@
 }
 
 .modal-window {
-	width: 300px;
+	width: 250px;
 	position: absolute;
 	top: 50%;
 	left: 50%;
@@ -172,9 +172,25 @@
 	border: 4px solid #ff5b53;
 	@include border-radius(5px);
 
+	&.error-msg {
+		border-color: #fb2805;
+
+		h2 {
+			background: url("../images/error-icon-min.png") 10px 0 no-repeat;
+		}
+	}
+
+	&.warning-msg {
+		border-color: #ffba12;
+
+		h2 {
+			background: url("../images/warning-icon-min.png") 10px 0 no-repeat;
+		}
+	}
+
 	h2 {
 		margin: 0 0 10px;
-		font: bold 20px/22px "BreeSerif Regular", Georgia, serif;
+		font: bold 20px/40px "BreeSerif Regular", Georgia, serif;
 		text-align: center;
 	}
 
@@ -193,6 +209,7 @@
 		font: 16px/18px Arial, Verdana, sans-serif;
 		color: #fff;
 		border: none;
+		outline: none;
 		@include border-radius(2px);
 
 		&.confirm-btn {
