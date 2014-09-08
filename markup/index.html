@@ -94,6 +94,7 @@
 		</div>
 		<!-- main end -->
 	</div>
+	<!-- templates backbone -->
 	<script type="text/template" id="login-template">
 		<div id="login-form-block">
 			<div class="form-holder">
@@ -109,7 +110,7 @@
 							<h2>Authorization</h2>
 							<div class="row">
 								<div class="input-box">
-									<input class="login-field" id="user-login-field" type="text" value="" placeholder="User's e-mail">
+									<input class="login-field" id="user-name-field" type="text" value="" placeholder="User's e-mail">
 								</div>
 							</div>
 							<div class="row">
@@ -119,9 +120,9 @@
 							</div>
 						</div>
 						<div class="action-row">
-							<a href="register.html">Register</a>
+							<a href="#reg-page" class="reg-page-link">Register</a>
 							<div class="btn-holder">
-								<input type="submit" name="sign-in-btn" id="sign-in" value="Sign in">
+								<input type="submit" name="sign-in-btn" class="sign-in-btn" value="Sign in">
 							</div>
 						</div>
 					</fieldset>
@@ -132,12 +133,6 @@
 	<script type="text/template" id="registration-template">
 		<div id="login-form-block">
 			<div class="form-holder">
-				// <figure class="form-icon user-icon">
-				// 	<img src="images/user-icon.png" height="21" width="17" alt="user icon">
-				// </figure>
-				// <figure class="form-icon pswd-icon">
-				// 	<img src="images/password-icon.png" height="21" width="16" alt="white lock">
-				// </figure>
 				<form action="#" class="login-form">
 					<fieldset>
 						<div class="input-holder">
@@ -163,7 +158,7 @@
 						</div>
 						<div class="action-row">
 							<div class="btn-holder">
-								<input type="submit" name="register-btn" id="register" value="Register">
+								<input type="submit" name="register-btn" class="reg-user-btn" value="Register">
 							</div>
 						</div>
 					</fieldset>
@@ -188,6 +183,7 @@
 	<script type="text/javascript" src="js/lib/jquery-2.1.1.min.js"></script>
 	<script type="text/javascript" src="js/lib/underscore-1.7.0-min.js"></script>
 	<script type="text/javascript" src="js/lib/backbone-min-1.1.2.js"></script>
+	<script type="text/javascript" src="js/lib/myLib.js"></script>
 	<script type="text/javascript" src="js/models/user.js"></script>
 	<script type="text/javascript" src="js/collections/users-base.js"></script>
 	<script type="text/javascript" src="js/views/user-view.js"></script>
