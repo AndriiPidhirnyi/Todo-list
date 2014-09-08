@@ -24,12 +24,6 @@
 	width: 300px - 2px;
 	padding: 0 1px;
 	@include transform(translate(-50%, -50%));
-
-	&:hover {
-		.user-icon {
-			left: -45px;
-		}
-	}
 }
 
 .login-form {
@@ -132,7 +126,6 @@
 	padding: 12px 15px;
 	height: 48px - 12px - 12px;
 	@include border-radius(4px 0 0 4px);
-	transition: all 0.5s;
 
 	image {
 		vertical-align: top;
@@ -140,10 +133,12 @@
 
 	&.user-icon {
 		top: 99px;
+		left: -45px;
 	}
 
 	&.pswd-icon {
 		top: 168px;
+		left: -45px;
 	}
 }
 
