@@ -269,6 +269,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   -webkit-border-radius: 5px;
   border-radius: 5px;
 }
+<<<<<<< HEAD
 /* line 174, ../sass/login-form.scss */
 .modal-window.error-msg {
   border-color: #fb2805;
@@ -286,22 +287,53 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   background: url("../images/warning-icon-min.png") 10px 0 no-repeat;
 }
 /* line 190, ../sass/login-form.scss */
+=======
+/* line 175, ../sass/login-form.scss */
+.modal-window.error-msg {
+  border-color: #fb2805;
+}
+/* line 178, ../sass/login-form.scss */
+.modal-window.error-msg h2 {
+  background: url("../images/error-icon-min.png") 10px 0 no-repeat;
+}
+/* line 183, ../sass/login-form.scss */
+.modal-window.warning-msg {
+  border-color: #ffba12;
+}
+/* line 186, ../sass/login-form.scss */
+.modal-window.warning-msg h2 {
+  background: url("../images/warning-icon-min.png") 10px 0 no-repeat;
+}
+/* line 191, ../sass/login-form.scss */
+>>>>>>> 41e3c8cf09809bab9a8669525177a00ba6faca93
 .modal-window h2 {
   margin: 0 0 10px;
   font: bold 20px/40px "BreeSerif Regular", Georgia, serif;
   text-align: center;
 }
+<<<<<<< HEAD
 /* line 196, ../sass/login-form.scss */
+=======
+/* line 197, ../sass/login-form.scss */
+>>>>>>> 41e3c8cf09809bab9a8669525177a00ba6faca93
 .modal-window p {
   text-align: center;
   margin: 0 0 10px;
 }
 
+<<<<<<< HEAD
 /* line 202, ../sass/login-form.scss */
 .info-form {
   text-align: center;
 }
 /* line 205, ../sass/login-form.scss */
+=======
+/* line 203, ../sass/login-form.scss */
+.info-form {
+  text-align: center;
+}
+/* line 206, ../sass/login-form.scss */
+>>>>>>> 41e3c8cf09809bab9a8669525177a00ba6faca93
 .info-form button {
   margin: 0 10px;
   padding: 6px 15px;
@@ -313,6 +345,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   -webkit-border-radius: 2px;
   border-radius: 2px;
 }
+<<<<<<< HEAD
 /* line 214, ../sass/login-form.scss */
 .info-form button.confirm-btn {
   background: #f78f00;
@@ -322,6 +355,17 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   background: #24aafe;
 }
 /* line 222, ../sass/login-form.scss */
+=======
+/* line 215, ../sass/login-form.scss */
+.info-form button.confirm-btn {
+  background: #f78f00;
+}
+/* line 219, ../sass/login-form.scss */
+.info-form button.cancel-btn {
+  background: #24aafe;
+}
+/* line 223, ../sass/login-form.scss */
+>>>>>>> 41e3c8cf09809bab9a8669525177a00ba6faca93
 .info-form button:hover {
   background: #565656;
   cursor: pointer;
