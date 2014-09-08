@@ -1,223 +1,73 @@
-/* line 3, ../sass/index.scss */
-body {
-  background: url("../images/bg-page.png");
-}
+/*
+Syntax error: Undefined variable: "$page-width".
+        on line 8 of /media/files/training/projects/TODO-list/markup/sass/index.scss
 
-/* line 7, ../sass/index.scss */
-.page-width {
-  min-width: 800px;
-  width: 800px;
-  margin: 0 auto;
-}
+3: body {
+4: 	background: url("../images/bg-page.png");
+5: }
+6: 
+7: .page-width {
+8: 	min-width: $page-width;
+9: 	width: $page-width;
+10: 	margin: 0 auto;
+11: }
+12: 
+13: /*header block*\/
 
-/*header block*/
-/* line 15, ../sass/index.scss */
-.header-holder {
-  width: 100%;
-  margin: 0 0 30px;
-  background: #cdcfd3;
-}
-
-/* line 21, ../sass/index.scss */
-#header {
-  overflow: hidden;
-  padding: 7px 0;
-}
-/* line 25, ../sass/index.scss */
-#header h1 {
-  padding: 0 0 0 40px;
-  font: 24px/30px Arial, Verdana, sans-serif;
-  color: #444;
-  background: url("../images/logo.png") no-repeat;
-}
-
-/* line 33, ../sass/index.scss */
-.user-info-block {
-  float: right;
-}
-
-/* line 39, ../sass/index.scss */
-.logout-form label {
-  margin: 0 10px 0 0;
-  padding: 6px 16px 6px 40px;
-  font: 16px/32px Arial, Verdana, sans-serif;
-  background: url("../images/user-logo.png") 0 0 no-repeat;
-  -moz-border-radius: 5px;
-  -webkit-border-radius: 5px;
-  border-radius: 5px;
-}
-/* line 47, ../sass/index.scss */
-.logout-form input {
-  float: right;
-  width: 25px;
-  margin: 0;
-  text-indent: -9999px;
-  line-height: 30px;
-  background: url("../images/logout-icon.png") 0 50% no-repeat;
-  outline: none;
-  border: none;
-}
-/* line 57, ../sass/index.scss */
-.logout-form input:hover {
-  cursor: pointer;
-}
-
-/*main block*/
-/* line 64, ../sass/index.scss */
-.block-item {
-  padding: 10px 20px;
-  margin: 0 0 10px;
-  background: #f8e281;
-  border: 1px solid #222;
-  -moz-border-radius: 10px;
-  -webkit-border-radius: 10px;
-  border-radius: 10px;
-  -moz-box-shadow: rgba(200, 200, 200, 0.4) 4px 4px 2px 2px;
-  -webkit-box-shadow: rgba(200, 200, 200, 0.4) 4px 4px 2px 2px;
-  box-shadow: rgba(200, 200, 200, 0.4) 4px 4px 2px 2px;
-}
-
-/* line 73, ../sass/index.scss */
-.list-grad {
-  background: linear-gradient(#f8e281, #ff661a);
-}
-
-/* line 79, ../sass/index.scss */
-.task-add-form .users-list-block {
-  font: 14px/16px Arial, Verdana, sans-serif;
-  margin: 0 4px 10px 0;
-}
-/* line 83, ../sass/index.scss */
-.task-add-form .users-list-block:after {
-  content: "";
-  display: block;
-  clear: both;
-}
-/* line 89, ../sass/index.scss */
-.task-add-form .users-list-block label {
-  float: left;
-  margin: 0 5px 0 0;
-  line-height: 24px;
-}
-/* line 95, ../sass/index.scss */
-.task-add-form .users-list-block input#users-list {
-  float: left;
-  width: 120px;
-  padding: 2px;
-  margin: 0;
-  font: 14px/16px Arial, Verdana, sans-serif;
-}
-/* line 104, ../sass/index.scss */
-.task-add-form textarea {
-  padding: 5px;
-  margin: 0 0 10px;
-  overflow: auto;
-  font: 18px/20px Arial, Verdana, sans-serif;
-  resize: none;
-}
-/* line 112, ../sass/index.scss */
-.task-add-form input[type="submit"] {
-  float: right;
-  margin: 0 2px 0 0;
-  padding: 5px 10px;
-  background: #e0e0e0;
-  font: 18px/20px Arial, Verdana, sans-serif;
-  outline: none;
-  border: 2px solid #929292;
-  -moz-border-radius: 5px;
-  -webkit-border-radius: 5px;
-  border-radius: 5px;
-}
-/* line 122, ../sass/index.scss */
-.task-add-form input[type="submit"]:hover {
-  cursor: pointer;
-}
-
-/* line 128, ../sass/index.scss */
-.task-list {
-  position: relative;
-  z-index: 1;
-  width: 100%;
-  margin: 0 0 10px;
-  padding: 0 0 5px;
-  border: 1px solid #000;
-  border-width: 0 0 1px 0;
-}
-/* line 137, ../sass/index.scss */
-.task-list:hover input[type="submit"] {
-  display: block;
-}
-/* line 141, ../sass/index.scss */
-.task-list:after {
-  content: "";
-  display: block;
-  clear: both;
-}
-/* line 147, ../sass/index.scss */
-.task-list p {
-  float: left;
-  width: 100px;
-  padding: 0 0 0 10px;
-  font: 18px/20px Arial, Verdana, sans-serif;
-  background: url("../images/task-sep.jpg") no-repeat;
-}
-/* line 155, ../sass/index.scss */
-.task-list .complited-task {
-  position: absolute;
-  z-index: 500;
-  top: 40%;
-  left: 0;
-  float: none;
-  width: 100%;
-  height: 0;
-  padding: 0;
-  text-indent: -9999px;
-  border: solid #111;
-  border-width: 2px 0 0 0;
-  background: none;
-}
-
-/*task check form*/
-/* line 173, ../sass/index.scss */
-.task-form {
-  float: left;
-  padding: 0 10px 0 0;
-}
-/* line 177, ../sass/index.scss */
-.task-form input[type="checkbox"] {
-  float: left;
-  padding: 0;
-  margin: 0 10px 0 0;
-  width: 20px;
-  height: 20px;
-  vertical-align: top;
-}
-/* line 186, ../sass/index.scss */
-.task-form label {
-  float: left;
-  width: 550px;
-  padding: 0 0 0 10px;
-  font: italic 18px/20px Arial, Verdana, sans-serif;
-  background: url("../images/task-sep.jpg") no-repeat;
-}
-/* line 193, ../sass/index.scss */
-.task-form label.task-date {
-  width: 120px;
-}
-/* line 198, ../sass/index.scss */
-.task-form input[type="submit"] {
-  display: none;
-  float: right;
-  padding: 0;
-  margin: 0;
-  width: 20px;
-  height: 20px;
-  text-indent: -9999px;
-  border: none;
-  background: url("../images/delete-icon.png") no-repeat;
-  outline: none;
-}
-/* line 210, ../sass/index.scss */
-.task-form input[type="submit"]:hover {
-  cursor: pointer;
-}
+Backtrace:
+/media/files/training/projects/TODO-list/markup/sass/index.scss:8
+/var/lib/gems/1.9.1/gems/sass-3.3.14/lib/sass/script/tree/variable.rb:49:in `_perform'
+/var/lib/gems/1.9.1/gems/sass-3.3.14/lib/sass/script/tree/node.rb:50:in `perform'
+/var/lib/gems/1.9.1/gems/sass-3.3.14/lib/sass/tree/visitors/perform.rb:366:in `visit_prop'
+/var/lib/gems/1.9.1/gems/sass-3.3.14/lib/sass/tree/visitors/base.rb:36:in `visit'
+/var/lib/gems/1.9.1/gems/sass-3.3.14/lib/sass/tree/visitors/perform.rb:152:in `block in visit'
+/var/lib/gems/1.9.1/gems/sass-3.3.14/lib/sass/stack.rb:79:in `block in with_base'
+/var/lib/gems/1.9.1/gems/sass-3.3.14/lib/sass/stack.rb:121:in `with_frame'
+/var/lib/gems/1.9.1/gems/sass-3.3.14/lib/sass/stack.rb:79:in `with_base'
+/var/lib/gems/1.9.1/gems/sass-3.3.14/lib/sass/tree/visitors/perform.rb:152:in `visit'
+/var/lib/gems/1.9.1/gems/sass-3.3.14/lib/sass/tree/visitors/perform.rb:389:in `block (2 levels) in visit_rule'
+/var/lib/gems/1.9.1/gems/sass-3.3.14/lib/sass/tree/visitors/perform.rb:389:in `map'
+/var/lib/gems/1.9.1/gems/sass-3.3.14/lib/sass/tree/visitors/perform.rb:389:in `block in visit_rule'
+/var/lib/gems/1.9.1/gems/sass-3.3.14/lib/sass/tree/visitors/perform.rb:173:in `with_environment'
+/var/lib/gems/1.9.1/gems/sass-3.3.14/lib/sass/tree/visitors/perform.rb:387:in `visit_rule'
+/var/lib/gems/1.9.1/gems/sass-3.3.14/lib/sass/tree/visitors/base.rb:36:in `visit'
+/var/lib/gems/1.9.1/gems/sass-3.3.14/lib/sass/tree/visitors/perform.rb:152:in `block in visit'
+/var/lib/gems/1.9.1/gems/sass-3.3.14/lib/sass/stack.rb:79:in `block in with_base'
+/var/lib/gems/1.9.1/gems/sass-3.3.14/lib/sass/stack.rb:121:in `with_frame'
+/var/lib/gems/1.9.1/gems/sass-3.3.14/lib/sass/stack.rb:79:in `with_base'
+/var/lib/gems/1.9.1/gems/sass-3.3.14/lib/sass/tree/visitors/perform.rb:152:in `visit'
+/var/lib/gems/1.9.1/gems/sass-3.3.14/lib/sass/tree/visitors/base.rb:52:in `block in visit_children'
+/var/lib/gems/1.9.1/gems/sass-3.3.14/lib/sass/tree/visitors/base.rb:52:in `map'
+/var/lib/gems/1.9.1/gems/sass-3.3.14/lib/sass/tree/visitors/base.rb:52:in `visit_children'
+/var/lib/gems/1.9.1/gems/sass-3.3.14/lib/sass/tree/visitors/perform.rb:161:in `block in visit_children'
+/var/lib/gems/1.9.1/gems/sass-3.3.14/lib/sass/tree/visitors/perform.rb:173:in `with_environment'
+/var/lib/gems/1.9.1/gems/sass-3.3.14/lib/sass/tree/visitors/perform.rb:160:in `visit_children'
+/var/lib/gems/1.9.1/gems/sass-3.3.14/lib/sass/tree/visitors/base.rb:36:in `block in visit'
+/var/lib/gems/1.9.1/gems/sass-3.3.14/lib/sass/tree/visitors/perform.rb:180:in `visit_root'
+/var/lib/gems/1.9.1/gems/sass-3.3.14/lib/sass/tree/visitors/base.rb:36:in `visit'
+/var/lib/gems/1.9.1/gems/sass-3.3.14/lib/sass/tree/visitors/perform.rb:151:in `visit'
+/var/lib/gems/1.9.1/gems/sass-3.3.14/lib/sass/tree/visitors/perform.rb:8:in `visit'
+/var/lib/gems/1.9.1/gems/sass-3.3.14/lib/sass/tree/root_node.rb:36:in `css_tree'
+/var/lib/gems/1.9.1/gems/sass-3.3.14/lib/sass/tree/root_node.rb:20:in `render'
+/var/lib/gems/1.9.1/gems/sass-3.3.14/lib/sass/engine.rb:274:in `render'
+/var/lib/gems/1.9.1/gems/compass-import-once-1.0.5/lib/compass/import-once/engine.rb:17:in `block in render'
+/var/lib/gems/1.9.1/gems/compass-import-once-1.0.5/lib/compass/import-once/engine.rb:29:in `with_import_scope'
+/var/lib/gems/1.9.1/gems/compass-import-once-1.0.5/lib/compass/import-once/engine.rb:16:in `render'
+/var/lib/gems/1.9.1/gems/sass-3.3.14/lib/sass/plugin/compiler.rb:484:in `update_stylesheet'
+/var/lib/gems/1.9.1/gems/sass-3.3.14/lib/sass/plugin/compiler.rb:214:in `block in update_stylesheets'
+/var/lib/gems/1.9.1/gems/sass-3.3.14/lib/sass/plugin/compiler.rb:208:in `each'
+/var/lib/gems/1.9.1/gems/sass-3.3.14/lib/sass/plugin/compiler.rb:208:in `update_stylesheets'
+/var/lib/gems/1.9.1/gems/sass-3.3.14/lib/sass/plugin/compiler.rb:462:in `on_file_changed'
+/var/lib/gems/1.9.1/gems/sass-3.3.14/lib/sass/plugin/compiler.rb:324:in `block in watch'
+/var/lib/gems/1.9.1/gems/sass-3.3.14/vendor/listen/lib/listen/listener.rb:252:in `call'
+/var/lib/gems/1.9.1/gems/sass-3.3.14/vendor/listen/lib/listen/listener.rb:252:in `on_change'
+/var/lib/gems/1.9.1/gems/sass-3.3.14/vendor/listen/lib/listen/listener.rb:290:in `block in initialize_adapter'
+/var/lib/gems/1.9.1/gems/sass-3.3.14/vendor/listen/lib/listen/adapter.rb:254:in `call'
+/var/lib/gems/1.9.1/gems/sass-3.3.14/vendor/listen/lib/listen/adapter.rb:254:in `report_changes'
+/var/lib/gems/1.9.1/gems/sass-3.3.14/vendor/listen/lib/listen/adapter.rb:323:in `poll_changed_directories'
+/var/lib/gems/1.9.1/gems/sass-3.3.14/vendor/listen/lib/listen/adapter.rb:299:in `block in start_poller'
+*/
+body:before {
+  white-space: pre;
+  font-family: monospace;
+  content: "Syntax error: Undefined variable: \"$page-width\".\A         on line 8 of /media/files/training/projects/TODO-list/markup/sass/index.scss\A \A 3: body {\A 4: 	background: url(\"../images/bg-page.png\");\A 5: }\A 6: \A 7: .page-width {\A 8: 	min-width: $page-width;\A 9: 	width: $page-width;\A 10: 	margin: 0 auto;\A 11: }\A 12: \A 13: /*header block*/"; }

@@ -2,7 +2,7 @@
   font-family: "BreeSerif Regular";
   src: url('../fonts/breeserif/breeserif-regular-webfont.eot?1409667179') format('embedded-opentype'), url('../fonts/breeserif/breeserif-regular-webfont.svg?1409667179') format('svg'), url('../fonts/breeserif/breeserif-regular-webfont.ttf?1409667179') format('truetype'), url('../fonts/breeserif/breeserif-regular-webfont.woff?1409667179') format('woff');
 }
-/* line 10, ../sass/login-form.scss */
+/* line 9, ../sass/login-form.scss */
 #login-form-block {
   position: absolute;
   left: 0;
@@ -13,7 +13,7 @@
   z-index: 1;
 }
 
-/* line 20, ../sass/login-form.scss */
+/* line 19, ../sass/login-form.scss */
 .form-holder {
   position: absolute;
   top: 50%;
@@ -26,12 +26,12 @@
   -webkit-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
 }
-/* line 30, ../sass/login-form.scss */
+/* line 29, ../sass/login-form.scss */
 .form-holder:hover .user-icon {
   left: -45px;
 }
 
-/* line 36, ../sass/login-form.scss */
+/* line 35, ../sass/login-form.scss */
 .login-form {
   width: 296px;
   position: relative;
@@ -45,24 +45,24 @@
   -webkit-box-shadow: rgba(250, 250, 250, 0.4) 0 0 2px 2px;
   box-shadow: rgba(250, 250, 250, 0.4) 0 0 2px 2px;
 }
-/* line 45, ../sass/login-form.scss */
+/* line 44, ../sass/login-form.scss */
 .login-form .input-holder {
   padding: 37px 27px 10px 32px;
 }
-/* line 49, ../sass/login-form.scss */
+/* line 48, ../sass/login-form.scss */
 .login-form h2 {
   margin: 0 0 30px;
   font: 28px/30px "BreeSerif Regular", Georgia, serif;
   color: #414848;
 }
-/* line 55, ../sass/login-form.scss */
+/* line 54, ../sass/login-form.scss */
 .login-form label {
   display: inline-block;
   margin: 0 0 5px;
   font: 18px/20px "BreeSerif Regular", Georgia, serif;
   color: #707070;
 }
-/* line 62, ../sass/login-form.scss */
+/* line 61, ../sass/login-form.scss */
 .login-form .input-box {
   padding: 3px 2px 0 1px;
   margin: 0 0 20px;
@@ -74,7 +74,7 @@
   -webkit-border-radius: 5px;
   border-radius: 5px;
 }
-/* line 70, ../sass/login-form.scss */
+/* line 69, ../sass/login-form.scss */
 .login-form .login-field {
   width: 192px;
   padding: 14px 20px;
@@ -88,7 +88,7 @@
   -webkit-border-radius: 3px;
   border-radius: 3px 3px 2px 2px;
 }
-/* line 82, ../sass/login-form.scss */
+/* line 81, ../sass/login-form.scss */
 .login-form .action-row {
   padding: 25px 30px;
   text-align: center;
@@ -99,18 +99,18 @@
   -webkit-border-radius: 0;
   border-radius: 0 0 6px 6px;
 }
-/* line 90, ../sass/login-form.scss */
+/* line 89, ../sass/login-form.scss */
 .login-form .action-row a {
   font: 18px/20px "BreeSerif Regular", Georgia, serif;
   color: #414848;
   margin: 0 20px 0 0;
   text-decoration: none;
 }
-/* line 96, ../sass/login-form.scss */
+/* line 95, ../sass/login-form.scss */
 .login-form .action-row a:hover {
   text-decoration: underline;
 }
-/* line 102, ../sass/login-form.scss */
+/* line 101, ../sass/login-form.scss */
 .login-form .btn-holder {
   display: inline-block;
   padding: 1px;
@@ -120,7 +120,7 @@
   -webkit-border-radius: 3px;
   border-radius: 3px;
 }
-/* line 109, ../sass/login-form.scss */
+/* line 108, ../sass/login-form.scss */
 .login-form .btn-holder input {
   margin: 0;
   padding: 10px 15px;
@@ -135,13 +135,13 @@
   border-radius: 2px;
   outline: none;
 }
-/* line 120, ../sass/login-form.scss */
+/* line 119, ../sass/login-form.scss */
 .login-form .btn-holder input:hover {
   cursor: pointer;
   background: #2bb2d9;
 }
 
-/* line 128, ../sass/login-form.scss */
+/* line 127, ../sass/login-form.scss */
 .form-icon {
   position: absolute;
   left: 1px;
@@ -154,21 +154,21 @@
   border-radius: 4px 0 0 4px;
   transition: all 0.5s;
 }
-/* line 138, ../sass/login-form.scss */
+/* line 137, ../sass/login-form.scss */
 .form-icon image {
   vertical-align: top;
 }
-/* line 142, ../sass/login-form.scss */
+/* line 141, ../sass/login-form.scss */
 .form-icon.user-icon {
   top: 99px;
 }
-/* line 146, ../sass/login-form.scss */
+/* line 145, ../sass/login-form.scss */
 .form-icon.pswd-icon {
   top: 168px;
 }
 
 /*modal window*/
-/* line 152, ../sass/login-form.scss */
+/* line 151, ../sass/login-form.scss */
 #modal-window-holder {
   position: absolute;
   top: 0;
@@ -179,7 +179,7 @@
   background: rgba(10, 10, 10, 0.3);
 }
 
-/* line 162, ../sass/login-form.scss */
+/* line 161, ../sass/login-form.scss */
 .modal-window {
   width: 250px;
   position: absolute;
@@ -197,39 +197,39 @@
   -webkit-border-radius: 5px;
   border-radius: 5px;
 }
-/* line 175, ../sass/login-form.scss */
+/* line 174, ../sass/login-form.scss */
 .modal-window.error-msg {
   border-color: #fb2805;
 }
-/* line 178, ../sass/login-form.scss */
+/* line 177, ../sass/login-form.scss */
 .modal-window.error-msg h2 {
   background: url("../images/error-icon-min.png") 10px 0 no-repeat;
 }
-/* line 183, ../sass/login-form.scss */
+/* line 182, ../sass/login-form.scss */
 .modal-window.warning-msg {
   border-color: #ffba12;
 }
-/* line 186, ../sass/login-form.scss */
+/* line 185, ../sass/login-form.scss */
 .modal-window.warning-msg h2 {
   background: url("../images/warning-icon-min.png") 10px 0 no-repeat;
 }
-/* line 191, ../sass/login-form.scss */
+/* line 190, ../sass/login-form.scss */
 .modal-window h2 {
   margin: 0 0 10px;
   font: bold 20px/40px "BreeSerif Regular", Georgia, serif;
   text-align: center;
 }
-/* line 197, ../sass/login-form.scss */
+/* line 196, ../sass/login-form.scss */
 .modal-window p {
   text-align: center;
   margin: 0 0 10px;
 }
 
-/* line 203, ../sass/login-form.scss */
+/* line 202, ../sass/login-form.scss */
 .info-form {
   text-align: center;
 }
-/* line 206, ../sass/login-form.scss */
+/* line 205, ../sass/login-form.scss */
 .info-form button {
   margin: 0 10px;
   padding: 6px 15px;
@@ -241,15 +241,15 @@
   -webkit-border-radius: 2px;
   border-radius: 2px;
 }
-/* line 215, ../sass/login-form.scss */
+/* line 214, ../sass/login-form.scss */
 .info-form button.confirm-btn {
   background: #f78f00;
 }
-/* line 219, ../sass/login-form.scss */
+/* line 218, ../sass/login-form.scss */
 .info-form button.cancel-btn {
   background: #24aafe;
 }
-/* line 223, ../sass/login-form.scss */
+/* line 222, ../sass/login-form.scss */
 .info-form button:hover {
   background: #565656;
   cursor: pointer;

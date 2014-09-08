@@ -5,17 +5,16 @@ body {
 }
 
 .page-width {
-	min-width: 800px;
-	width: 800px;
+	min-width: $page-width;
+	width: $page-width;
 	margin: 0 auto;
 }
 
 /*header block*/
-
 .header-holder {
 	width: 100%;
 	margin: 0 0 30px;
-	background: #cdcfd3;
+	background: $bg-header;
 }
 
 #header {
@@ -25,7 +24,7 @@ body {
 	h1 {
 		padding: 0 0 0 40px;
 		font: 24px/30px Arial, Verdana, sans-serif;
-		color: #444;
+		color: $text-header-color;
 		background: url("../images/logo.png") no-repeat;
 	}
 }
@@ -35,11 +34,11 @@ body {
 }
 
 .logout-form {
-
 	label {
 		margin: 0 10px 0 0;
 		padding: 6px 16px 6px 40px;
 		font: 16px/32px Arial, Verdana, sans-serif;
+		color: $user-login-color;
 		background: url("../images/user-logo.png") 0 0 no-repeat;
 		@include border-radius(5px);
 	}
@@ -64,18 +63,17 @@ body {
 .block-item {
 	padding: 10px 20px;
 	margin: 0 0 10px;
-	background: #f8e281;
-	border: 1px solid #222;
+	background: $bg-section-block;
+	border: 1px solid $border-section-color;
 	@include border-radius(10px);
 	@include box-shadow(rgba(200,200,200,0.4) 4px 4px 2px 2px);
 }
 
 .list-grad {
-	background: linear-gradient(#f8e281, #ff661a);
+	background: linear-gradient($bg-section-block, $bg-section-bottom-grad);
 }
 
 .task-add-form {
-
 	.users-list-block {
 		font: 14px/16px Arial, Verdana, sans-serif;
 		margin: 0 4px 10px 0;
@@ -113,10 +111,11 @@ body {
 		float:right;
 		margin: 0 2px 0 0;
 		padding: 5px 10px;
-		background: #e0e0e0;
+		background: $bg-btn-add-task;
 		font: 18px/20px Arial, Verdana, sans-serif;
 		outline: none;
-		border: 2px solid #929292;
+		border: 2px solid $border-btn-add;
+
 		@include border-radius(5px);
 
 		&:hover {
@@ -125,13 +124,53 @@ body {
 	}
 }
 
-.task-list {
+.tabset {
+	margin: 0 0 10px;
+	padding: 0 0 0 5px;
+	border: solid $border-tabset;
+	border-width: 0 0 2px 0;
+
+	&:after {
+		content:"";
+		display: block;
+		clear: both;
+	}
+
+	li {
+		float: left;
+		overflow: hidden;
+		margin: 0 5px 0 0;
+		border: solid $border-tabset;
+		border-width: 2px 2px 0 2px;
+		@include border-radius(4px 4px 0 0);
+
+	}
+
+	a {
+		display: inline-block;
+		padding: 5px 10px;
+		color: $unactive-text-color;
+		text-decoration: none;
+
+		&.active {
+			background: $bg-tab-item;
+			color: $text-tab-item-color;
+		}
+
+		&:hover {
+			background: $bg-tab-item-hover;
+			color: $text-tab-item-hover-color;
+		}
+	}
+}
+
+.task-item {
 	position: relative;
 	z-index: 1;
 	width: 100%;
 	margin: 0 0 10px;
 	padding: 0 0 5px;
-	border: 1px solid #000;
+	border: 1px solid $border-item-color;
 	border-width: 0 0 1px 0;
 
 	&:hover input[type="submit"] {
@@ -162,17 +201,27 @@ body {
 		height: 0;
 		padding: 0;
 		text-indent: -9999px;
-		border: solid #111;
+		border: solid $black;
 		border-width: 2px 0 0 0;
 		background: none;
 	}
 }
 
-
 /*task check form*/
 .task-form {
-	float: left;
 	padding: 0 10px 0 0;
+
+	.task-text {
+		float: left;
+		width: 560px;
+		padding: 0 10px;
+		border: solid $border-label-sep;
+		border-width: 0 1px;
+	}
+
+	label:hover, input:hover {
+		cursor: pointer;
+	}
 
 	input[type="checkbox"] {
 		float: left;
@@ -184,19 +233,43 @@ body {
 	}
 
 	label {
-		float: left;
-		width: 550px;
-		padding: 0 0 0 10px;
+		width: 100%;
+		display: inline-block;
 		font: italic 18px/20px Arial, Verdana, sans-serif;
-		background: url("../images/task-sep.jpg") no-repeat;
 
 		&.task-date {
 			width: 120px;
+			display: inline;
+			padding: 0 0 0 10px;
+		}
+
+		span {
+			font-weight: bold;
+		}
+	}
+
+	textarea {
+		padding: 3px;
+		overflow: auto;
+		margin: 0 0 5px;
+		font: 18px/20px Arial, Verdana, sans-serif;
+		resize: none;
+	}
+
+	.btn-save {
+		float: right;
+		padding: 4px 7px;
+		background: $bg-btn-save;
+		@include border-radius(2px);
+		border: none;
+
+		&:hover {
+			cursor: pointer;
 		}
 	}
 
 	input[type="submit"] {
-		display: none;
+		display: none;		/*it has to change by jQuery*/
 		float: right;
 		padding: 0;
 		margin: 0;
