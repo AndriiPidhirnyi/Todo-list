@@ -181,7 +181,7 @@
 
 /* line 162, ../sass/login-form.scss */
 .modal-window {
-  width: 300px;
+  width: 250px;
   position: absolute;
   top: 50%;
   left: 50%;
@@ -198,41 +198,58 @@
   border-radius: 5px;
 }
 /* line 175, ../sass/login-form.scss */
+.modal-window.error-msg {
+  border-color: #fb2805;
+}
+/* line 178, ../sass/login-form.scss */
+.modal-window.error-msg h2 {
+  background: url("../images/error-icon-min.png") 10px 0 no-repeat;
+}
+/* line 183, ../sass/login-form.scss */
+.modal-window.warning-msg {
+  border-color: #ffba12;
+}
+/* line 186, ../sass/login-form.scss */
+.modal-window.warning-msg h2 {
+  background: url("../images/warning-icon-min.png") 10px 0 no-repeat;
+}
+/* line 191, ../sass/login-form.scss */
 .modal-window h2 {
   margin: 0 0 10px;
-  font: bold 20px/22px "BreeSerif Regular", Georgia, serif;
+  font: bold 20px/40px "BreeSerif Regular", Georgia, serif;
   text-align: center;
 }
-/* line 181, ../sass/login-form.scss */
+/* line 197, ../sass/login-form.scss */
 .modal-window p {
   text-align: center;
   margin: 0 0 10px;
 }
 
-/* line 187, ../sass/login-form.scss */
+/* line 203, ../sass/login-form.scss */
 .info-form {
   text-align: center;
 }
-/* line 190, ../sass/login-form.scss */
+/* line 206, ../sass/login-form.scss */
 .info-form button {
   margin: 0 10px;
   padding: 6px 15px;
   font: 16px/18px Arial, Verdana, sans-serif;
   color: #fff;
   border: none;
+  outline: none;
   -moz-border-radius: 2px;
   -webkit-border-radius: 2px;
   border-radius: 2px;
 }
-/* line 198, ../sass/login-form.scss */
+/* line 215, ../sass/login-form.scss */
 .info-form button.confirm-btn {
   background: #f78f00;
 }
-/* line 202, ../sass/login-form.scss */
+/* line 219, ../sass/login-form.scss */
 .info-form button.cancel-btn {
   background: #24aafe;
 }
-/* line 206, ../sass/login-form.scss */
+/* line 223, ../sass/login-form.scss */
 .info-form button:hover {
   background: #565656;
   cursor: pointer;
