@@ -1,0 +1,639 @@
+/* Welcome to Compass.
+ * In this file you should write your main styles. (or centralize your imports)
+ * Import this file using the following HTML or equivalent:
+ * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
+/* line 5, ../../../../../../../var/lib/gems/1.9.1/gems/compass-core-1.0.0/stylesheets/compass/reset/_utilities.scss */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  font-size: 100%;
+  vertical-align: baseline;
+}
+
+/* line 22, ../../../../../../../var/lib/gems/1.9.1/gems/compass-core-1.0.0/stylesheets/compass/reset/_utilities.scss */
+html {
+  line-height: 1;
+}
+
+/* line 24, ../../../../../../../var/lib/gems/1.9.1/gems/compass-core-1.0.0/stylesheets/compass/reset/_utilities.scss */
+ol, ul {
+  list-style: none;
+}
+
+/* line 26, ../../../../../../../var/lib/gems/1.9.1/gems/compass-core-1.0.0/stylesheets/compass/reset/_utilities.scss */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* line 28, ../../../../../../../var/lib/gems/1.9.1/gems/compass-core-1.0.0/stylesheets/compass/reset/_utilities.scss */
+caption, th, td {
+  text-align: left;
+  font-weight: normal;
+  vertical-align: middle;
+}
+
+/* line 30, ../../../../../../../var/lib/gems/1.9.1/gems/compass-core-1.0.0/stylesheets/compass/reset/_utilities.scss */
+q, blockquote {
+  quotes: none;
+}
+/* line 103, ../../../../../../../var/lib/gems/1.9.1/gems/compass-core-1.0.0/stylesheets/compass/reset/_utilities.scss */
+q:before, q:after, blockquote:before, blockquote:after {
+  content: "";
+  content: none;
+}
+
+/* line 32, ../../../../../../../var/lib/gems/1.9.1/gems/compass-core-1.0.0/stylesheets/compass/reset/_utilities.scss */
+a img {
+  border: none;
+}
+
+/* line 116, ../../../../../../../var/lib/gems/1.9.1/gems/compass-core-1.0.0/stylesheets/compass/reset/_utilities.scss */
+article, aside, details, figcaption, figure, footer, header, hgroup, main, menu, nav, section, summary {
+  display: block;
+}
+
+/*page size*/
+/* colors */
+/*-----*/
+@font-face {
+  font-family: "BreeSerif Regular";
+  src: url('/fonts/breeserif/breeserif-regular-webfont.eot?1409667179') format('embedded-opentype'), url('/fonts/breeserif/breeserif-regular-webfont.svg?1409667179') format('svg'), url('/fonts/breeserif/breeserif-regular-webfont.ttf?1409667179') format('truetype'), url('/fonts/breeserif/breeserif-regular-webfont.woff?1409667179') format('woff');
+}
+/* line 9, ../sass/login-form.scss */
+#login-form-block {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background: #3f5995 url("/images/bg-login.jpg");
+  z-index: 1;
+}
+
+/* line 19, ../sass/login-form.scss */
+.form-holder {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 100;
+  width: 298px;
+  padding: 0 1px;
+  -moz-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+/* line 29, ../sass/login-form.scss */
+.login-form {
+  width: 296px;
+  position: relative;
+  z-index: 1000;
+  background: #f3f3f3;
+  border: 1px solid #f9f9f9;
+  -moz-border-radius: 7px;
+  -webkit-border-radius: 7px;
+  border-radius: 7px;
+  -moz-box-shadow: rgba(250, 250, 250, 0.4) 0 0 2px 2px;
+  -webkit-box-shadow: rgba(250, 250, 250, 0.4) 0 0 2px 2px;
+  box-shadow: rgba(250, 250, 250, 0.4) 0 0 2px 2px;
+}
+/* line 38, ../sass/login-form.scss */
+.login-form .input-holder {
+  padding: 37px 27px 10px 32px;
+}
+/* line 42, ../sass/login-form.scss */
+.login-form h2 {
+  margin: 0 0 30px;
+  font: 28px/30px "BreeSerif Regular", Georgia, serif;
+  color: #414848;
+}
+/* line 48, ../sass/login-form.scss */
+.login-form label {
+  display: inline-block;
+  margin: 0 0 5px;
+  font: 18px/20px "BreeSerif Regular", Georgia, serif;
+  color: #707070;
+}
+/* line 55, ../sass/login-form.scss */
+.login-form .input-box {
+  padding: 3px 2px 0 1px;
+  margin: 0 0 20px;
+  border: 1px solid #fff;
+  -moz-box-shadow: #cccccc 1px 1px 2px 2px inset;
+  -webkit-box-shadow: #cccccc 1px 1px 2px 2px inset;
+  box-shadow: #cccccc 1px 1px 2px 2px inset;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+}
+
+.login-form .input-box .success {
+  border-color: #03e003;
+}
+
+.login-form .input-box .fail {
+  border-color: #ff3435;
+}
+
+/* line 63, ../sass/login-form.scss */
+.login-form .login-field {
+  width: 192px;
+  padding: 14px 20px;
+  margin: 0;
+  font: 14px/16px Arial, Verdana, sans-serif;
+  color: #777;
+  background: #fff;
+  border: none;
+  outline: none;
+  -moz-border-radius: 3px 3px 2px 2px;
+  -webkit-border-radius: 3px;
+  border-radius: 3px 3px 2px 2px;
+}
+/* line 75, ../sass/login-form.scss */
+.login-form .action-row {
+  padding: 25px 30px;
+  text-align: center;
+  border: 1px solid #bec7c8;
+  border-width: 1px 0 0;
+  background: #d4dedf;
+  -moz-border-radius: 0 0 6px 6px;
+  -webkit-border-radius: 0;
+  border-radius: 0 0 6px 6px;
+}
+/* line 83, ../sass/login-form.scss */
+.login-form .action-row a {
+  font: 18px/20px "BreeSerif Regular", Georgia, serif;
+  color: #414848;
+  margin: 0 20px 0 0;
+  text-decoration: none;
+}
+/* line 89, ../sass/login-form.scss */
+.login-form .action-row a:hover {
+  text-decoration: underline;
+}
+/* line 95, ../sass/login-form.scss */
+.login-form .btn-holder {
+  display: inline-block;
+  padding: 1px;
+  border: 1px solid #46b3d3;
+  background: #89d4ea;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+}
+/* line 102, ../sass/login-form.scss */
+.login-form .btn-holder input {
+  margin: 0;
+  padding: 10px 15px;
+  font: 18px/20px "BreeSerif Regular", Georgia, serif;
+  color: #fff;
+  text-shadow: #4091a9 0 1px 1px;
+  text-shadow: #4091a9 0 1px 1px 1px;
+  background: #56c2e1;
+  border: none;
+  -moz-border-radius: 2px;
+  -webkit-border-radius: 2px;
+  border-radius: 2px;
+  outline: none;
+}
+/* line 113, ../sass/login-form.scss */
+.login-form .btn-holder input:hover {
+  cursor: pointer;
+  background: #2bb2d9;
+}
+
+/* line 121, ../sass/login-form.scss */
+.form-icon {
+  position: absolute;
+  left: 1px;
+  z-index: 10;
+  background: rgba(65, 72, 72, 0.75);
+  padding: 12px 15px;
+  height: 24px;
+  -moz-border-radius: 4px 0 0 4px;
+  -webkit-border-radius: 4px;
+  border-radius: 4px 0 0 4px;
+}
+/* line 130, ../sass/login-form.scss */
+.form-icon image {
+  vertical-align: top;
+}
+/* line 134, ../sass/login-form.scss */
+.form-icon.user-icon {
+  top: 99px;
+  left: -45px;
+}
+/* line 139, ../sass/login-form.scss */
+.form-icon.pswd-icon {
+  top: 168px;
+  left: -45px;
+}
+
+/*modal window*/
+/* line 146, ../sass/login-form.scss */
+#modal-window-holder {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 9000;
+  background: rgba(10, 10, 10, 0.3);
+}
+
+/* line 156, ../sass/login-form.scss */
+.modal-window {
+  width: 250px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 9500;
+  padding: 10px;
+  -moz-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  background: #fff;
+  border: 4px solid #ff5b53;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+}
+/* line 169, ../sass/login-form.scss */
+.modal-window.error-msg {
+  border-color: #fb2805;
+}
+/* line 172, ../sass/login-form.scss */
+.modal-window.error-msg h2 {
+  background: url("/images/error-icon-min.png") 10px 0 no-repeat;
+}
+/* line 177, ../sass/login-form.scss */
+.modal-window.warning-msg {
+  border-color: #ffba12;
+}
+/* line 180, ../sass/login-form.scss */
+.modal-window.warning-msg h2 {
+  background: url("/images/warning-icon-min.png") 10px 0 no-repeat;
+}
+/* line 185, ../sass/login-form.scss */
+.modal-window h2 {
+  margin: 0 0 10px;
+  font: bold 20px/40px "BreeSerif Regular", Georgia, serif;
+  text-align: center;
+}
+/* line 191, ../sass/login-form.scss */
+.modal-window p {
+  text-align: center;
+  margin: 0 0 10px;
+}
+
+/* line 197, ../sass/login-form.scss */
+.info-form {
+  text-align: center;
+}
+/* line 200, ../sass/login-form.scss */
+.info-form button {
+  margin: 0 10px;
+  padding: 6px 15px;
+  font: 16px/18px Arial, Verdana, sans-serif;
+  color: #fff;
+  border: none;
+  outline: none;
+  -moz-border-radius: 2px;
+  -webkit-border-radius: 2px;
+  border-radius: 2px;
+}
+/* line 209, ../sass/login-form.scss */
+.info-form button.confirm-btn {
+  background: #f78f00;
+}
+/* line 213, ../sass/login-form.scss */
+.info-form button.cancel-btn {
+  background: #24aafe;
+}
+/* line 217, ../sass/login-form.scss */
+.info-form button:hover {
+  background: #565656;
+  cursor: pointer;
+}
+
+/* line 3, ../sass/index.scss */
+body {
+  background: url("/images/bg-page.png");
+}
+
+/* line 7, ../sass/index.scss */
+.page-width {
+  min-width: 800px;
+  width: 800px;
+  margin: 0 auto;
+}
+
+/*header block*/
+/* line 14, ../sass/index.scss */
+.header-holder {
+  width: 100%;
+  margin: 0 0 30px;
+  background: #dddfe3;
+}
+
+/* line 20, ../sass/index.scss */
+#header {
+  overflow: hidden;
+  padding: 7px 0;
+}
+/* line 24, ../sass/index.scss */
+#header h1 {
+  padding: 0 0 0 40px;
+  font: 24px/30px Arial, Verdana, sans-serif;
+  color: #444444;
+  background: url("/images/logo.png") no-repeat;
+}
+
+/* line 32, ../sass/index.scss */
+.user-info-block {
+  float: right;
+}
+
+/* line 37, ../sass/index.scss */
+.logout-form label {
+  margin: 0 10px 0 0;
+  padding: 6px 16px 6px 40px;
+  font: 16px/32px Arial, Verdana, sans-serif;
+  color: black;
+  background: url("/images/user-logo.png") 0 0 no-repeat;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+}
+/* line 46, ../sass/index.scss */
+.logout-form input {
+  float: right;
+  width: 25px;
+  margin: 0;
+  text-indent: -9999px;
+  line-height: 30px;
+  background: url("/images/logout-icon.png") 0 50% no-repeat;
+  outline: none;
+  border: none;
+}
+/* line 56, ../sass/index.scss */
+.logout-form input:hover {
+  cursor: pointer;
+}
+
+/*main block*/
+/* line 63, ../sass/index.scss */
+.block-item {
+  padding: 10px 20px;
+  margin: 0 0 10px;
+  background: #f8e281;
+  border: 1px solid #444444;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+  -moz-box-shadow: rgba(200, 200, 200, 0.4) 4px 4px 2px 2px;
+  -webkit-box-shadow: rgba(200, 200, 200, 0.4) 4px 4px 2px 2px;
+  box-shadow: rgba(200, 200, 200, 0.4) 4px 4px 2px 2px;
+}
+
+/* line 72, ../sass/index.scss */
+.list-grad {
+  background: linear-gradient(#f8e281, #ff661a);
+}
+
+/* line 77, ../sass/index.scss */
+.task-add-form .users-list-block {
+  font: 14px/16px Arial, Verdana, sans-serif;
+  margin: 0 4px 10px 0;
+}
+/* line 81, ../sass/index.scss */
+.task-add-form .users-list-block:after {
+  content: "";
+  display: block;
+  clear: both;
+}
+/* line 87, ../sass/index.scss */
+.task-add-form .users-list-block label {
+  float: left;
+  margin: 0 5px 0 0;
+  line-height: 24px;
+}
+/* line 93, ../sass/index.scss */
+.task-add-form .users-list-block input#users-list {
+  float: left;
+  width: 120px;
+  padding: 2px;
+  margin: 0;
+  font: 14px/16px Arial, Verdana, sans-serif;
+}
+/* line 102, ../sass/index.scss */
+.task-add-form textarea {
+  padding: 5px;
+  margin: 0 0 10px;
+  overflow: auto;
+  font: 18px/20px Arial, Verdana, sans-serif;
+  resize: none;
+}
+/* line 110, ../sass/index.scss */
+.task-add-form input[type="submit"] {
+  float: right;
+  margin: 0 2px 0 0;
+  padding: 5px 10px;
+  background: #dddfe3;
+  font: 18px/20px Arial, Verdana, sans-serif;
+  outline: none;
+  border: 2px solid #929292;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+}
+/* line 121, ../sass/index.scss */
+.task-add-form input[type="submit"]:hover {
+  cursor: pointer;
+}
+
+/* line 127, ../sass/index.scss */
+.tabset {
+  margin: 0 0 10px;
+  padding: 0 0 0 5px;
+  border: solid #ff661a;
+  border-width: 0 0 2px 0;
+}
+/* line 133, ../sass/index.scss */
+.tabset:after {
+  content: "";
+  display: block;
+  clear: both;
+}
+/* line 139, ../sass/index.scss */
+.tabset li {
+  float: left;
+  overflow: hidden;
+  margin: 0 5px 0 0;
+  border: solid #ff661a;
+  border-width: 2px 2px 0 2px;
+  -moz-border-radius: 4px 4px 0 0;
+  -webkit-border-radius: 4px;
+  border-radius: 4px 4px 0 0;
+}
+/* line 149, ../sass/index.scss */
+.tabset a {
+  display: inline-block;
+  padding: 5px 10px;
+  color: gray;
+  text-decoration: none;
+}
+/* line 155, ../sass/index.scss */
+.tabset a.active {
+  background: #f8e281;
+  color: black;
+}
+/* line 160, ../sass/index.scss */
+.tabset a:hover {
+  background: #ff661a;
+  color: white;
+}
+
+/* line 167, ../sass/index.scss */
+.task-item {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  margin: 0 0 10px;
+  padding: 0 0 5px;
+  border: 1px dashed black;
+  border-width: 0 0 1px 0;
+}
+/* line 176, ../sass/index.scss */
+.task-item:hover input[type="submit"] {
+  display: block;
+}
+/* line 180, ../sass/index.scss */
+.task-item:after {
+  content: "";
+  display: block;
+  clear: both;
+}
+/* line 186, ../sass/index.scss */
+.task-item p {
+  float: left;
+  width: 100px;
+  padding: 0 0 0 10px;
+  font: 18px/20px Arial, Verdana, sans-serif;
+  background: url("/images/task-sep.jpg") no-repeat;
+}
+/* line 194, ../sass/index.scss */
+.task-item .complited-task {
+  position: absolute;
+  z-index: 500;
+  top: 40%;
+  left: 0;
+  float: none;
+  width: 100%;
+  height: 0;
+  padding: 0;
+  text-indent: -9999px;
+  border: solid black;
+  border-width: 2px 0 0 0;
+  background: none;
+}
+
+/*task check form*/
+/* line 211, ../sass/index.scss */
+.task-form {
+  padding: 0 10px 0 0;
+}
+/* line 214, ../sass/index.scss */
+.task-form .task-text {
+  float: left;
+  width: 560px;
+  padding: 0 10px;
+  border: solid black;
+  border-width: 0 1px;
+}
+/* line 222, ../sass/index.scss */
+.task-form label:hover, .task-form input:hover {
+  cursor: pointer;
+}
+/* line 226, ../sass/index.scss */
+.task-form input[type="checkbox"] {
+  float: left;
+  padding: 0;
+  margin: 0 10px 0 0;
+  width: 20px;
+  height: 20px;
+  vertical-align: top;
+}
+/* line 235, ../sass/index.scss */
+.task-form label {
+  width: 100%;
+  display: inline-block;
+  font: italic 18px/20px Arial, Verdana, sans-serif;
+}
+/* line 240, ../sass/index.scss */
+.task-form label.task-date {
+  width: 120px;
+  display: inline;
+  padding: 0 0 0 10px;
+}
+/* line 246, ../sass/index.scss */
+.task-form label span {
+  font-weight: bold;
+}
+/* line 251, ../sass/index.scss */
+.task-form textarea {
+  padding: 3px;
+  overflow: auto;
+  margin: 0 0 5px;
+  font: 18px/20px Arial, Verdana, sans-serif;
+  resize: none;
+}
+/* line 259, ../sass/index.scss */
+.task-form .btn-save {
+  float: right;
+  padding: 4px 7px;
+  background: #f8e281;
+  -moz-border-radius: 2px;
+  -webkit-border-radius: 2px;
+  border-radius: 2px;
+  border: none;
+}
+/* line 266, ../sass/index.scss */
+.task-form .btn-save:hover {
+  cursor: pointer;
+}
+/* line 271, ../sass/index.scss */
+.task-form input[type="submit"] {
+  display: none;
+  /*it has to change by jQuery*/
+  float: right;
+  padding: 0;
+  margin: 0;
+  width: 20px;
+  height: 20px;
+  text-indent: -9999px;
+  border: none;
+  background: url("/images/delete-icon.png") no-repeat;
+  outline: none;
+}
+/* line 283, ../sass/index.scss */
+.task-form input[type="submit"]:hover {
+  cursor: pointer;
+}

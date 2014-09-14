@@ -9,7 +9,8 @@ app.UserView = Backbone.View.extend({
 
 	events: {
 		'click .reg-page-link': 'goToRegPage',
-		'click .sign-in-btn':	'signIn'
+		'click .sign-in-btn':	'signIn',
+		'keypress .login-form': 'enterPress'
 	},
 
 	initialize: function() {
@@ -53,7 +54,7 @@ app.UserView = Backbone.View.extend({
 		this.$el.html(this.regTemplate());
 	},
 
-	signIn: function() {
+	signIn: function(event) {
 		var userName = $('#user-name-field').val().toLowerCase(),
 			userPassword = $('#user-password-field'),
 			user = this.findField(app.userbase, {name: userName}),
@@ -67,7 +68,8 @@ app.UserView = Backbone.View.extend({
 					$('.reg-page-link').focus();
 				}
 			});
-			return;
+			event.preventDefault();
+			return false;
 		}
 
 		// password field is empty
@@ -80,7 +82,8 @@ app.UserView = Backbone.View.extend({
 					userPassword.focus();
 				}
 			});
-			return;
+			event.preventDefault();
+			return false;
 		}
 
 		// wrong password
@@ -92,7 +95,8 @@ app.UserView = Backbone.View.extend({
 					userPassword.focus();
 				}
 			});
-			return;
+			event.preventDefault();
+			return false;
 		}
 
 		// all is ok
@@ -103,5 +107,16 @@ app.UserView = Backbone.View.extend({
 
 	findField: function(collect, prop) {
 		return collect.where(prop);
+	},
+
+	enterPress: function(event) {
+		var target = event.target || event.srcElement;
+
+		// if (event.keyCode == 13 && target.type == "submit") {
+		if (event.keyCode === 13) {
+			// event.currentTarget.submit();
+			event.preventDefault();
+			return false;
+		}
 	}
 });

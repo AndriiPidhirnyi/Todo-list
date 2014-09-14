@@ -1,0 +1,122 @@
+<!-- views/index.ejs -->
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>ToDo list</title>
+	<link rel="stylesheet" href="/css/all.css">
+	<link rel="icon" href="/images/favicon.png" type="image/x-icon">
+	<link rel="shortcut icon" href="/images/favicon.png" type="image/x-icon">
+</head>
+<body>
+	<div id="wrapper">
+		<div class="header-holder">
+			<header id="header" class="page-width">
+				<!-- start user ingo block -->
+				<div class="user-info-block">
+					<form action="#" class="logout-form">
+						<fieldset>
+							<input id="logout-btn" type="submit" value="Logout"/>
+							<label>al'truistik</label>
+						</fieldset>
+					</form>
+				</div>
+				<!-- end user ingo block -->
+				<h1>Simple TODO list</h1>
+			</header>
+		</div>
+		<!-- main start -->
+		<div id="main" class="page-width">
+			<section class="block-item">
+				<form action="#" class="task-add-form">
+					<fieldset>
+						<div class="users-list-block">
+							<label for="users-list">Who add the task:</label>
+							<input type="text" id="users-list" value="">
+						</div>
+						<textarea name="task-item" id="task-item" cols="91" rows="3" placeholder="Type new task"></textarea>
+						<input type="submit" id="add-task-btn" value="Add task"/>
+					</fieldset>
+				</form>
+			</section>
+			<!-- todo item list start -->
+			<section class="block-item list-grad">
+				<ul class="tabset">
+					<li><a href="#tab-my-task" class="tab active">My task list</a></li>
+					<li><a href="#tab-other-task" class="tab">The other user's task</a></li>
+				</ul>
+				<!-- tab my task list -->
+				<section class="tab" id="tab-my-task">
+					<article class="task-item">
+						<form action="#" class="task-form">
+							<fieldset>
+								<input id="task-complited" type="checkbox" value=""/>
+								<div class="task-text">
+									<textarea name="task-text-correct" cols="67" rows="3"></textarea>
+									<button class="btn-save">Save</button>
+								</div>
+								<label for="task-complited" class="task-date">05.05.2014</label>
+								<input type="submit" name="delete-task-btn" id="del-task-btn" value="remove task">
+							</fieldset>
+						</form>
+					</article>
+					<article class="task-item">
+						<form action="#" class="task-form">
+							<fieldset>
+								<input id="task-complited-2" type="checkbox" value=""/>
+								<div class="task-text">
+									<label for="task-complited-2">Task text <span >(added by user: kolya)</span></label>
+								</div>
+								<label for="task-complited-2" class="task-date">05.05.2014</label>
+								<input type="submit" name="delete-task-btn" id="del-task-btn" value="remove task">
+							</fieldset>
+						</form>
+					</article>
+					<article class="task-item">
+						<form action="#" class="task-form">
+							<fieldset>
+								<input id="task-complited-3" type="checkbox" value=""/>
+								<div class="task-text">
+									<label for="task-complited-3">Task text</label>
+								</div>
+								<label for="task-complited-3" class="task-date">05.05.2014</label>
+								<input type="submit" name="delete-task-btn" id="del-task-btn" value="remove task">
+							</fieldset>
+						</form>
+						<p class="complited-task">Complited task</p>
+					</article>
+				</section>
+				<!-- tab the other user's task list -->
+				<section class="tab" id="tab-other-task">
+
+				</section>
+			</section>
+			<!-- todo item list end -->
+		</div>
+		<!-- main end -->
+	</div>
+	<!-- templates backbone
+	<script type="text/template" id="modal-window-template">
+		<div id="modal-window-holder">
+			<div class="modal-window error-msg">
+				<h2>Title message</h2>
+				<p>Message text</p>
+				<form action="#" class="info-form">
+					<fieldset>
+						<button class="confirm-btn" type="button">Ok</button>
+						<button class="cancel-btn" type="button">Cancel</button>
+					</fieldset>
+				</form>
+			</div>
+		</div>
+	</script> -->
+	<script type="text/javascript" src="/js/lib/jquery-2.1.1.min.js" defer></script>
+	<script type="text/javascript" src="/js/lib/underscore-1.7.0-min.js" defer></script>
+	<script type="text/javascript" src="/js/lib/backbone-min-1.1.2.js" defer></script>
+	<script type="text/javascript" src="/js/lib/myLib.js" defer></script>
+	<script type="text/javascript" src="/js/models/user.js" defer></script>
+	<script type="text/javascript" src="/js/collections/users-base.js" defer></script>
+	<script type="text/javascript" src="/js/views/user-view.js" defer></script>
+	<script type="text/javascript" src="/js/main.js" defer></script>
+</body>
+</html>
