@@ -1,4 +1,4 @@
-module.exports = function(app, passport) {
+module.exports = function(app) {
 
 	var selected = false;
 
@@ -14,9 +14,6 @@ module.exports = function(app, passport) {
 
 		res.redirect("/login");
 	});
-
-	// process the login form
-	// app.post('/login', do all our passport stuff here);
 
 	// =====================================
 	// SIGNUP ==============================
