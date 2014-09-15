@@ -1,16 +1,22 @@
 var fs = require('fs');
 var db;
 
-
 exports.connect = function() {
 	db = require('./database');
 };
 
-exports.getUser = function(name) {
-	if (!db[name]) {
-		throw new Error('DB desn\'t contain ' + db[name]);
+exports.getUserLoginData = function(email) {
+	if (!db[email]) {
+		console.log('DB doesn\'t contain ' + db[email]);
+		return null;
 	}
-	return db[name];
+
+	var outObj = {};
+	outObj.name = db[email].name;
+	outObj.email = db[email].email
+	outObj.password = db[email].password;
+
+	return JSON.stringify(outObj);
 };
 
 exports.addUser = function(obj) {

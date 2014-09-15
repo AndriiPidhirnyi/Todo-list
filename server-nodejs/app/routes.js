@@ -1,13 +1,12 @@
-module.exports = function(app) {
+var url = require('url');
 
-	var selected = false;
+module.exports = function(app, db) {
 
 	// =====================================
 	// HOME PAGE (with login links) ========
 	// =====================================
 	app.get('/', function(req, res) {
-
-		if (selected) {
+		if (req.cookies.userName !== '') {
 			res.render('index.ejs'); // load the index.ejs file
 			return;
 		}
@@ -16,21 +15,34 @@ module.exports = function(app) {
 	});
 
 	// =====================================
-	// SIGNUP ==============================
+	// LOGIN ==============================
 	// =====================================
-	// show the signup form
+	// show the login form
 	app.get('/login', function(req, res) {
-		// render the page and pass in any flash data if it exists
+
+		var params = url.parse(req.url, true).query;
+
+		if (!!params['getUser']) {
+			var userDB = getUserFromDB(params['getUser'], db);
+
+			console.log(userDB);
+
+			if (userDB) {
+				res.write(userDB);
+			}
+
+			res.end("");
+			return;
+		}
+
+		res.cookie('userEmail', '');
 		res.render('login.ejs', { message: req.flash('signupMessage') });
 	});
 
 	// sended info from user
 	app.post('/login', function(req, res) {
 
-		console.log('login page');
-
-		if (req.body.selected == "true") {
-			selected = true;
+		if (req.cookies['userEmail'] !== "") {
 			res.redirect('/');
 		}
 
@@ -45,13 +57,6 @@ module.exports = function(app) {
 	});
 };
 
-// route middleware to make sure a user is logged in
-function isLoggedIn(req, res, next) {
-
-	// if user is authenticated in the session, carry on
-	if (req.isAuthenticated())
-		return next();
-
-	// if they aren't redirect them to the home page
-	res.redirect('/');
+function getUserFromDB(email, database) {
+	return database.getUserLoginData(email);
 }

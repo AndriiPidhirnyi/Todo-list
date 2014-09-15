@@ -1,19 +1,22 @@
 var app = app || {};
+var loggedUser;
+var viewInstance;
 
 app.UserView = Backbone.View.extend({
 	el: '#wrapper',
-	activeUser: null,
 
 	loginTemplate: _.template($('#login-template').html()),
 	regTemplate: _.template($('#registration-template').html()),
 
 	events: {
-		'click .sign-in-btn':	'signIn',
-		'keypress .login-form': 'enterPress',
-		'click .reg-page-link': 'goToRegPage'
+		'click .sign-in-btn':		'signIn',
+		'keypress .login-form': 	'enterPress',
+		'blur #user-email-field': 	'getUser',
+		'click .reg-page-link':		'goToRegPage'
 	},
 
 	initialize: function() {
+		viewInstance = this;
 		this.render();
 		this.setLoginIconAnim();
 	},
@@ -23,7 +26,7 @@ app.UserView = Backbone.View.extend({
 	},
 
 	setLoginIconAnim: function(){
-		var userInput = $("#user-name-field"),
+		var userInput = $("#user-email-field"),
 			userIcon = $(".user-icon"),
 			passwordInput = $("#user-password-field"),
 			passwordIcon = $(".pswd-icon"),
@@ -55,39 +58,37 @@ app.UserView = Backbone.View.extend({
 	},
 
 	signIn: function(event) {
-		var userName = $('#user-name-field').val().toLowerCase().trim(),
+		var userEmail = $('#user-email-field').val().toLowerCase().trim(),
 			userPassword = $('#user-password-field'),
-			user = this.findField(app.userbase, {name: userName}),
 			that = this;
 
-		if (!!!user.length) {
+		if (loggedUser == null && userPassword.val().length) {
 			app.showModalDialog({
 				title: "Error",
-				text: "User with typed email wasn't found.<br/>Register new user!",
+				text: "User with this email wasn't found.</br>You can register a user with this email.",
 				callback: function() {
-					$('.reg-page-link').focus();
+					viewInstance.$el.html( viewInstance.regTemplate() );
 				}
 			});
+		}
+
+		if (!userEmail.length) {
 			event.preventDefault();
 			return false;
 		}
 
-		// password field is empty
-
-		if (userPassword.val().length === 0) {
+		if (!userPassword.val().length) {
 			app.showModalDialog({
-				title: 'Error',
-				text: 'Please, enter password',
+				title: "Error",
+				text: "Type the password!",
 				callback: function() {
 					userPassword.focus();
 				}
 			});
-			event.preventDefault();
-			return false;
 		}
 
-		// wrong password
-		if (user[0].get('password') !== userPassword.val()) {
+		// check password
+		if (loggedUser['password'] !== userPassword.val()) {
 			app.showModalDialog({
 				title: 'Error',
 				text: 'The password is wrong!<br/>Try again!',
@@ -102,18 +103,15 @@ app.UserView = Backbone.View.extend({
 		}
 
 		// all is ok
-		event.preventDefault();
 		this.$el.html("");
-		this.sendRequest({
-			"userName": userName,
-			"selected": true
-		});
+		debugger;
+		document.cookie = 'userName=' + loggedUser["name"];
+		document.cookie = 'userEmail=' + loggedUser["email"];
 
+		window.location = window.location.origin;
+
+		event.preventDefault();
 		return false;
-	},
-
-	findField: function(collect, prop) {
-		return collect.where(prop);
 	},
 
 	enterPress: function(event) {
@@ -127,21 +125,24 @@ app.UserView = Backbone.View.extend({
 		}
 	},
 
-	sendRequest: function(opts) {
+	getUser: function() {
 		var xhr = new XMLHttpRequest(),
-			params = 'name='+ encodeURIComponent(opts.userName) +
-			'&selected=' + encodeURIComponent(opts.selected);
+			userEmail = $('#user-email-field').val(),
+			params = "?getUser=" + userEmail;
 
-		xhr.open("POST", '/login', true);
-		xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+		if (!userEmail.length) return;
 
+		xhr.open("GET", '/login' + params, false);
 		xhr.onreadystatechange = function() {
-			if (xhr.readyState != 4) return;
+			if (xhr.readyState !== 4) return;
 
-			var pageUrl = location.href;
-			window.location = pageUrl.slice(0, pageUrl.lastIndexOf('/'));
+			if (xhr.responseText.length) {
+				loggedUser = JSON.parse(xhr.responseText);
+				return;
+			}
+			loggedUser = null;
 		}
 
-		xhr.send(params);
+		xhr.send(null);
 	}
 });

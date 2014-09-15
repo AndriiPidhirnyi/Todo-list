@@ -23,7 +23,7 @@ app.use( session({secret: 'ilovebeer'}) );	// session secret
 app.use( flash() );	// use connect-flash for flash messages stored in session
 
 // routes =========================================================
-require('./app/routes.js')(app);	// load our routes and pass in pur app
+require('./app/routes.js')(app, db);	// load our routes and pass in pur app
 											// fully configured passport
 
 app.use(express.static(__dirname + '/public'));
@@ -31,12 +31,3 @@ app.use(express.static(__dirname + '/public'));
 // launch =========================================================
 app.listen(port);
 console.log('The magic happens on port ' + port);
-
-
-/// ---------------------------------
-///
-db.addUser({
-	name: "ivan",
-	email: "ivan@test.net",
-	password: "135"
-});
