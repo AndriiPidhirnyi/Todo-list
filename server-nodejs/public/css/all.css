@@ -143,11 +143,11 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   border-radius: 5px;
 }
 
-.login-form .input-box .success {
+.login-form .input-box.success {
   border-color: #03e003;
 }
 
-.login-form .input-box .fail {
+.login-form .input-box.fail {
   border-color: #ff3435;
 }
 

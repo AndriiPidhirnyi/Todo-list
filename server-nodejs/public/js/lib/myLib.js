@@ -5,6 +5,11 @@ app.showModalDialog = function (obj) {
 		timerID,
 		res = 'undefined';
 
+	// check callback funcion
+	if (!obj['callback']) {
+		obj['callback'] = function() {};
+	}
+
 	innerText = '<div class="modal-window ' + obj.title.toLowerCase() + '-msg">';
 	innerText += '<h2>' + obj.title + '</h2>';
 	innerText += '<p>' + obj.text + '</p>';

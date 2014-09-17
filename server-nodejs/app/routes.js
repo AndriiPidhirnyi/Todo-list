@@ -1,4 +1,8 @@
 var url = require('url');
+var loginedUser = {
+	name: "",
+	email: ""
+};
 
 module.exports = function(app, db) {
 
@@ -7,14 +11,12 @@ module.exports = function(app, db) {
 	// =====================================
 	app.get('/', function(req, res) {
 
-		console.log(req.cookies.userName);
-
-		if (req.cookies.userName !== undefined && req.cookies.userName !== "") {
+		if (loginedUser.name !== "") {
+			res.cookie('userName', loginedUser.name, { maxAge: 900000, httpOnly: true });
+			res.cookie('userEmail', loginedUser.email, { maxAge: 900000, httpOnly: true });
 			res.render('index.ejs'); // load the index.ejs file
 			return;
 		}
-
-		console.log("redirect");
 
 		res.redirect("/login");
 	});
@@ -30,8 +32,6 @@ module.exports = function(app, db) {
 		if (!!params['getUser']) {
 			var userDB = getUserFromDB(params['getUser'], db);
 
-			console.log(userDB);
-
 			if (userDB) {
 				res.write(userDB);
 			}
@@ -43,10 +43,16 @@ module.exports = function(app, db) {
 		res.render('login.ejs', { message: req.flash('signupMessage') });
 	});
 
-	// sended info from user
+	// sended user authorization info
 	app.post('/login', function(req, res) {
 
-		if (req.cookies['userEmail'] !== "") {
+		// remember loginned user
+		loginedUser.name = req.body.name;
+		loginedUser.email = req.body.email;
+
+		db.addUser(req.body);
+
+		if (req.cookies.userEmail !== "") {
 			res.redirect('/');
 		}
 	});

@@ -4,6 +4,7 @@ var express		= require('express');
 var app			= express();
 var port		= process.env.PORT || 8080;
 var flash		= require('connect-flash');
+var bodyParser	= require('body-parser');
 var db 			= require('./db');
 db.connect();
 
@@ -15,6 +16,7 @@ var session		= require('express-session');
 // set up our express application
 app.use(morgan('dev'));		// log every request to the console
 app.use(cookieParser());	// read cookies (needed for auth)
+app.use(bodyParser.urlencoded({ extended: false }))
 
 app.set('view engine', 'ejs');	// set up ejs for templating
 
