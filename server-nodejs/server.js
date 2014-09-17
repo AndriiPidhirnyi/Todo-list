@@ -26,7 +26,7 @@ app.use( flash() );	// use connect-flash for flash messages stored in session
 require('./app/routes.js')(app, db);	// load our routes and pass in pur app
 											// fully configured passport
 
-app.use(express.static(__dirname + '/public'));
+app.use(express.static(__dirname + '/public'));	// it's for css, js and images
 
 // launch =========================================================
 app.listen(port);

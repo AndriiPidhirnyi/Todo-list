@@ -70,13 +70,17 @@ app.UserView = Backbone.View.extend({
 					viewInstance.$el.html( viewInstance.regTemplate() );
 				}
 			});
+			event.preventDefault();
+			return false;
 		}
 
+		// if user email field is empty
 		if (!userEmail.length) {
 			event.preventDefault();
 			return false;
 		}
 
+		// password field is empty
 		if (!userPassword.val().length) {
 			app.showModalDialog({
 				title: "Error",
@@ -85,6 +89,8 @@ app.UserView = Backbone.View.extend({
 					userPassword.focus();
 				}
 			});
+			event.preventDefault();
+			return false;
 		}
 
 		// check password
@@ -102,7 +108,7 @@ app.UserView = Backbone.View.extend({
 			return false;
 		}
 
-		// all is ok
+		// if all is ok
 		this.$el.html("");
 		debugger;
 		document.cookie = 'userName=' + loggedUser["name"];

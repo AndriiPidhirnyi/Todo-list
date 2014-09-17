@@ -6,10 +6,15 @@ module.exports = function(app, db) {
 	// HOME PAGE (with login links) ========
 	// =====================================
 	app.get('/', function(req, res) {
-		if (req.cookies.userName !== '') {
+
+		console.log(req.cookies.userName);
+
+		if (req.cookies.userName !== undefined && req.cookies.userName !== "") {
 			res.render('index.ejs'); // load the index.ejs file
 			return;
 		}
+
+		console.log("redirect");
 
 		res.redirect("/login");
 	});
@@ -35,7 +40,6 @@ module.exports = function(app, db) {
 			return;
 		}
 
-		res.cookie('userEmail', '');
 		res.render('login.ejs', { message: req.flash('signupMessage') });
 	});
 
@@ -45,7 +49,6 @@ module.exports = function(app, db) {
 		if (req.cookies['userEmail'] !== "") {
 			res.redirect('/');
 		}
-
 	});
 
 	// =====================================
