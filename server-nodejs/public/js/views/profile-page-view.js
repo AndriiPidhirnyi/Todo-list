@@ -26,10 +26,11 @@ app.ProfilePageView = Backbone.View.extend({
 				var resObj = JSON.parse(data);
 				app.loggedUser = resObj.loggedUser;
 				app.userRegList = resObj.usersList;
-				app.userTasks = resObj.userTasks;
+				var userTasks = resObj.userTasks;
 
 				// render
 				app.userPaneView = new app.UserPaneView({});
+				app.profilePageInst.initCollectfill( userTasks );
 				app.profilePageInst.render();
 			}
 		});
@@ -37,14 +38,7 @@ app.ProfilePageView = Backbone.View.extend({
 
 	render: function() {
 		this.$el.html( this.template() );
-
-		// temp code
-		var defview = new app.TaskItemView({
-			model: new app.TaskItem({})
-		});
-		// defview.render();
-
-		app.taskCollect.add( new app.TaskItem({}));
+		this.renderCollection( app.taskCollect );
 	},
 
 	addTask: function () {
@@ -83,9 +77,27 @@ app.ProfilePageView = Backbone.View.extend({
 			var view = new app.TaskItemView({
 				model: model.toJSON()
 			});
+		}
+	},
 
-			// this.$("#tab-my-task").append( view.render() );
+	initCollectfill: function(modelArr) {
+		for (var i = modelArr.length; i--; ) {
+			var tempModel = new app.TaskItem({
+				text: modelArr[i].text,
+				addedBy: modelArr[i].addedBy,
+				date: app.parseDate(+modelArr[i].date),
+				numb: app.taskCollect.length
+			});
+
+			app.taskCollect.add( tempModel );
+		}
+	},
+
+	renderCollection: function (collect) {
+		for (var i = collect.length; i--; ) {
+			new app.TaskItemView({
+				model: collect.at(i).toJSON()
+			});
 		}
 	}
-
 });

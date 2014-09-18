@@ -15,16 +15,18 @@ app.TaskItemView = Backbone.View.extend({
 	},
 
 	render: function () {
-		var date = new Date(1411065054684);
-		var dateFormat = date.getDate() + "." + (date.getMonth() + 1) + "." + date.getFullYear(),
-			content = this.displayTemplate({
+		var content = this.displayTemplate({
 				text: this.model.text,
-				date: dateFormat,
+				date: app.parseDate(1411065054684),
 				addedBy: this.model.addedBy,
 				numb: this.model.numb
 			});
 
 		this.$el.append( content );
 	}
-
 });
+
+app.parseDate = function(millsec) {
+	var date = new Date(millsec);
+	return dateFormat = date.getDate() + "." + (date.getMonth() + 1) + "." + date.getFullYear();
+}
