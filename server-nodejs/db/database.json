@@ -6,12 +6,12 @@
         "tasks": {
             "1411032112224": {
                 "text": "At least finish this project",
-                "added": "petya",
+                "addedBy": "petya",
                 "date": "1411032112224"
             },
             "1411032156224": {
                 "text": "Launch the plane",
-                "added": "vasya",
+                "addedBy": "vasya",
                 "date": "1411032156224"
             }
         }

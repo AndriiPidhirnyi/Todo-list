@@ -16,7 +16,7 @@ exports.getUserLoginData = function(email) {
 	outObj.email = db[email].email
 	outObj.password = db[email].password;
 
-	return JSON.stringify(outObj);
+	return outObj;
 };
 
 exports.addUser = function(obj) {

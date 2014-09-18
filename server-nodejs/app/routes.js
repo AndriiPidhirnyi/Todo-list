@@ -106,5 +106,5 @@ module.exports = function(app, db) {
 };
 
 function getUserFromDB(email, database) {
-	return database.getUserLoginData(email);
+	return JSON.stringify( database.getUserLoginData(email) );
 }
