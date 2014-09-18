@@ -34,5 +34,13 @@ exports.addUser = function(obj) {
 			console.log("Succeed file saving!");
 		});
 	}
+};
 
+exports.getUserList = function() {
+	var userList = [];
+
+	for (var key in db) {
+		userList.push(key["name"]);
+	}
+	return JSON.stringify(userList);
 }

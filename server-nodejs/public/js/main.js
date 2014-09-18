@@ -1,5 +1,11 @@
 var app = app || {};
 
-app.userbase = new app.UserBase();
+if (app.UserView) {
+	app.userView = new app.UserView({});
+}
 
-app.userView = new app.UserView({});
+if (app.PageView) {
+	app.pageView = new app.PageView({});
+}
+
+app.userPaneView = new app.UserPaneView({});

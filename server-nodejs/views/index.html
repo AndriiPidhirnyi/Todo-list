@@ -11,19 +11,6 @@
 <body>
 	<div id="wrapper">
 		<div class="header-holder">
-			<header id="header" class="page-width">
-				<!-- start user ingo block -->
-				<div class="user-info-block">
-					<form action="#" class="logout-form">
-						<fieldset>
-							<input id="logout-btn" type="submit" value="Logout"/>
-							<label>al'truistik</label>
-						</fieldset>
-					</form>
-				</div>
-				<!-- end user ingo block -->
-				<h1>Simple TODO list</h1>
-			</header>
 		</div>
 		<!-- main start -->
 		<div id="main" class="page-width">
@@ -31,7 +18,7 @@
 				<form action="#" class="task-add-form">
 					<fieldset>
 						<div class="users-list-block">
-							<label for="users-list">Who add the task:</label>
+							<label for="users-list">Who add the task (if the field is empty, this task will add to you):</label>
 							<input type="text" id="users-list" value="">
 						</div>
 						<textarea name="task-item" id="task-item" cols="91" rows="3" placeholder="Type new task"></textarea>
@@ -95,7 +82,20 @@
 		</div>
 		<!-- main end -->
 	</div>
-	<!-- templates backbone
+	<!-- templates backbone -->
+	<script type="text/template" id="header-user-template">
+			<header id="header" class="page-width">
+				<div class="user-info-block">
+					<form action="#" class="logout-form">
+						<fieldset>
+							<input id="logout-btn" type="submit" value="Logout"/>
+							<label><%= name %></label>
+						</fieldset>
+					</form>
+				</div>
+				<h1>Simple TODO list</h1>
+			</header>
+	</script>
 	<script type="text/template" id="modal-window-template">
 		<div id="modal-window-holder">
 			<div class="modal-window error-msg">
@@ -109,14 +109,14 @@
 				</form>
 			</div>
 		</div>
-	</script> -->
+	</script>
 	<script type="text/javascript" src="/js/lib/jquery-2.1.1.min.js" defer></script>
 	<script type="text/javascript" src="/js/lib/underscore-1.7.0-min.js" defer></script>
 	<script type="text/javascript" src="/js/lib/backbone-min-1.1.2.js" defer></script>
 	<script type="text/javascript" src="/js/lib/myLib.js" defer></script>
-	<script type="text/javascript" src="/js/models/user.js" defer></script>
-	<script type="text/javascript" src="/js/collections/users-base.js" defer></script>
-	<script type="text/javascript" src="/js/views/user-view.js" defer></script>
+	<script type="text/javascript" src="/js/models/task-item.js" defer></script>
+	<script type="text/javascript" src="/js/views/user-pane-view.js" defer></script>
+	<script type="text/javascript" src="/js/views/profile-page-view.js" defer></script>
 	<script type="text/javascript" src="/js/main.js" defer></script>
 </body>
 </html>

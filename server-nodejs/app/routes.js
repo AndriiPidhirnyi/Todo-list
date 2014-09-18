@@ -1,4 +1,10 @@
 var url = require('url');
+var fs = require('fs');
+// read html pages
+var pathDir = __dirname + '/../views/';
+var indexPage = fs.readFileSync(pathDir + "index.html");
+var loginPage = fs.readFileSync(pathDir + "login.html");
+
 var loginedUser = {
 	name: "",
 	email: ""
@@ -11,10 +17,17 @@ module.exports = function(app, db) {
 	// =====================================
 	app.get('/', function(req, res) {
 
+		var params = url.parse(req.url, true).query;
+
+		// request of logged user
+		if ( !!params["getLoggedUser"] ) {
+			res.end(JSON.stringify(loginedUser));
+			return;
+		}
+
 		if (loginedUser.name !== "") {
-			res.cookie('userName', loginedUser.name, { maxAge: 900000, httpOnly: true });
-			res.cookie('userEmail', loginedUser.email, { maxAge: 900000, httpOnly: true });
-			res.render('index.ejs'); // load the index.ejs file
+			res.writeHead(200, {'Content-Type': 'text/html'});
+			res.end(indexPage);
 			return;
 		}
 
@@ -30,9 +43,12 @@ module.exports = function(app, db) {
 		var params = url.parse(req.url, true).query;
 
 		if (!!params['getUser']) {
-			var userDB = getUserFromDB(params['getUser'], db);
+			var userDB = getUserFromDB(params['getUser'], db),
+				tempObj = JSON.parse(userDB);
 
 			if (userDB) {
+				loginedUser["name"] = tempObj.name;
+				loginedUser.email = tempObj.email;
 				res.write(userDB);
 			}
 
@@ -40,7 +56,8 @@ module.exports = function(app, db) {
 			return;
 		}
 
-		res.render('login.ejs', { message: req.flash('signupMessage') });
+		res.writeHead(200, {'Content-Type': 'text/html'});
+		res.end(loginPage);
 	});
 
 	// sended user authorization info
@@ -49,6 +66,8 @@ module.exports = function(app, db) {
 		// remember loginned user
 		loginedUser.name = req.body.name;
 		loginedUser.email = req.body.email;
+		console.log("----------------");
+		console.log(loginedUser);
 
 		db.addUser(req.body);
 
@@ -61,7 +80,9 @@ module.exports = function(app, db) {
 	// LOGOUT ==============================
 	// =====================================
 	app.get('/logout', function(req, res) {
-		req.logout();
+		loginedUser.name = "";
+		loginedUser.email = "";
+
 		res.redirect('/login');
 	});
 };

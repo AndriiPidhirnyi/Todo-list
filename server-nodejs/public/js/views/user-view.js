@@ -1,6 +1,7 @@
 var app = app || {};
-var loggedUser;
-var viewInstance;
+
+app.loggedUser = "";
+app.viewInstance = null;
 
 app.UserView = Backbone.View.extend({
 	el: '#wrapper',
@@ -22,7 +23,7 @@ app.UserView = Backbone.View.extend({
 	},
 
 	initialize: function() {
-		viewInstance = this;
+		app.viewInstance = this;
 		this.render();
 		this.setLoginIconAnim();
 	},
@@ -68,12 +69,12 @@ app.UserView = Backbone.View.extend({
 			userPassword = $('#user-password-field'),
 			that = this;
 
-		if (loggedUser == null && userPassword.val().length) {
+		if (app.loggedUser == null && userPassword.val().length) {
 			app.showModalDialog({
 				title: "Error",
 				text: "User with this email wasn't found.</br>You can register a user with this email.",
 				callback: function() {
-					viewInstance.$el.html( viewInstance.regTemplate() );
+					app.viewInstance.$el.html( app.viewInstance.regTemplate() );
 				}
 			});
 			event.preventDefault();
@@ -100,7 +101,7 @@ app.UserView = Backbone.View.extend({
 		}
 
 		// check password
-		if (loggedUser['password'] !== userPassword.val()) {
+		if (app.loggedUser['password'] !== userPassword.val()) {
 			app.showModalDialog({
 				title: 'Error',
 				text: 'The password is wrong!<br/>Try again!',
@@ -122,6 +123,7 @@ app.UserView = Backbone.View.extend({
 			type: "POST",
 			url: window.location.pathname,
 			data: {
+				name: app.loggedUser.name,
 				email: userEmail
 			}
 		});
@@ -207,8 +209,6 @@ app.UserView = Backbone.View.extend({
 
 		if ( targetElem.val() !== "") {
 			targetElem.parent('.input-box').addClass('success');
-		} else {
-			targetElem.parent('.input-box').addClass('fail');
 		}
 	},
 
@@ -288,10 +288,10 @@ app.UserView = Backbone.View.extend({
 			if (xhr.readyState !== 4) return;
 
 			if (xhr.responseText.length) {
-				loggedUser = JSON.parse(xhr.responseText);
+				app.loggedUser = JSON.parse(xhr.responseText);
 				return;
 			}
-			loggedUser = null;
+			app.loggedUser = null;
 		}
 
 		xhr.send(null);
