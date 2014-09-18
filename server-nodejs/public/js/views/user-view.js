@@ -1,6 +1,5 @@
 var app = app || {};
 
-app.loggedUser = "";
 app.viewInstance = null;
 
 app.UserView = Backbone.View.extend({

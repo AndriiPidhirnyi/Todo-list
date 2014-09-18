@@ -40,7 +40,19 @@ exports.getUserList = function() {
 	var userList = [];
 
 	for (var key in db) {
-		userList.push(key["name"]);
+		userList.push( db[key]["name"] );
 	}
-	return JSON.stringify(userList);
+
+	return userList;
+}
+
+exports.getUserTasks = function(userEmail) {
+	var userTasks = [],
+		userTaskProp = db[userEmail]["tasks"];
+
+	for ( var prop in userTaskProp ) {
+		userTasks.push( userTaskProp[prop] );
+	}
+
+	return userTasks;
 }

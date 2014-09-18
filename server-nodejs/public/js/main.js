@@ -8,4 +8,6 @@ if (app.PageView) {
 	app.pageView = new app.PageView({});
 }
 
-app.userPaneView = new app.UserPaneView({});
+if ( app.ProfilePageView ) {
+	app.profilePageView = new app.ProfilePageView({});
+}

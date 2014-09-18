@@ -18,13 +18,33 @@ module.exports = function(app, db) {
 	app.get('/', function(req, res) {
 
 		var params = url.parse(req.url, true).query;
+		var resObj = {};
+		var isReturnPage = true;
 
 		// request of logged user
 		if ( !!params["getLoggedUser"] ) {
-			res.end(JSON.stringify(loginedUser));
+			resObj["loggedUser"] = loginedUser;
+			isReturnPage = false;
+		}
+
+		// get registered user list
+		if (!!params["getUserList"]) {
+			resObj["usersList"] = db["getUserList"]();
+			isReturnPage = false;
+		}
+
+		// get user's tasks
+		if (!!params["getUserTasks"]) {
+			resObj["userTasks"] = db["getUserTasks"]( loginedUser.email );
+			isReturnPage = false;
+		}
+
+		if ( !isReturnPage ) {
+			res.end( JSON.stringify(resObj) );
 			return;
 		}
 
+		// return index.html page to client browser
 		if (loginedUser.name !== "") {
 			res.writeHead(200, {'Content-Type': 'text/html'});
 			res.end(indexPage);
@@ -66,8 +86,6 @@ module.exports = function(app, db) {
 		// remember loginned user
 		loginedUser.name = req.body.name;
 		loginedUser.email = req.body.email;
-		console.log("----------------");
-		console.log(loginedUser);
 
 		db.addUser(req.body);
 

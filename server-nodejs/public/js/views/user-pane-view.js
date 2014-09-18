@@ -1,5 +1,7 @@
 var app = app || {};
-app.viewInstance = null;
+app.loggedUser = null;
+app.userRegList = null;
+app.userView = null;
 
 app.UserPaneView = Backbone.View.extend({
 	el: "#wrapper .header-holder",
@@ -11,21 +13,13 @@ app.UserPaneView = Backbone.View.extend({
 	},
 
 	initialize: function() {
-		app.viewInstance = this;
+		app.userView = this;
 		this.render();
 	},
 
 	render: function() {
-		$.ajax({
-			type: "GET",
-			url: window.location.pathname,
-			data: {
-				getLoggedUser: "getLoggedUser"
-			},
-			success: function(data) {
-				app.viewInstance.$el.html( app.viewInstance.template( JSON.parse(data) ) );
-			}
-		});
+
+		app.userView.$el.html( app.userView.template(app.loggedUser) );
 	},
 
 	logout: function(event) {
@@ -33,7 +27,7 @@ app.UserPaneView = Backbone.View.extend({
 
 		$.ajax({
 			type: "GET",
-			url: window.location.origin + "/logout",
+			url: "/logout",
 			data: {
 				logout: true
 			},

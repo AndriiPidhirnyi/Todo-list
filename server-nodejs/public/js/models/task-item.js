@@ -8,6 +8,6 @@ app.TaskItem = Backbone.Model.extend({
 });
 
 
-app.TaskCollect = Backbone.Collection.extend({
+app.TaskCollection = Backbone.Collection.extend({
 	model: app.TaskItem
 });
