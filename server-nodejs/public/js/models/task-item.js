@@ -2,7 +2,7 @@ var app = app || {};
 
 app.TaskItem = Backbone.Model.extend({
 	text: "task text",
-	addedBy: "user Name",
+	addedTo: "user Name",
 	date: "00.00.0000",
 	isDone: false,
 	numb: 0

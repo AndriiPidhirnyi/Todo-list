@@ -52,11 +52,13 @@ app.ProfilePageView = Backbone.View.extend({
 
 		var taskModel = new app.TaskItem({
 			text: taskText,
-			addedBy: addToUser,
+			addedTo: addToUser,
 			date: (new Date()).valueOf(),
-			numb: app.taskCollect.length
+			numb: app.taskCollect.length,
+			isDone: "false"
 		});
 
+		console.log("Model will be add");
 		addNewModel(taskModel);
 
 		txtElem.val("");
@@ -71,6 +73,22 @@ app.ProfilePageView = Backbone.View.extend({
 		 * @param {Object} mod model with parameters
 		 */
 		function addNewModel(model) {
+			// add into database on the server
+
+			var tempObj = {
+				text: model.get("text"),
+				addedTo: model.get("addedTo"),
+				date: model.get("date"),
+				isDone: model.get("isDone")
+			};
+
+			console.log(tempObj);
+
+			$.ajax({
+				type: "POST",
+				url: window.location.pathname + "add-task",
+				data: tempObj
+			});
 
 			app.taskCollect.add(model);
 

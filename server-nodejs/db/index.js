@@ -26,13 +26,11 @@ exports.addUser = function(obj) {
 		db[obj.email] = {
 			"name" : obj.name,
 			"email" : obj.email,
-			"password": obj.password
+			"password": obj.password,
+			"tasks": {}
 		};
 
-		fs.writeFile(__dirname + '/database.json', JSON.stringify(db, null, 4), function(err) {
-			if (err) throw new Error("File wasn't written!");
-			console.log("Succeed file saving!");
-		});
+		uploadDB();
 	}
 };
 
@@ -55,4 +53,33 @@ exports.getUserTasks = function(userEmail) {
 	}
 
 	return userTasks;
+};
+
+exports.addTaskToUser = function(opts) {
+
+	for (var key in db) {
+
+		if (db[key].name === opts.toUser ) {
+			var taskList = db[key].tasks;
+
+			taskList[opts.date] = {
+				text: opts.text,
+				addedBy: opts.addedBy,
+				date: opts.date,
+				isDone: opts.isDone
+			};
+
+			uploadDB();
+			console.log("task list " + JSON.stringify(taskList));
+
+			break;
+		}
+	}
+};
+
+function uploadDB() {
+	fs.writeFile(__dirname + '/database.json', JSON.stringify(db, null, 4), function(err) {
+		if (err) throw new Error("File wasn't written!");
+		console.log("Succeed file saving!");
+	});
 }

@@ -54,6 +54,19 @@ module.exports = function(app, db) {
 		res.redirect("/login");
 	});
 
+	app.post('/add-task', function(req, res) {
+
+		var taskObj = {
+			text: req.body.text,
+			toUser: (req.body.addedTo !== "") ? req.body.addedTo : loginedUser.name,
+			date: req.body.date,
+			addedBy: loginedUser.name,
+			isDone: req.body.isDone
+		};
+
+		db.addTaskToUser( taskObj );
+	})
+
 	// =====================================
 	// LOGIN ==============================
 	// =====================================

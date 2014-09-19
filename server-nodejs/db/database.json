@@ -7,23 +7,41 @@
             "1411032112224": {
                 "text": "At least finish this project",
                 "addedBy": "petya",
-                "date": "1411032112224"
+                "date": "1411032112224",
+                "isDone": "false"
             },
             "1411032156224": {
                 "text": "Launch the plane",
                 "addedBy": "vasya",
-                "date": "1411032156224"
+                "date": "1411032156224",
+                "isDone": "false"
             }
         }
     },
     "petya@test.net": {
         "name": "petya",
         "email": "petya@test.net",
-        "password": "12345"
+        "password": "12345",
+        "tasks": {
+            "1411128907674": {
+                "text": "Special task for petya",
+                "addedBy": "petya",
+                "date": "1411128907674",
+                "isDone": "false"
+            }
+        }
     },
     "ivan@test.net": {
         "name": "ivan",
         "email": "ivan@test.net",
-        "password": "123"
+        "password": "123",
+        "tasks": {
+            "1411128815427": {
+                "text": "New task item",
+                "addedBy": "ivan",
+                "date": "1411128815427",
+                "isDone": "false"
+            }
+        }
     }
 }
