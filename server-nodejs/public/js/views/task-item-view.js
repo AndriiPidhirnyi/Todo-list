@@ -38,15 +38,24 @@ app.TaskItemView = Backbone.View.extend({
 	},
 
 	doneTask: function() {
-		var event = event || window.event;
-		var target = $(event.target) || $(event.srcElement);
+		var event = event || window.event,
+			target = $(event.target) || $(event.srcElement),
+			parent = target.parents(".task-item");
 
 		this.model.set('isDone', target.prop("checked") );
+
+		if (this.model.get('isDone') === true ) {
+			parent.append('<p class="complited-task">Complited task</p>');
+		} else {
+			if ( parent.find(".complited-task").length ) {
+				parent.children(".complited-task").remove();
+			}
+		}
 	},
 
 	synchModel: function() {
 		// syncronyze with server
-
+		console.log("model was changed");
 	}
 });
 
