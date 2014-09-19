@@ -56,6 +56,8 @@ module.exports = function(app, db) {
 
 	app.post('/add-task', function(req, res) {
 
+		console.log("add new user task");
+
 		var taskObj = {
 			text: req.body.text,
 			toUser: (req.body.addedTo !== "") ? req.body.addedTo : loginedUser.name,

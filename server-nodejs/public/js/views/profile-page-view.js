@@ -7,7 +7,8 @@ app.ProfilePageView = Backbone.View.extend({
 	template: _.template( $("#task-list-template").html() ),
 
 	events: {
-		"click #add-task-btn": "addTask"
+		"click #add-task-btn": 		"addTask",
+		"keyup textarea#task-item": "enableBtnAddTask"
 	},
 
 	initialize: function() {
@@ -30,15 +31,19 @@ app.ProfilePageView = Backbone.View.extend({
 
 				// render
 				app.userPaneView = new app.UserPaneView({});
-				app.profilePageInst.initCollectfill( userTasks );
 				app.profilePageInst.render();
+				app.profilePageInst.initCollectfill( userTasks );
 			}
 		});
+
+		this.listenTo(app.taskCollect, "add", this.addOne);
 	},
 
 	render: function() {
 		this.$el.html( this.template() );
-		this.renderCollection( app.taskCollect );
+
+		// set addTask button disabled
+		$("#add-task-btn").attr("disabled", "disabled");
 	},
 
 	addTask: function () {
@@ -50,15 +55,14 @@ app.ProfilePageView = Backbone.View.extend({
 		var taskText = txtElem.val();
 		var addToUser = whoAddElem.val();
 
-		var taskModel = new app.TaskItem({
-			text: taskText,
-			addedTo: addToUser,
-			date: (new Date()).valueOf(),
-			numb: app.taskCollect.length,
-			isDone: "false"
-		});
+		var taskModel = new app.TaskItem({});
+		taskModel.set("text", taskText);
+		taskModel.set("addedTo", ( addToUser.length !== "")? addToUser : app.loggedUser.name);
+		taskModel.set("addedBy", app.loggedUser.name);
+		taskModel.set("date", (new Date()).valueOf() );
+		taskModel.set("numb", app.taskCollect.length );
+		taskModel.set("isDone", false);
 
-		console.log("Model will be add");
 		addNewModel(taskModel);
 
 		txtElem.val("");
@@ -67,55 +71,61 @@ app.ProfilePageView = Backbone.View.extend({
 		event.preventDefault();
 		return false;
 
-
 		/**
 		 * Add a new model into users model collection
 		 * @param {Object} mod model with parameters
 		 */
 		function addNewModel(model) {
-			// add into database on the server
-
-			var tempObj = {
-				text: model.get("text"),
-				addedTo: model.get("addedTo"),
-				date: model.get("date"),
-				isDone: model.get("isDone")
-			};
-
-			console.log(tempObj);
-
 			$.ajax({
 				type: "POST",
 				url: window.location.pathname + "add-task",
-				data: tempObj
-			});
+				data: {
+					text: model.get("text"),
+					addedTo: model.get("addedTo"),
+					date: model.get("date"),
+					isDone: model.get("isDone"),
+					success: function() {
+						// add model into collection of user's task
+						app.taskCollect.add(model);
 
-			app.taskCollect.add(model);
-
-			var view = new app.TaskItemView({
-				model: model.toJSON()
+						var view = new app.TaskItemView({
+							model: model
+						});
+					}
+				}
 			});
 		}
 	},
 
 	initCollectfill: function(modelArr) {
 		for (var i = modelArr.length; i--; ) {
-			var tempModel = new app.TaskItem({
-				text: modelArr[i].text,
-				addedBy: modelArr[i].addedBy,
-				date: app.parseDate(+modelArr[i].date),
-				numb: app.taskCollect.length
-			});
+
+			var tempModel = new app.TaskItem({});
+
+			tempModel.set("text", modelArr[i].text);
+			tempModel.set("addedBy", modelArr[i].addedBy);
+			tempModel.set("date", modelArr[i].date);
+			tempModel.set("numb", app.taskCollect.length);
+			tempModel.set("isDone", modelArr[i].isDone);
 
 			app.taskCollect.add( tempModel );
 		}
 	},
 
-	renderCollection: function (collect) {
-		for (var i = collect.length; i--; ) {
-			new app.TaskItemView({
-				model: collect.at(i).toJSON()
-			});
+	enableBtnAddTask: function() {
+		var event = event || window.event,
+			target = $(event.target) || $(event.srcElement),
+			btn = $("#add-task-btn");
+
+		if (target.val().trim() !== "") {
+			btn.removeAttr("disabled");
+		} else {
+			btn.attr("disabled", "disabled");
 		}
+	},
+
+	addOne: function(model) {
+		var view = new app.TaskItemView({ model: model });
+		this.$('#tab-my-task').append( view.render() );
 	}
 });

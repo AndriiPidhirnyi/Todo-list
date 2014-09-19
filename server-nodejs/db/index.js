@@ -70,7 +70,6 @@ exports.addTaskToUser = function(opts) {
 			};
 
 			uploadDB();
-			console.log("task list " + JSON.stringify(taskList));
 
 			break;
 		}

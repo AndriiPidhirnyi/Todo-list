@@ -276,23 +276,24 @@ app.UserView = Backbone.View.extend({
 	},
 
 	getUser: function() {
-		var xhr = new XMLHttpRequest(),
-			userEmail = $('#user-email-field').val(),
-			params = "?getUser=" + userEmail;
+		var userEmail = $('#user-email-field').val();
 
 		if (!userEmail.length) return;
 
-		xhr.open("GET", '/login' + params, false);
-		xhr.onreadystatechange = function() {
-			if (xhr.readyState !== 4) return;
-
-			if (xhr.responseText.length) {
-				app.loggedUser = JSON.parse(xhr.responseText);
-				return;
+		$.ajax({
+			type: "GET",
+			url: "/login",
+			data: {
+				getUser: userEmail
+			},
+			success: function(data) {
+				if (data.length) {
+					app.loggedUser = JSON.parse(data);
+					return;
+				}
+				app.loggedUser = null;
 			}
-			app.loggedUser = null;
-		}
+		});
 
-		xhr.send(null);
 	}
 });
