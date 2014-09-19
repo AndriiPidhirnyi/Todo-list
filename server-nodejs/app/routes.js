@@ -65,7 +65,23 @@ module.exports = function(app, db) {
 		};
 
 		db.addTaskToUser( taskObj );
-	})
+	});
+
+	// change task in database
+	app.post('/change-task', function(req, res) {
+
+		var changeObj = {
+			text: req.body.text,
+			toUser: req.body.addedTo,
+			date: req.body.date,
+			addedBy: loginedUser.name,
+			isDone: req.body.isDone
+		};
+
+		db.changeTaskData( changeObj );
+
+		res.end("");
+	});
 
 	// =====================================
 	// LOGIN ==============================

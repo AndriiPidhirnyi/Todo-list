@@ -30,7 +30,7 @@ exports.addUser = function(obj) {
 			"tasks": {}
 		};
 
-		uploadDB();
+		updateDB();
 	}
 };
 
@@ -69,15 +69,44 @@ exports.addTaskToUser = function(opts) {
 				isDone: opts.isDone
 			};
 
-			uploadDB();
+			updateDB();
 
 			break;
 		}
 	}
 };
 
-function uploadDB() {
-	fs.writeFile(__dirname + '/database.json', JSON.stringify(db, null, 4), function(err) {
+exports.changeTaskData = function (opts) {
+
+	for ( var key in db ) {
+
+		if ( db[key].name === opts.toUser ) {
+			var oldTaskVer = db[key]["tasks"][opts.date];
+
+			var newTaskVer = {
+				text: opts.text,
+				date: opts.date,
+				addedBy: oldTaskVer.addedBy,
+				isDone: opts.isDone
+			}
+
+			// delete db[key]["tasks"][opts.date];
+
+			// updateDB();
+
+			db[key]["tasks"][opts.date] = newTaskVer;
+
+			updateDB();
+
+			console.log("datas was updated");
+
+			return;
+		}
+	}
+};
+
+function updateDB() {
+	fs.writeFileSync(__dirname + '/database.json', JSON.stringify(db, null, 4), null,function(err) {
 		if (err) throw new Error("File wasn't written!");
 		console.log("Succeed file saving!");
 	});

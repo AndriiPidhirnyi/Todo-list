@@ -55,8 +55,22 @@ app.TaskItemView = Backbone.View.extend({
 
 	synchModel: function() {
 		// syncronyze with server
-		console.log("model was changed");
+		$.ajax({
+			type: "POST",
+			url: window.location.pathname + "change-task",
+			async: false,
+			data: {
+				text: this.model.get("text"),
+				addedTo: app.loggedUser.name,
+				date: this.model.get("date"),
+				isDone: this.model.get("isDone")
+			},
+			success: function() {
+				console.log("Model was changed");
+			}
+		});
 	}
+
 });
 
 app.parseDate = function(millsec) {
