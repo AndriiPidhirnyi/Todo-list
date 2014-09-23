@@ -524,27 +524,25 @@ body {
   color: #444;
   text-align: center;
 }
-/* line 167, ../sass/index.scss */
+
 .task-item {
-  position: relative;
-  z-index: 1;
   width: 100%;
   margin: 0 0 10px;
   padding: 0 0 5px;
   border: 1px dashed black;
   border-width: 0 0 1px 0;
 }
-/* line 176, ../sass/index.scss */
+
 .task-item:hover input[type="submit"] {
   display: block;
 }
-/* line 180, ../sass/index.scss */
+
 .task-item:after {
   content: "";
   display: block;
   clear: both;
 }
-/* line 186, ../sass/index.scss */
+
 .task-item p {
   float: left;
   width: 100px;
@@ -552,14 +550,14 @@ body {
   font: 18px/20px Arial, Verdana, sans-serif;
   background: url("/images/task-sep.jpg") no-repeat;
 }
-/* line 194, ../sass/index.scss */
-.task-item .complited-task {
+
+/*.task-item .complited-task {
   position: absolute;
   z-index: 500;
   top: 40%;
-  left: 0;
+  left: 4%;
   float: none;
-  width: 100%;
+  width: 665px;
   display: none;
   height: 0;
   padding: 0;
@@ -567,12 +565,13 @@ body {
   border: solid black;
   border-width: 2px 0 0 0;
   background: none;
-}
+}*/
 
 /*task check form*/
-/* line 211, ../sass/index.scss */
 .task-form {
+  position: relative;
   padding: 0 10px 0 0;
+  z-index: 1;
 }
 /* line 214, ../sass/index.scss */
 .task-form .task-text {
@@ -580,7 +579,7 @@ body {
   width: 560px;
   padding: 0 10px;
   border: solid black;
-  border-width: 0 1px;
+  border-width: 0 1px 0 0;
 }
 /* line 222, ../sass/index.scss */
 .task-form label:hover, .task-form input:hover {
@@ -589,12 +588,18 @@ body {
 /* line 226, ../sass/index.scss */
 .task-form input[type="checkbox"] {
   float: left;
+  visibility: hidden;
   padding: 0;
-  margin: 0 10px 0 0;
+  margin: 0 0 0 0;
   width: 20px;
   height: 20px;
   vertical-align: top;
 }
+
+.task-form:hover input[type="checkbox"] {
+    visibility: visible;
+}
+
 /* line 235, ../sass/index.scss */
 .task-form label {
   width: 100%;

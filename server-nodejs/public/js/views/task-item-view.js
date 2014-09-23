@@ -9,8 +9,11 @@ app.TaskItemView = Backbone.View.extend({
 	editTemplate: _.template( $("#task-item-edit-template").html() ),
 
 	events: {
-		"click input#del-task-btn": 	"deleteTask",
-		"change input[type=checkbox]": 	"doneTask"
+		"change input[type=checkbox]":	"doneTask",
+		"click input#del-task-btn":		"deleteTask",
+		"dblclick .task-text label":	"editTask",
+		"mousedown .task-form": 		"setUnselectable",
+		"selectstart .task-form": 		"setUnselectable"
 	},
 
 	initialize: function() {
@@ -23,12 +26,10 @@ app.TaskItemView = Backbone.View.extend({
 				text: this.model.get("text"),
 				date: app.parseDate( +this.model.get("date") ),
 				author: (this.model.get("author") !== app.loggedUser.name) ?
-							"(added by user: " + this.model.get("author") + ")" : "",
-				numb: this.model.get("numb")
+							"(added by user: " + this.model.get("author") + ")" : ""
 			});
 
 		this.$el.html( content );
-		this.$el.append('<p class="complited-task">Complited task</p>');
 		return this.$el;
 	},
 
@@ -73,15 +74,22 @@ app.TaskItemView = Backbone.View.extend({
 	doneTask: function() {
 		var event = event || window.event,
 			target = $(event.target) || $(event.srcElement),
-			parent = target.parents(".task-item");
+			label = target.siblings(".task-text").children("label");
 
 		this.model.set('isDone', target.prop("checked") );
 
 		if (this.model.get('isDone') === true ) {
-			parent.find(".complited-task").css({"display": "block" });
+			label.css({"text-decoration":"line-through"});
 		} else {
-			parent.find(".complited-task").css({"display": "" });
+			label.css({"text-decoration":""});
 		}
+	},
+
+	editTask: function(ev) {
+		var event = event || window.event,
+			targetElem = $(event.target) || $(event.srcElement);
+
+		console.log(targetElem);
 	},
 
 	synchModel: function() {
@@ -103,6 +111,13 @@ app.TaskItemView = Backbone.View.extend({
 	destroyModel: function() {
 		// remove the view which corresponds to the destroyed model
 		this.remove();
+	},
+
+	setUnselectable: function() {
+		var event = event || window.event;
+
+		event.preventDefault();
+		return false;
 	}
 
 });

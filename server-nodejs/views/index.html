@@ -66,11 +66,11 @@
 	<script type="text/template" id="task-item-display-template">
 		<form action="#" class="task-form">
 			<fieldset>
-				<input id="task-complited-<%= numb %>" type="checkbox" value=""/>
+				<input type="checkbox" value=""/>
 				<div class="task-text">
-					<label for="task-complited-<%= numb %>"><%= text %><span> <%= author %> </span></label>
+					<label><%= text %><span> <%= author %> </span></label>
 				</div>
-				<label for="task-complited-<%= numb %>" class="task-date"><%= date %></label>
+				<label class="task-date"><%= date %></label>
 				<input type="submit" name="delete-task-btn" id="del-task-btn" value="remove task">
 			</fieldset>
 		</form>

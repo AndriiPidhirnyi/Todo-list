@@ -114,6 +114,25 @@
         "name": "ded",
         "email": "ded@test.net",
         "password": "123",
-        "tasks": {}
+        "tasks": {
+            "1411476844595": {
+                "text": "The first ded's task",
+                "date": "1411476844595",
+                "author": "ded",
+                "isDone": "true"
+            },
+            "1411476851729": {
+                "text": "The second ded's task",
+                "date": "1411476851729",
+                "author": "ded",
+                "isDone": "false"
+            },
+            "1411476867422": {
+                "text": "The third task to user ded",
+                "date": "1411476867422",
+                "author": "ded",
+                "isDone": "false"
+            }
+        }
     }
 }

@@ -60,7 +60,7 @@ app.ProfilePageView = Backbone.View.extend({
 			whoAddElem = $("input#users-list");
 
 
-		var taskText = txtElem.val().trim();
+		var taskText = txtElem.val().trim()[0].toUpperCase() + txtElem.val().trim().slice(1);
 		var addToUser = (whoAddElem.val() !== "" ) ? whoAddElem.val() : app.loggedUser.name;
 
 		var taskModel = new app.TaskItem({});
@@ -68,7 +68,6 @@ app.ProfilePageView = Backbone.View.extend({
 		taskModel.set("executor", addToUser);
 		taskModel.set("author", app.loggedUser.name);
 		taskModel.set("date", (new Date()).valueOf() );
-		taskModel.set("numb",  ( ""+taskModel.get("date") ).slice(-4) );
 		taskModel.set("isDone", false);
 
 		addNewModel(taskModel);
@@ -116,7 +115,6 @@ app.ProfilePageView = Backbone.View.extend({
 			tempModel.set("text", modelArr[i].text);
 			tempModel.set("author", modelArr[i].author);
 			tempModel.set("date", modelArr[i].date);
-			tempModel.set("numb", (modelArr[i].date + "").slice(-4) );
 			tempModel.set("isDone", modelArr[i].isDone);
 
 			app.taskCollect.add( tempModel );
@@ -144,7 +142,7 @@ app.ProfilePageView = Backbone.View.extend({
 		this.$('#tab-my-task').append( view.render() );
 
 		if (model.get("isDone") === "true") {
-			view.$el.find(".complited-task").css( {"display": "block"} );
+			view.$el.find(".task-text label").css("text-decoration", "line-through" );
 			view.$el.find("input[type=checkbox]").attr("checked", "checked");
 		}
 	},

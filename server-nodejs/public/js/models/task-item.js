@@ -5,8 +5,7 @@ app.TaskItem = Backbone.Model.extend({
 	author: "task author",
 	executor: "user name",
 	date: 00000001,
-	isDone: false,
-	numb: 0
+	isDone: false
 });
 
 app.TaskCollection = Backbone.Collection.extend({
