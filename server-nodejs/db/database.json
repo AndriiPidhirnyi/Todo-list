@@ -26,7 +26,7 @@
                 "text": "Correct async request to update the data",
                 "date": "1411157214683",
                 "author": "vasya",
-                "isDone": "true"
+                "isDone": "false"
             },
             "1411209475526": {
                 "text": "Test task to me",
@@ -128,8 +128,14 @@
                 "isDone": "false"
             },
             "1411476867422": {
-                "text": "The third task to user ded",
+                "text": "The third task corrected version",
                 "date": "1411476867422",
+                "author": "ded",
+                "isDone": "false"
+            },
+            "1411489251153": {
+                "text": "Simple test task",
+                "date": "1411489251153",
                 "author": "ded",
                 "isDone": "false"
             }

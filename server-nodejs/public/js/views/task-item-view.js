@@ -14,7 +14,8 @@ app.TaskItemView = Backbone.View.extend({
 		"dblclick .task-text label":	"editTask",
 		"mousedown label": 				"setUnselectable",
 		"selectstart label": 			"setUnselectable",
-		"click .btn-save": 				"saveEditedTask"
+		"click .btn-save": 				"saveEditedTask",
+		"keyup .task-edit-field": 		"setBtnDisable"
 	},
 
 	initialize: function() {
@@ -93,11 +94,44 @@ app.TaskItemView = Backbone.View.extend({
 			targetElem = $(event.target) || $(event.srcElement),
 			parent = targetElem.parent();
 
-			parent.html('<textarea name="task-text-correct" cols="67" rows="3"></textarea>' +
-				'<button class="btn-save">Save</button>');
+		parent.html('<textarea name="task-text-correct" class="task-edit-field" cols="67" rows="3"></textarea>' +
+			'<button class="btn-save">Save</button>');
 
 		// set text in textarea
-		parent.find('textarea').val(this.model.get("text") );
+		parent.find('textarea')
+			.val(this.model.get("text") )
+			.focus();
+
+		if (this.model.get("text").length == 0 ) {
+			parent.find(".btn-save").attr("disabled", "disabled");
+		}
+
+	},
+
+	setBtnDisable: function() {
+		var event = event || window.event,
+			targetElem = $(event.target) || $(window.event.srcElement),
+			btnSave = targetElem.siblings(".btn-save"),
+			parent = $(".task-text textarea").parent(),
+			model = this.model;
+
+		if (!targetElem.val().trim().length) {
+			btnSave.attr("disabled", "disabled");
+		} else {
+			btnSave.removeAttr("disabled");
+		}
+
+		if (event.keyCode == 27) {
+			app.showModalDialog({
+				title: "Warning",
+				text: "Do you want to finish the editing task?",
+				callback: function(result) {
+					if (result) {
+						parent.html("<label>" + model.get("text") + "</label>");
+					}
+				}
+			});
+		}
 	},
 
 	saveEditedTask: function() {

@@ -38,12 +38,14 @@ app.ProfilePageView = Backbone.View.extend({
 				}
 				// add models to collection, which are arrived from server db
 				root.initCollectFill( resObj.userTasks );
+				root.renderList();
 			}
 		});
 
 		this.listenTo(app.taskCollect, "add", this.addOneItem);
 		this.listenTo(app.taskCollect, "remove", this.removeModel);
 		this.listenTo(app.taskCollect, "change", this.changeModel);
+
 	},
 
 	render: function() {
@@ -137,14 +139,6 @@ app.ProfilePageView = Backbone.View.extend({
 		if (app.taskCollect.length == 1 ) {
 			this.$el.find(".list-grad section").html("");
 		}
-
-		var view = new app.TaskItemView({ model: model });
-		this.$('#tab-my-task').append( view.render() );
-
-		if (model.get("isDone") === "true") {
-			view.$el.find(".task-text label").css("text-decoration", "line-through" );
-			view.$el.find("input[type=checkbox]").attr("checked", "checked");
-		}
 	},
 
 	removeModel: function() {
@@ -153,5 +147,22 @@ app.ProfilePageView = Backbone.View.extend({
 			this.$el.find(".list-grad section").
 			append('<div class="info-task-box"><p>You have no tasks</p></div>');
 		}
+	},
+
+	renderList: function() {
+		var root = this;
+
+		app.taskCollect.each(function(model, index) {
+			var view = new app.TaskItemView({ model: model });
+
+			root.$('#tab-my-task').append( view.render() );
+
+			if (model.get("isDone") === "true") {
+				view.$el.find(".task-text label").css("text-decoration", "line-through" );
+				view.$el.find("input[type=checkbox]").attr("checked", "checked");
+			}
+		});
 	}
+
 });
+
