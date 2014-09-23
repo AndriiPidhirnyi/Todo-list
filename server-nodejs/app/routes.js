@@ -58,9 +58,9 @@ module.exports = function(app, db) {
 
 		var taskObj = {
 			text: req.body.text,
-			toUser: (req.body.addedTo !== "") ? req.body.addedTo : loginedUser.name,
+			executor: (req.body.executor !== "") ? req.body.executor : loginedUser.name,
 			date: req.body.date,
-			addedBy: loginedUser.name,
+			author: loginedUser.name,
 			isDone: req.body.isDone
 		};
 
@@ -69,7 +69,6 @@ module.exports = function(app, db) {
 	});
 
 	app.delete('/remove-task', function(req, res) {
-		console.log("Called method delete a task.");
 		var isSuccess = db.removeTask( req.body );
 
 		res.write("" + isSuccess);
@@ -82,9 +81,9 @@ module.exports = function(app, db) {
 
 		var changeObj = {
 			text: req.body.text,
-			toUser: req.body.addedTo,
+			executor: req.body.executor,
 			date: req.body.date,
-			addedBy: loginedUser.name,
+			author: loginedUser.name,
 			isDone: req.body.isDone
 		};
 

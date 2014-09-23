@@ -22,8 +22,8 @@ app.TaskItemView = Backbone.View.extend({
 		var content = this.displayTemplate({
 				text: this.model.get("text"),
 				date: app.parseDate( +this.model.get("date") ),
-				addedBy: (this.model.get("addedBy") !== app.loggedUser.name) ?
-							"(added by user: " + this.model.get("addedBy") + ")" : "",
+				author: (this.model.get("author") !== app.loggedUser.name) ?
+							"(added by user: " + this.model.get("author") + ")" : "",
 				numb: this.model.get("numb")
 			});
 
@@ -81,11 +81,11 @@ app.TaskItemView = Backbone.View.extend({
 		// syncronyze with server
 		$.ajax({
 			type: "POST",
-			url: window.location.pathname + "change-task",
-			async: false,
+			url: "/" + "change-task",
+			async: false,						// because server is single threading
 			data: {
 				text: this.model.get("text"),
-				addedTo: app.loggedUser.name,
+				executor: app.loggedUser.name,	// correct this expression
 				date: this.model.get("date"),
 				isDone: this.model.get("isDone")
 			},

@@ -66,7 +66,8 @@ app.UserView = Backbone.View.extend({
 	signIn: function(event) {
 		var userEmail = $('#user-email-field').val().toLowerCase().trim(),
 			userPassword = $('#user-password-field'),
-			that = this;
+			that = this,
+			hasError = false;
 
 		if (app.loggedUser == null && userPassword.val().length) {
 			app.showModalDialog({
@@ -74,16 +75,18 @@ app.UserView = Backbone.View.extend({
 				text: "User with this email wasn't found.</br>You can register a user with this email.",
 				callback: function() {
 					app.viewInstance.$el.html( app.viewInstance.regTemplate() );
+					hasError = true;
 				}
 			});
-			event.preventDefault();
-			return false;
+			// event.preventDefault();
+			// return false;
 		}
 
 		// if user email field is empty
 		if (!userEmail.length) {
-			event.preventDefault();
-			return false;
+			hasError = true;
+			// event.preventDefault();
+			// return false;
 		}
 
 		// password field is empty
@@ -93,10 +96,11 @@ app.UserView = Backbone.View.extend({
 				text: "Type the password!",
 				callback: function() {
 					userPassword.focus();
+					hasError = true;
 				}
 			});
-			event.preventDefault();
-			return false;
+			// event.preventDefault();
+			// return false;
 		}
 
 		// check password
@@ -108,34 +112,36 @@ app.UserView = Backbone.View.extend({
 					userPassword
 						.val("")
 						.focus();
+					hasError = true;
 				}
 			});
-			event.preventDefault();
-			return false;
+			// event.preventDefault();
+			// return false;
 		}
 
-		// if all is ok
-		this.$el.html("");
+		if (!hasError) {
+			// if all is ok
+			this.$el.html("");
 
-		// send success user authorization to the server
-		$.ajax({
-			type: "POST",
-			url: window.location.pathname,
-			data: {
-				name: app.loggedUser.name,
-				email: userEmail
-			}
-		});
+			// send success user authorization to the server
+			$.ajax({
+				type: "POST",
+				url: window.location.pathname,
+				data: {
+					name: app.loggedUser.name,
+					email: userEmail
+				}
+			});
 
-		window.location.assign(window.location.origin);
+			window.location.assign(window.location.origin);
+		}
 
 		event.preventDefault();
 		return false;
 	},
 
 	clearMarkClass: function(event) {
-		var target = event.target || window.event.target,
-			targetElem = $(target),
+		var targetElem = $(event.target) || $(window.event.srcElement),
 			container = targetElem.parent(".input-box");
 
 		// remove class
@@ -149,8 +155,7 @@ app.UserView = Backbone.View.extend({
 	},
 
 	checkNick: function(event) {
-		var target = event.target || window.event.target,
-			targetElem = $(target),
+		var targetElem = $(event.target) || $(window.event.srcElement),
 			container = targetElem.parent(".input-box");
 
 		if (targetElem.val() !== "")
@@ -158,8 +163,7 @@ app.UserView = Backbone.View.extend({
 	},
 
 	checkUserEmail: function(event) {
-		var target = event.target || window.event.target,
-			targetElem = $(target),
+		var targetElem = $(event.target) || $(window.event.target),
 			container = targetElem.parent(".input-box");
 
 		if (targetElem.val() !== "") {
@@ -237,8 +241,8 @@ app.UserView = Backbone.View.extend({
 			app.showModalDialog({
 				title: 'Error',
 				text: 'Please, fill empty field!'
-				// callback: function() {}
 			});
+
 			event.preventDefault();
 			return false;
 		}
@@ -249,7 +253,7 @@ app.UserView = Backbone.View.extend({
 		// send success user authorization to the server
 		$.ajax({
 			type: "POST",
-			url: window.location.pathname,
+			url: "/",
 			data: {
 				name: nickInput.val().toLowerCase().trim(),
 				email: emailInput.val().toLowerCase().trim(),
@@ -264,10 +268,9 @@ app.UserView = Backbone.View.extend({
 		return false;
 	},
 
-	enterPress: function(event) {
-		var target = event.target || event.srcElement;
+	enterPress: function() {
+		var event = event || window.event;
 
-		// if (event.keyCode == 13 && target.type == "submit") {
 		if (event.keyCode === 13) {
 			// event.currentTarget.submit();
 			event.preventDefault();

@@ -7,31 +7,31 @@
             "1411032112224": {
                 "text": "At least finish this project",
                 "date": "1411032112224",
-                "addedBy": "petya",
+                "author": "petya",
                 "isDone": "true"
             },
             "1411032156224": {
                 "text": "Launch the plane",
                 "date": "1411032156224",
-                "addedBy": "vasya",
+                "author": "vasya",
                 "isDone": "true"
             },
             "1411132156107": {
                 "text": "The second task from petya",
                 "date": "1411132156107",
-                "addedBy": "petya",
+                "author": "petya",
                 "isDone": "true"
             },
             "1411157214683": {
                 "text": "Correct async request to update the data",
                 "date": "1411157214683",
-                "addedBy": "vasya",
+                "author": "vasya",
                 "isDone": "false"
             },
             "1411209475526": {
                 "text": "Test task to me",
                 "date": "1411209475526",
-                "addedBy": "vasya",
+                "author": "vasya",
                 "isDone": "true"
             }
         }
@@ -43,33 +43,27 @@
         "tasks": {
             "1411128907674": {
                 "text": "Special task for petya",
-                "addedBy": "petya",
+                "author": "petya",
                 "date": "1411128907674",
                 "isDone": "false"
             },
             "1411130594954": {
                 "text": "It task was added by ivan to petya",
-                "addedBy": "ivan",
+                "author": "ivan",
                 "date": "1411130594954",
-                "isDone": "false"
-            },
-            "1411134988478": {
-                "text": "My task",
-                "addedBy": "petya",
-                "date": "1411134988478",
                 "isDone": "false"
             },
             "1411136876914": {
                 "text": "It's my new task",
-                "addedBy": "petya",
                 "date": "1411136876914",
+                "author": "petya",
                 "isDone": "false"
             },
             "1411146937499": {
                 "text": "You are an attaboy!! My congratulations!",
-                "addedBy": "vasya",
                 "date": "1411146937499",
-                "isDone": "false"
+                "author": "vasya",
+                "isDone": "true"
             }
         }
     },
@@ -81,25 +75,25 @@
             "1411129334451": {
                 "text": "Finish this homework",
                 "date": "1411129334451",
-                "addedBy": "ivan",
+                "author": "ivan",
                 "isDone": "false"
             },
             "1411132058571": {
                 "text": "The third simple task",
                 "date": "1411132058571",
-                "addedBy": "ivan",
+                "author": "ivan",
                 "isDone": "false"
             },
             "1411132019918": {
                 "text": "The second simple task",
                 "date": "1411132019918",
-                "addedBy": "ivan",
+                "author": "ivan",
                 "isDone": "false"
             },
             "1411131849758": {
                 "text": "This is my new task",
                 "date": "1411131849758",
-                "addedBy": "ivan",
+                "author": "ivan",
                 "isDone": "false"
             }
         }

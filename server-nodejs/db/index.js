@@ -59,12 +59,12 @@ exports.addTaskToUser = function(opts) {
 
 	for (var key in db) {
 
-		if (db[key].name === opts.toUser ) {
+		if (db[key].name === opts.executor ) {
 			var taskList = db[key].tasks;
 
 			taskList[opts.date] = {
 				text: opts.text,
-				addedBy: opts.addedBy,
+				author: opts.author,
 				date: opts.date,
 				isDone: opts.isDone
 			};
@@ -93,25 +93,19 @@ exports.changeTaskData = function (opts) {
 
 	for ( var key in db ) {
 
-		if ( db[key].name === opts.toUser ) {
+		if ( db[key].name === opts.executor ) {
 			var oldTaskVer = db[key]["tasks"][opts.date];
 
 			var newTaskVer = {
 				text: opts.text,
 				date: opts.date,
-				addedBy: oldTaskVer.addedBy,
+				author: oldTaskVer.author,
 				isDone: opts.isDone
 			}
-
-			// delete db[key]["tasks"][opts.date];
-
-			// updateDB();
 
 			db[key]["tasks"][opts.date] = newTaskVer;
 
 			updateDB();
-
-			console.log("datas was updated");
 
 			return;
 		}

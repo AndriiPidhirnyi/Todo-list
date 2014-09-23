@@ -1,5 +1,5 @@
 var app = app || {};
-app.profilePageInst = null;
+// app.profilePageInst = null;
 
 app.ProfilePageView = Backbone.View.extend({
 	el: ".task-list-holder",
@@ -12,12 +12,12 @@ app.ProfilePageView = Backbone.View.extend({
 	},
 
 	initialize: function() {
-		app.profilePageInst = this;
+		var root = this;
 		app.taskCollect = new app.TaskCollection();
 
 		$.ajax({
 			type: "GET",
-			url: window.location.pathname,
+			url: "/",
 			data: {
 				getLoggedUser: "getLoggedUser",
 				getUserList: "getUserList",
@@ -27,12 +27,11 @@ app.ProfilePageView = Backbone.View.extend({
 				var resObj = JSON.parse(data);
 				app.loggedUser = resObj.loggedUser;
 				app.userRegList = resObj.usersList;
-				var userTasks = resObj.userTasks;
 
-				// render
+				// render all page
 				app.userPaneView = new app.UserPaneView({});
-				app.profilePageInst.render();
-				app.profilePageInst.initCollectFill( userTasks );
+				root.render();
+				root.initCollectFill( resObj.userTasks );
 			}
 		});
 
@@ -57,8 +56,8 @@ app.ProfilePageView = Backbone.View.extend({
 
 		var taskModel = new app.TaskItem({});
 		taskModel.set("text", taskText);
-		taskModel.set("addedTo", ( addToUser.length !== "")? addToUser : app.loggedUser.name);
-		taskModel.set("addedBy", app.loggedUser.name);
+		taskModel.set("executor", ( addToUser.length !== "")? addToUser : app.loggedUser.name);
+		taskModel.set("author", app.loggedUser.name);
 		taskModel.set("date", (new Date()).valueOf() );
 		taskModel.set("numb", app.taskCollect.length );
 		taskModel.set("isDone", false);
@@ -78,10 +77,10 @@ app.ProfilePageView = Backbone.View.extend({
 		function addNewModel(model) {
 			$.ajax({
 				type: "POST",
-				url: window.location.pathname + "add-task",
+				url: "/" + "add-task",
 				data: {
 					text: model.get("text"),
-					addedTo: model.get("addedTo"),
+					executor: model.get("executor"),
 					date: model.get("date"),
 					isDone: model.get("isDone"),
 					success: function() {
@@ -103,7 +102,7 @@ app.ProfilePageView = Backbone.View.extend({
 			var tempModel = new app.TaskItem({});
 
 			tempModel.set("text", modelArr[i].text);
-			tempModel.set("addedBy", modelArr[i].addedBy);
+			tempModel.set("author", modelArr[i].author);
 			tempModel.set("date", modelArr[i].date);
 			tempModel.set("numb", app.taskCollect.length);
 			tempModel.set("isDone", modelArr[i].isDone);
