@@ -65,6 +65,16 @@ module.exports = function(app, db) {
 		};
 
 		db.addTaskToUser( taskObj );
+		res.end("");
+	});
+
+	app.delete('/remove-task', function(req, res) {
+		console.log("Called method delete a task.");
+		var isSuccess = db.removeTask( req.body );
+
+		res.write("" + isSuccess);
+		res.end("");
+
 	});
 
 	// change task in database

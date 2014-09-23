@@ -76,6 +76,19 @@ exports.addTaskToUser = function(opts) {
 	}
 };
 
+exports.removeTask = function(obj) {
+	var isSuccess = false;
+
+	if ( db[ obj.userEmail ] && db[ obj.userEmail ].tasks[ obj.date ] ) {
+		delete db[ obj.userEmail ].tasks[ obj.date ];
+		isSuccess = true;
+	}
+
+	updateDB();
+
+	return isSuccess;
+};
+
 exports.changeTaskData = function (opts) {
 
 	for ( var key in db ) {

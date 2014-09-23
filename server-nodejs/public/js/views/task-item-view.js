@@ -15,6 +15,7 @@ app.TaskItemView = Backbone.View.extend({
 
 	initialize: function() {
 		this.listenTo(this.model, "change", this.synchModel);
+		this.listenTo(this.model, "destroy", this.destroyModel);
 	},
 
 	render: function () {
@@ -27,11 +28,36 @@ app.TaskItemView = Backbone.View.extend({
 			});
 
 		this.$el.html( content );
+		this.$el.append('<p class="complited-task">Complited task</p>');
 		return this.$el;
 	},
 
 	deleteTask: function() {
-		console.log("Delete task");
+		var root = this;
+
+		app.showModalDialog({
+			title: 'Warning',
+			text: 'Do you do want to remove this task?',
+			callback: function(isAgree) {
+
+				if (isAgree) {
+					$.ajax({
+						type: 'DELETE',
+						url: window.location.pathname + "remove-task",
+						data: {
+							text: root.model.get("text"),
+							date: root.model.get("date"),
+							userEmail: app.loggedUser.email
+						},
+						success: function(data) {
+							if (data === "true") {
+								root.model.destroy();
+							}
+						}
+					});
+				}
+			}
+		});
 
 		event.preventDefault();
 		return false;
@@ -45,11 +71,9 @@ app.TaskItemView = Backbone.View.extend({
 		this.model.set('isDone', target.prop("checked") );
 
 		if (this.model.get('isDone') === true ) {
-			parent.append('<p class="complited-task">Complited task</p>');
+			parent.find(".complited-task").css({"display": "block" });
 		} else {
-			if ( parent.find(".complited-task").length ) {
-				parent.children(".complited-task").remove();
-			}
+			parent.find(".complited-task").css({"display": "" });
 		}
 	},
 
@@ -65,10 +89,13 @@ app.TaskItemView = Backbone.View.extend({
 				date: this.model.get("date"),
 				isDone: this.model.get("isDone")
 			},
-			success: function() {
-				console.log("Model was changed");
-			}
+			success: function() {}
 		});
+	},
+
+	destroyModel: function() {
+		// remove the view which corresponds to the destroyed model
+		this.remove();
 	}
 
 });

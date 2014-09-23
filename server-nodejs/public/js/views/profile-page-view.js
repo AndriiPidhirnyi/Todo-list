@@ -32,11 +32,11 @@ app.ProfilePageView = Backbone.View.extend({
 				// render
 				app.userPaneView = new app.UserPaneView({});
 				app.profilePageInst.render();
-				app.profilePageInst.initCollectfill( userTasks );
+				app.profilePageInst.initCollectFill( userTasks );
 			}
 		});
 
-		this.listenTo(app.taskCollect, "add", this.addOne);
+		this.listenTo(app.taskCollect, "add", this.addOneItem);
 	},
 
 	render: function() {
@@ -97,7 +97,7 @@ app.ProfilePageView = Backbone.View.extend({
 		}
 	},
 
-	initCollectfill: function(modelArr) {
+	initCollectFill: function(modelArr) {
 		for (var i = modelArr.length; i--; ) {
 
 			var tempModel = new app.TaskItem({});
@@ -124,7 +124,7 @@ app.ProfilePageView = Backbone.View.extend({
 		}
 	},
 
-	addOne: function(model) {
+	addOneItem: function(model) {
 		var view = new app.TaskItemView({ model: model });
 		this.$('#tab-my-task').append( view.render() );
 	}

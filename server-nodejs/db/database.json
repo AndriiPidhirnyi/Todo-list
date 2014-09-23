@@ -8,25 +8,31 @@
                 "text": "At least finish this project",
                 "date": "1411032112224",
                 "addedBy": "petya",
-                "isDone": "false"
+                "isDone": "true"
             },
             "1411032156224": {
                 "text": "Launch the plane",
                 "date": "1411032156224",
                 "addedBy": "vasya",
-                "isDone": "false"
+                "isDone": "true"
             },
             "1411132156107": {
                 "text": "The second task from petya",
                 "date": "1411132156107",
                 "addedBy": "petya",
-                "isDone": "false"
+                "isDone": "true"
             },
             "1411157214683": {
                 "text": "Correct async request to update the data",
                 "date": "1411157214683",
                 "addedBy": "vasya",
                 "isDone": "false"
+            },
+            "1411209475526": {
+                "text": "Test task to me",
+                "date": "1411209475526",
+                "addedBy": "vasya",
+                "isDone": "true"
             }
         }
     },
@@ -72,16 +78,10 @@
         "email": "ivan@test.net",
         "password": "123",
         "tasks": {
-            "1411128815427": {
-                "text": "New task item",
-                "addedBy": "ivan",
-                "date": "1411128815427",
-                "isDone": "false"
-            },
             "1411129334451": {
                 "text": "Finish this homework",
-                "addedBy": "ivan",
                 "date": "1411129334451",
+                "addedBy": "ivan",
                 "isDone": "false"
             },
             "1411132058571": {
