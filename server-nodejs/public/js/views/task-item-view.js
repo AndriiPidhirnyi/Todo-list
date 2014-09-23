@@ -12,8 +12,9 @@ app.TaskItemView = Backbone.View.extend({
 		"change input[type=checkbox]":	"doneTask",
 		"click input#del-task-btn":		"deleteTask",
 		"dblclick .task-text label":	"editTask",
-		"mousedown .task-form": 		"setUnselectable",
-		"selectstart .task-form": 		"setUnselectable"
+		"mousedown label": 				"setUnselectable",
+		"selectstart label": 			"setUnselectable",
+		"click .btn-save": 				"saveEditedTask"
 	},
 
 	initialize: function() {
@@ -39,7 +40,7 @@ app.TaskItemView = Backbone.View.extend({
 		if ( app.loggedUser.name === this.model.get("author") ) {
 			app.showModalDialog({
 				title: 'Warning',
-				text: 'Do you do want to remove this task?',
+				text: 'Do you really want to remove this task?',
 				callback: function(isAgree) {
 
 					if (isAgree) {
@@ -80,16 +81,36 @@ app.TaskItemView = Backbone.View.extend({
 
 		if (this.model.get('isDone') === true ) {
 			label.css({"text-decoration":"line-through"});
+			this.$el.find("label").addClass("task-done");
 		} else {
 			label.css({"text-decoration":""});
+			this.$el.find("label").removeClass("task-done");
 		}
 	},
 
 	editTask: function(ev) {
 		var event = event || window.event,
-			targetElem = $(event.target) || $(event.srcElement);
+			targetElem = $(event.target) || $(event.srcElement),
+			parent = targetElem.parent();
 
-		console.log(targetElem);
+			parent.html('<textarea name="task-text-correct" cols="67" rows="3"></textarea>' +
+				'<button class="btn-save">Save</button>');
+
+		// set text in textarea
+		parent.find('textarea').val(this.model.get("text") );
+	},
+
+	saveEditedTask: function() {
+		var target = event.target || window.event.srcElement,
+			txtArea = $(target).siblings("textarea"),
+			parent = txtArea.parent(".task-text");
+
+		this.model.set("text", txtArea.val().trim() );
+
+		parent.html("<label>" + txtArea.val().trim() + "</label>");
+
+		event.preventDefault();
+		return false;
 	},
 
 	synchModel: function() {

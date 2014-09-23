@@ -585,6 +585,10 @@ body {
 .task-form label:hover, .task-form input:hover {
   cursor: pointer;
 }
+
+.task-form label.task-done {
+  color: #777;
+}
 /* line 226, ../sass/index.scss */
 .task-form input[type="checkbox"] {
   float: left;

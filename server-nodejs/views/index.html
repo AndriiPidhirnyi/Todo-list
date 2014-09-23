@@ -81,33 +81,32 @@
 		<article class="task-item">
 			<form action="#" class="task-form">
 				<fieldset>
-					<input id="task-complited" type="checkbox" value=""/>
+					<input type="checkbox" value=""/>
 					<div class="task-text">
-						<textarea name="task-text-correct" cols="67" rows="3"></textarea>
+						<textarea name="task-text-correct" cols="67" rows="3" value="<%= text %>"></textarea>
 						<button class="btn-save">Save</button>
 					</div>
-					<label for="task-complited" class="task-date">05.05.2014</label>
+					<labelclass="task-date"><%= date %></label>
 					<input type="submit" name="delete-task-btn" id="del-task-btn" value="remove task">
 				</fieldset>
 			</form>
 		</article>
 	</script>
-
-	<!-- modal window template -->
+	<!-- modal window template
 	<script type="text/template" id="modal-window-template">
-		<div id="modal-window-holder">
-			<div class="modal-window error-msg">
-				<h2>Title message</h2>
-				<p>Message text</p>
-				<form action="#" class="info-form">
-					<fieldset>
-						<button class="confirm-btn" type="button">Ok</button>
-						<button class="cancel-btn" type="button">Cancel</button>
-					</fieldset>
-				</form>
-			</div>
-		</div>
-	</script>
+		// <div id="modal-window-holder">
+		// 	<div class="modal-window error-msg">
+		// 		<h2>Title message</h2>
+		// 		<p>Message text</p>
+		// 		<form action="#" class="info-form">
+		// 			<fieldset>
+		// 				<button class="confirm-btn" type="button">Ok</button>
+		// 				<button class="cancel-btn" type="button">Cancel</button>
+		// 			</fieldset>
+		// 		</form>
+		// 	</div>
+		// </div>
+	</script> -->
 	<script type="text/javascript" src="/js/lib/jquery-2.1.1.min.js" defer></script>
 	<script type="text/javascript" src="/js/lib/underscore-1.7.0-min.js" defer></script>
 	<script type="text/javascript" src="/js/lib/backbone-min-1.1.2.js" defer></script>
