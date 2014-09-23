@@ -248,12 +248,12 @@ app.UserView = Backbone.View.extend({
 		}
 
 		// if all is ok
-		this.$el.html("");
+		// this.$el.html("");
 
 		// send success user authorization to the server
 		$.ajax({
 			type: "POST",
-			url: "/",
+			url: "/login",
 			data: {
 				name: nickInput.val().toLowerCase().trim(),
 				email: emailInput.val().toLowerCase().trim(),

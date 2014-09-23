@@ -31,11 +31,19 @@ app.ProfilePageView = Backbone.View.extend({
 				// render all page
 				app.userPaneView = new app.UserPaneView({});
 				root.render();
+
+				// remove notes, that there are no tasks
+				if (resObj.userTasks.length != 0) {
+					root.$el.find(".list-grad section").html("");
+				}
+				// add models to collection, which are arrived from server db
 				root.initCollectFill( resObj.userTasks );
 			}
 		});
 
 		this.listenTo(app.taskCollect, "add", this.addOneItem);
+		this.listenTo(app.taskCollect, "remove", this.removeModel);
+		this.listenTo(app.taskCollect, "change", this.changeModel);
 	},
 
 	render: function() {
@@ -51,12 +59,13 @@ app.ProfilePageView = Backbone.View.extend({
 			txtElem = $("textarea#task-item"),
 			whoAddElem = $("input#users-list");
 
-		var taskText = txtElem.val();
-		var addToUser = whoAddElem.val();
+
+		var taskText = txtElem.val().trim();
+		var addToUser = (whoAddElem.val() !== "" ) ? whoAddElem.val() : app.loggedUser.name;
 
 		var taskModel = new app.TaskItem({});
 		taskModel.set("text", taskText);
-		taskModel.set("executor", ( addToUser.length !== "")? addToUser : app.loggedUser.name);
+		taskModel.set("executor", addToUser);
 		taskModel.set("author", app.loggedUser.name);
 		taskModel.set("date", (new Date()).valueOf() );
 		taskModel.set("numb",  ( ""+taskModel.get("date") ).slice(-4) );
@@ -127,12 +136,24 @@ app.ProfilePageView = Backbone.View.extend({
 	},
 
 	addOneItem: function(model) {
+		if (app.taskCollect.length == 1 ) {
+			this.$el.find(".list-grad section").html("");
+		}
+
 		var view = new app.TaskItemView({ model: model });
 		this.$('#tab-my-task').append( view.render() );
 
 		if (model.get("isDone") === "true") {
 			view.$el.find(".complited-task").css( {"display": "block"} );
 			view.$el.find("input[type=checkbox]").attr("checked", "checked");
+		}
+	},
+
+	removeModel: function() {
+		// if collection is empty
+		if (app.taskCollect.length == 0) {
+			this.$el.find(".list-grad section").
+			append('<div class="info-task-box"><p>You have no tasks</p></div>');
 		}
 	}
 });

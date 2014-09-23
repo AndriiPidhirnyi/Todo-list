@@ -511,6 +511,19 @@ body {
   color: white;
 }
 
+#tab-my-task {
+  display: block;
+}
+
+#tab-other-task {
+  display: none;
+}
+
+#tab-my-task .info-task-box p, #tab-other-task .info-task-box p{
+  font: italic 20px/22px Arial, sans-serif;
+  color: #444;
+  text-align: center;
+}
 /* line 167, ../sass/index.scss */
 .task-item {
   position: relative;

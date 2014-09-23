@@ -109,5 +109,11 @@
                 "isDone": "false"
             }
         }
+    },
+    "ded@test.net": {
+        "name": "ded",
+        "email": "ded@test.net",
+        "password": "123",
+        "tasks": {}
     }
 }
