@@ -59,13 +59,14 @@ app.ProfilePageView = Backbone.View.extend({
 		taskModel.set("executor", ( addToUser.length !== "")? addToUser : app.loggedUser.name);
 		taskModel.set("author", app.loggedUser.name);
 		taskModel.set("date", (new Date()).valueOf() );
-		taskModel.set("numb", app.taskCollect.length );
+		taskModel.set("numb",  ( ""+taskModel.get("date") ).slice(-4) );
 		taskModel.set("isDone", false);
 
 		addNewModel(taskModel);
 
 		txtElem.val("");
 		whoAddElem.val("");
+		elem.attr("disabled", "disabled");
 
 		event.preventDefault();
 		return false;
@@ -85,11 +86,13 @@ app.ProfilePageView = Backbone.View.extend({
 					isDone: model.get("isDone"),
 					success: function() {
 						// add model into collection of user's task
-						app.taskCollect.add(model);
+						if (model.get("executor") === app.loggedUser.name) {
+							app.taskCollect.add(model);
 
-						var view = new app.TaskItemView({
-							model: model
-						});
+							var view = new app.TaskItemView({
+								model: model
+							});
+						}
 					}
 				}
 			});
@@ -104,7 +107,7 @@ app.ProfilePageView = Backbone.View.extend({
 			tempModel.set("text", modelArr[i].text);
 			tempModel.set("author", modelArr[i].author);
 			tempModel.set("date", modelArr[i].date);
-			tempModel.set("numb", app.taskCollect.length);
+			tempModel.set("numb", (modelArr[i].date + "").slice(-4) );
 			tempModel.set("isDone", modelArr[i].isDone);
 
 			app.taskCollect.add( tempModel );
@@ -126,5 +129,10 @@ app.ProfilePageView = Backbone.View.extend({
 	addOneItem: function(model) {
 		var view = new app.TaskItemView({ model: model });
 		this.$('#tab-my-task').append( view.render() );
+
+		if (model.get("isDone") === "true") {
+			view.$el.find(".complited-task").css( {"display": "block"} );
+			view.$el.find("input[type=checkbox]").attr("checked", "checked");
+		}
 	}
 });

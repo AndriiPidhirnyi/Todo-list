@@ -14,25 +14,31 @@
                 "text": "Launch the plane",
                 "date": "1411032156224",
                 "author": "vasya",
-                "isDone": "true"
+                "isDone": "false"
             },
             "1411132156107": {
                 "text": "The second task from petya",
                 "date": "1411132156107",
                 "author": "petya",
-                "isDone": "true"
+                "isDone": "false"
             },
             "1411157214683": {
                 "text": "Correct async request to update the data",
                 "date": "1411157214683",
                 "author": "vasya",
-                "isDone": "false"
+                "isDone": "true"
             },
             "1411209475526": {
                 "text": "Test task to me",
                 "date": "1411209475526",
                 "author": "vasya",
                 "isDone": "true"
+            },
+            "1411469160897": {
+                "text": "Thank you vasya for your congratulations!",
+                "author": "petya",
+                "date": "1411469160897",
+                "isDone": "false"
             }
         }
     },
@@ -43,14 +49,14 @@
         "tasks": {
             "1411128907674": {
                 "text": "Special task for petya",
-                "author": "petya",
                 "date": "1411128907674",
+                "author": "petya",
                 "isDone": "false"
             },
             "1411130594954": {
                 "text": "It task was added by ivan to petya",
-                "author": "ivan",
                 "date": "1411130594954",
+                "author": "ivan",
                 "isDone": "false"
             },
             "1411136876914": {
@@ -63,7 +69,7 @@
                 "text": "You are an attaboy!! My congratulations!",
                 "date": "1411146937499",
                 "author": "vasya",
-                "isDone": "true"
+                "isDone": "false"
             }
         }
     },
@@ -82,7 +88,7 @@
                 "text": "The third simple task",
                 "date": "1411132058571",
                 "author": "ivan",
-                "isDone": "false"
+                "isDone": "true"
             },
             "1411132019918": {
                 "text": "The second simple task",
@@ -94,6 +100,12 @@
                 "text": "This is my new task",
                 "date": "1411131849758",
                 "author": "ivan",
+                "isDone": "true"
+            },
+            "1411469500298": {
+                "text": "The test task to ivan from vasya",
+                "author": "vasya",
+                "date": "1411469500298",
                 "isDone": "false"
             }
         }

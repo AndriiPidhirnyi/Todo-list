@@ -35,29 +35,36 @@ app.TaskItemView = Backbone.View.extend({
 	deleteTask: function() {
 		var root = this;
 
-		app.showModalDialog({
-			title: 'Warning',
-			text: 'Do you do want to remove this task?',
-			callback: function(isAgree) {
+		if ( app.loggedUser.name === this.model.get("author") ) {
+			app.showModalDialog({
+				title: 'Warning',
+				text: 'Do you do want to remove this task?',
+				callback: function(isAgree) {
 
-				if (isAgree) {
-					$.ajax({
-						type: 'DELETE',
-						url: window.location.pathname + "remove-task",
-						data: {
-							text: root.model.get("text"),
-							date: root.model.get("date"),
-							userEmail: app.loggedUser.email
-						},
-						success: function(data) {
-							if (data === "true") {
-								root.model.destroy();
+					if (isAgree) {
+						$.ajax({
+							type: 'DELETE',
+							url: window.location.pathname + "remove-task",
+							data: {
+								text: root.model.get("text"),
+								date: root.model.get("date"),
+								userEmail: app.loggedUser.email
+							},
+							success: function(data) {
+								if (data === "true") {
+									root.model.destroy();
+								}
 							}
-						}
-					});
+						});
+					}
 				}
-			}
-		});
+			});
+		} else {
+			app.showModalDialog({
+				title: "Error",
+				text: "You can't remove this task!</br>It hasn't been created by you."
+			});
+		}
 
 		event.preventDefault();
 		return false;

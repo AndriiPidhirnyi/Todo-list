@@ -9,7 +9,6 @@ app.TaskItem = Backbone.Model.extend({
 	numb: 0
 });
 
-
 app.TaskCollection = Backbone.Collection.extend({
 	model: app.TaskItem
 });
