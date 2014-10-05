@@ -92,6 +92,14 @@ module.exports = function(app, db) {
 		res.end("");
 	});
 
+	app.get("/user-list", function(req, res) {
+		var inpObj = url.parse(req.url, true).query;
+
+		var out = db.getUserByNamePart(inpObj.namePart);
+		res.write( JSON.stringify(out) );
+		res.end("");
+	});
+
 	// =====================================
 	// LOGIN ==============================
 	// =====================================

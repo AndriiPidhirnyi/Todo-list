@@ -76,16 +76,14 @@ app.TaskItemView = Backbone.View.extend({
 	doneTask: function() {
 		var event = event || window.event,
 			target = $(event.target) || $(event.srcElement),
-			label = target.siblings(".task-text").children("label");
+			label = target.siblings(".task-text").children("label").eq(0);
 
 		this.model.set('isDone', target.prop("checked") );
 
 		if (this.model.get('isDone') === true ) {
-			label.css({"text-decoration":"line-through"});
-			this.$el.find("label").addClass("task-done");
+			label.css({"text-decoration":"line-through"}).addClass("task-done");
 		} else {
-			label.css({"text-decoration":""});
-			this.$el.find("label").removeClass("task-done");
+			label.css({"text-decoration":""}).removeClass("task-done");
 		}
 	},
 

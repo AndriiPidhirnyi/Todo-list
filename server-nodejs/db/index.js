@@ -42,7 +42,18 @@ exports.getUserList = function() {
 	}
 
 	return userList;
-}
+};
+
+exports.getUserByNamePart = function(partName) {
+	var suitedName = [],
+		regQuery = new RegExp("^" + partName, "i");
+
+	for(var key in db) {
+		if (db[key]["name"].search(regQuery) !== -1) suitedName.push( db[key]["name"] );
+	}
+
+	return suitedName;
+};
 
 exports.getUserTasks = function(userEmail) {
 	var userTasks = [],

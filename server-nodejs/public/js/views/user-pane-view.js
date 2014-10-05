@@ -18,7 +18,6 @@ app.UserPaneView = Backbone.View.extend({
 	},
 
 	render: function() {
-
 		app.userView.$el.html( app.userView.template(app.loggedUser) );
 	},
 

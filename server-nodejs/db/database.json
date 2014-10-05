@@ -8,13 +8,13 @@
                 "text": "At least finish this project",
                 "date": "1411032112224",
                 "author": "petya",
-                "isDone": "true"
+                "isDone": "false"
             },
             "1411032156224": {
                 "text": "Launch the plane",
                 "date": "1411032156224",
                 "author": "vasya",
-                "isDone": "false"
+                "isDone": "true"
             },
             "1411132156107": {
                 "text": "The second task from petya",
@@ -26,18 +26,24 @@
                 "text": "Correct async request to update the data",
                 "date": "1411157214683",
                 "author": "vasya",
-                "isDone": "false"
+                "isDone": "true"
             },
             "1411209475526": {
                 "text": "Test task to me",
                 "date": "1411209475526",
                 "author": "vasya",
-                "isDone": "true"
+                "isDone": "false"
             },
             "1411469160897": {
                 "text": "Thank you vasya for your congratulations!",
-                "author": "petya",
                 "date": "1411469160897",
+                "author": "petya",
+                "isDone": "true"
+            },
+            "1411505364284": {
+                "text": "New task item",
+                "author": "vasya",
+                "date": "1411505364284",
                 "isDone": "false"
             }
         }
@@ -100,13 +106,13 @@
                 "text": "This is my new task",
                 "date": "1411131849758",
                 "author": "ivan",
-                "isDone": "true"
+                "isDone": "false"
             },
             "1411469500298": {
                 "text": "The test task to ivan from vasya",
-                "author": "vasya",
                 "date": "1411469500298",
-                "isDone": "false"
+                "author": "vasya",
+                "isDone": "true"
             }
         }
     },
@@ -119,7 +125,7 @@
                 "text": "The first ded's task",
                 "date": "1411476844595",
                 "author": "ded",
-                "isDone": "false"
+                "isDone": "true"
             },
             "1411476851729": {
                 "text": "The second ded's task",
@@ -131,14 +137,32 @@
                 "text": "The third task corrected version",
                 "date": "1411476867422",
                 "author": "ded",
-                "isDone": "false"
+                "isDone": "true"
             },
             "1411489251153": {
-                "text": "Simple test task",
+                "text": "Simple test task (corrected)",
                 "date": "1411489251153",
                 "author": "ded",
+                "isDone": "true"
+            },
+            "1412439598250": {
+                "text": "This task was added in windows OC",
+                "date": "1412439598250",
+                "author": "ded",
                 "isDone": "false"
+            },
+            "1412444899460": {
+                "text": "Simple task",
+                "date": "1412444899460",
+                "author": "ded",
+                "isDone": "true"
             }
         }
+    },
+    "oleg@test.net": {
+        "name": "oleg",
+        "email": "oleg@test.net",
+        "password": "123",
+        "tasks": {}
     }
 }

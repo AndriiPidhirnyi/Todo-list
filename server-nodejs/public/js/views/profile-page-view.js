@@ -7,8 +7,9 @@ app.ProfilePageView = Backbone.View.extend({
 	template: _.template( $("#task-list-template").html() ),
 
 	events: {
-		"click #add-task-btn": 		"addTask",
-		"keyup textarea#task-item": "enableBtnAddTask"
+		"click #add-task-btn": 			"addTask",
+		"keyup textarea#task-item":		"enableBtnAddTask",
+		"click input[type=checkbox]":	"changeModel"
 	},
 
 	initialize: function() {
@@ -30,26 +31,25 @@ app.ProfilePageView = Backbone.View.extend({
 
 				// render all page
 				app.userPaneView = new app.UserPaneView({});
-				root.render();
 
 				// remove notes, that there are no tasks
 				if (resObj.userTasks.length != 0) {
-					root.$el.find(".list-grad section").html("");
+					root.$el.find(".list-grad #tab-my-task").html("");
 				}
 				// add models to collection, which are arrived from server db
 				root.initCollectFill( resObj.userTasks );
-				root.renderList();
+				root.render();
 			}
 		});
 
+		// listeners of model and collection
 		this.listenTo(app.taskCollect, "add", this.addOneItem);
 		this.listenTo(app.taskCollect, "remove", this.removeModel);
-		this.listenTo(app.taskCollect, "change", this.changeModel);
-
 	},
 
 	render: function() {
 		this.$el.html( this.template() );
+		this.renderList();
 
 		// set addTask button disabled
 		$("#add-task-btn").attr("disabled", "disabled");
@@ -59,7 +59,8 @@ app.ProfilePageView = Backbone.View.extend({
 		var event = event || window.event;
 			elem = $(event.target) || $(window.event.scrElement),
 			txtElem = $("textarea#task-item"),
-			whoAddElem = $("input#users-list");
+			whoAddElem = $("input#users-list"),
+			root = this;
 
 
 		var taskText = txtElem.val().trim()[0].toUpperCase() + txtElem.val().trim().slice(1);
@@ -99,9 +100,13 @@ app.ProfilePageView = Backbone.View.extend({
 						if (model.get("executor") === app.loggedUser.name) {
 							app.taskCollect.add(model);
 
-							var view = new app.TaskItemView({
-								model: model
-							});
+							app.taskCollect.sort();
+							//
+							root.renderList();
+
+							// var view = new app.TaskItemView({
+							// 	model: model
+							// });
 						}
 					}
 				}
@@ -141,16 +146,24 @@ app.ProfilePageView = Backbone.View.extend({
 		}
 	},
 
+	changeModel: function() {
+		location.reload();		// resolve problem with sorting using backbone
+	},
+
 	removeModel: function() {
 		// if collection is empty
 		if (app.taskCollect.length == 0) {
-			this.$el.find(".list-grad section").
-			append('<div class="info-task-box"><p>You have no tasks</p></div>');
+			this.$el.find(".list-grad section")
+			.append('<div class="info-task-box"><p>You have no tasks</p></div>');
 		}
 	},
 
 	renderList: function() {
 		var root = this;
+
+		if (app.taskCollect.length === 0 ) return;
+
+		this.$('#tab-my-task').html("");
 
 		app.taskCollect.each(function(model, index) {
 			var view = new app.TaskItemView({ model: model });
@@ -158,7 +171,7 @@ app.ProfilePageView = Backbone.View.extend({
 			root.$('#tab-my-task').append( view.render() );
 
 			if (model.get("isDone") === "true") {
-				view.$el.find(".task-text label").css("text-decoration", "line-through" );
+				view.$el.find(".task-text label").addClass("task-done");
 				view.$el.find("input[type=checkbox]").attr("checked", "checked");
 			}
 		});
@@ -166,3 +179,8 @@ app.ProfilePageView = Backbone.View.extend({
 
 });
 
+function showCollect() {
+	app.taskCollect.each(function(model, index) {
+		console.log( new Date(+model.get("date")) );
+	});
+}

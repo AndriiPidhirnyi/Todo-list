@@ -17,8 +17,13 @@ app.TaskCollection = Backbone.Collection.extend({
 			val2 = parseInt(b.get("date")),
 			factor = 1;
 
-		if (val1 > val2) return -1 * factor;
-		if (val2 < val1) return 1 * factor;
-		return 0;
+		if (a.get("isDone") !== "true" && b.get("isDone") !== "true") {
+			if (val1 > val2) return -1 * factor;
+			if (val2 < val1) return 1 * factor;
+
+			return 0;
+		} else {
+			return (a.get("isDone") === "true") ? 1 : -1;
+		}
 	}
 });
