@@ -54,6 +54,14 @@ module.exports = function(app, db) {
 		res.redirect("/login");
 	});
 
+	app.get('/get-users-task', function(req, res) {
+		var inpReq = url.parse(req.url, true).query;
+
+		res.write( JSON.stringify( db.getOtherUserTasks(inpReq) ) );
+
+		res.end("");
+	});
+
 	app.post('/add-task', function(req, res) {
 
 		var taskObj = {
@@ -83,11 +91,23 @@ module.exports = function(app, db) {
 			text: req.body.text,
 			executor: req.body.executor,
 			date: req.body.date,
-			author: loginedUser.name,
+			author: req.body.author,
 			isDone: req.body.isDone
 		};
 
 		db.changeTaskData( changeObj );
+
+		res.end("");
+	});
+
+	app.post('/change-task-date', function(req, res) {
+
+		var changeObj = {
+			executor: req.body.executor,
+			date: req.body.date
+		};
+
+		db.changeDateOfTask(changeObj)
 
 		res.end("");
 	});

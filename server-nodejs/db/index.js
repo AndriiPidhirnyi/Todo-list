@@ -60,11 +60,43 @@ exports.getUserTasks = function(userEmail) {
 		userTaskProp = db[userEmail]["tasks"];
 
 	for ( var prop in userTaskProp ) {
-		userTasks.push( userTaskProp[prop] );
+		var tempObj = userTaskProp[prop];
+		tempObj.executor = db[userEmail].name;
+
+		userTasks.push( tempObj );
 	}
 
 	return userTasks;
 };
+
+exports.getOtherUserTasks = function(opts) {
+	var userName = opts.userName,
+		userEmail = opts.userEmail,
+		outObj = [];
+
+	if (opts.isGetOwnTask == "false") {
+
+		for (var user in db) {
+			if (db[user].name == userName ) continue;
+
+			for (var task in db[user]["tasks"]) {
+				if (db[user]["tasks"][task].author == userName ) {
+					var tempObj = db[user]["tasks"][task];
+					tempObj.executor = db[user].name;
+
+					outObj.push( tempObj );
+				}
+			}
+		}
+
+	} else {
+		for ( var prop in db[userEmail]["tasks"]) {
+			outObj.push( db[userEmail]["tasks"][prop] );
+		}
+	}
+
+	return outObj;
+}
 
 exports.addTaskToUser = function(opts) {
 
@@ -110,7 +142,7 @@ exports.changeTaskData = function (opts) {
 			var newTaskVer = {
 				text: opts.text,
 				date: opts.date,
-				author: oldTaskVer.author,
+				author: opts.author,
 				isDone: opts.isDone
 			}
 
@@ -122,6 +154,31 @@ exports.changeTaskData = function (opts) {
 		}
 	}
 };
+
+exports.changeDateOfTask = function(opts) {
+	for ( var key in db ) {
+
+		if ( db[key].name === opts.executor ) {
+			var oldTaskVer = db[key]["tasks"][opts.date],
+				newDate = (new Date() ).valueOf() + "";
+
+			var newTaskVer = {
+				text: db[key]["tasks"][opts.date].text,
+				date: newDate,
+				author: db[key]["tasks"][opts.date].author,
+				isDone: db[key]["tasks"][opts.date].isDone
+			}
+
+			delete db[key]["tasks"][opts.date];
+
+			db[key]["tasks"][newDate] = newTaskVer;
+
+			updateDB();
+
+			return;
+		}
+	}
+}
 
 function updateDB() {
 	fs.writeFileSync(__dirname + '/database.json', JSON.stringify(db, null, 4), null,function(err) {

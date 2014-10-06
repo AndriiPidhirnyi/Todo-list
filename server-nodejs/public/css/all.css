@@ -404,6 +404,7 @@ body {
 	z-index: 9999;
 	background: #fff;
 	border: 1px solid #928d8d;
+	font: 14px/16px Arial, sans-serif;
 }
 
 .auto-user-list li {
@@ -417,7 +418,8 @@ body {
 
 .auto-user-list li:hover {
 	cursor: pointer;
-	background: #eee;
+	background: #414141;
+	color: #fff;
 }
 
 .task-add-form .users-list-block {
@@ -512,6 +514,14 @@ body {
 	color: white;
 }
 
+.tab {
+	display: none;
+}
+
+.tab.active {
+	display: block;
+}
+/*
 #tab-my-task {
 	display: block;
 }
@@ -519,7 +529,7 @@ body {
 #tab-other-task {
 	display: none;
 }
-
+*/
 #tab-my-task .info-task-box p, #tab-other-task .info-task-box p{
 	font: italic 20px/22px Arial, sans-serif;
 	color: #444;
@@ -577,7 +587,7 @@ body {
 
 .task-form .task-text {
 	float: left;
-	width: 560px;
+	width: 540px;
 	padding: 0 10px;
 	border: solid black;
 	border-width: 0 1px 0 0;
@@ -616,6 +626,7 @@ body {
 	width: 120px;
 	display: inline;
 	padding: 0 0 0 10px;
+	font: italic 16px/18px Arial, Verdana, sans-serif;
 }
 
 .task-form label span {
@@ -623,7 +634,7 @@ body {
 }
 
 .task-form textarea {
-	width: 550px;
+	width: 530px;
 	padding: 3px;
 	overflow: auto;
 	margin: 0 0 5px;

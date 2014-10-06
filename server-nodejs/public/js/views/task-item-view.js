@@ -24,11 +24,23 @@ app.TaskItemView = Backbone.View.extend({
 	},
 
 	render: function () {
+		var addTemplate = "";
+
+		if (this.model.get("author") !== this.model.get("executor")
+			&& this.model.get("author") === app.loggedUser.name ) {
+			addTemplate = "(added to user: " + this.model.get("executor") + ")";
+		} else {
+			if (this.model.get("author") !== app.loggedUser.name ) {
+				addTemplate = "(added by user: " + this.model.get("author") + ")"
+			} else {
+				addTemplate = "";
+			}
+		}
+
 		var content = this.displayTemplate({
 				text: this.model.get("text"),
 				date: app.parseDate( +this.model.get("date") ),
-				author: (this.model.get("author") !== app.loggedUser.name) ?
-							"(added by user: " + this.model.get("author") + ")" : ""
+				author: addTemplate
 			});
 
 		this.$el.html( content );
@@ -82,8 +94,22 @@ app.TaskItemView = Backbone.View.extend({
 
 		if (this.model.get('isDone') === true ) {
 			label.css({"text-decoration":"line-through"}).addClass("task-done");
+			location.reload();
 		} else {
 			label.css({"text-decoration":""}).removeClass("task-done");
+
+			$.ajax({
+				type: "POST",
+				url: "/change-task-date",
+				async: false,						// because server is single threading
+				data: {
+					executor: app.loggedUser.name,	// correct this expression
+					date: this.model.get("date")
+				},
+				success: function() {
+					location.reload();
+				}
+			});
 		}
 	},
 
@@ -103,7 +129,6 @@ app.TaskItemView = Backbone.View.extend({
 		if (this.model.get("text").length == 0 ) {
 			parent.find(".btn-save").attr("disabled", "disabled");
 		}
-
 	},
 
 	setBtnDisable: function() {
@@ -149,15 +174,15 @@ app.TaskItemView = Backbone.View.extend({
 		// syncronyze with server
 		$.ajax({
 			type: "POST",
-			url: "/" + "change-task",
+			url: "/change-task",
 			async: false,						// because server is single threading
 			data: {
 				text: this.model.get("text"),
 				executor: app.loggedUser.name,	// correct this expression
+				author: this.model.get("author"),
 				date: this.model.get("date"),
 				isDone: this.model.get("isDone")
-			},
-			success: function() {}
+			}
 		});
 	},
 
@@ -172,10 +197,10 @@ app.TaskItemView = Backbone.View.extend({
 		event.preventDefault();
 		return false;
 	}
-
 });
 
 app.parseDate = function(millsec) {
 	var date = new Date(millsec);
-	return dateFormat = date.getDate() + "." + (date.getMonth() + 1) + "." + date.getFullYear();
+	return dateFormat = date.getDate() + "." + (date.getMonth() + 1) + "." + date.getFullYear() + " " +
+			date.getHours() + ":" + date.getMinutes();
 }

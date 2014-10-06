@@ -14,6 +14,8 @@ if ( app.ProfilePageView ) {
 
 setTimeout(function() {
 
+	if (location.pathname == "/login") return;
+
 	jQuery(function() {
 		initAutocomplete({
 			elem: "#users-list",
@@ -23,7 +25,6 @@ setTimeout(function() {
 	});
 
 	function initAutocomplete(opt) {
-		var userList = ["oleg", "olga", "olena", "ivan", "petya", "pavel", "vasya"];
 		var options = $.extend({
 				elem: ".text-field",
 				list: ".list-holder"
@@ -140,18 +141,14 @@ setTimeout(function() {
 		function getUserListByPartName() {
 			setTimeout(function() {
 				text = elem.val().trim();
+				var re = new RegExp("^"+ text, "i"),
+					outObj = [];
 
-				$.ajax({
-					type: "GET",
-					url: "/user-list",
-					data: {
-						namePart: text
-					},
-					success: function(res) {
-						showList( JSON.parse(res) );
-					}
+				app.userRegList.forEach(function(item) {
+					if (item.search(re) != -1) outObj.push(item);
 				});
 
+				showList(outObj);
 			},0);
 		}
 

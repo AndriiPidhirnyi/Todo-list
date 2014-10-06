@@ -5,11 +5,13 @@ app.ProfilePageView = Backbone.View.extend({
 	el: ".task-list-holder",
 
 	template: _.template( $("#task-list-template").html() ),
+	activeTabHash: "#tab-my-task",
 
 	events: {
 		"click #add-task-btn": 			"addTask",
 		"keyup textarea#task-item":		"enableBtnAddTask",
-		"click input[type=checkbox]":	"changeModel"
+		"click input[type=checkbox]":	"changeModel",
+		"click .tabset": 				"changeTab"
 	},
 
 	initialize: function() {
@@ -55,13 +57,31 @@ app.ProfilePageView = Backbone.View.extend({
 		$("#add-task-btn").attr("disabled", "disabled");
 	},
 
+	renderList: function() {
+		var root = this;
+
+		if (app.taskCollect.length === 0 ) return;
+
+		this.$(this.activeTabHash).html("");
+
+		app.taskCollect.each(function(model, index) {
+			var view = new app.TaskItemView({ model: model });
+
+			root.$(root.activeTabHash).append( view.render() );
+
+			if (model.get("isDone") === "true") {
+				view.$el.find(".task-text label").addClass("task-done");
+				view.$el.find("input[type=checkbox]").attr("checked", "checked");
+			}
+		});
+	},
+
 	addTask: function () {
 		var event = event || window.event;
 			elem = $(event.target) || $(window.event.scrElement),
 			txtElem = $("textarea#task-item"),
 			whoAddElem = $("input#users-list"),
 			root = this;
-
 
 		var taskText = txtElem.val().trim()[0].toUpperCase() + txtElem.val().trim().slice(1);
 		var addToUser = (whoAddElem.val() !== "" ) ? whoAddElem.val() : app.loggedUser.name;
@@ -100,13 +120,7 @@ app.ProfilePageView = Backbone.View.extend({
 						if (model.get("executor") === app.loggedUser.name) {
 							app.taskCollect.add(model);
 
-							app.taskCollect.sort();
-							//
 							root.renderList();
-
-							// var view = new app.TaskItemView({
-							// 	model: model
-							// });
 						}
 					}
 				}
@@ -121,6 +135,7 @@ app.ProfilePageView = Backbone.View.extend({
 
 			tempModel.set("text", modelArr[i].text);
 			tempModel.set("author", modelArr[i].author);
+			tempModel.set("executor", modelArr[i].executor);
 			tempModel.set("date", modelArr[i].date);
 			tempModel.set("isDone", modelArr[i].isDone);
 
@@ -147,7 +162,6 @@ app.ProfilePageView = Backbone.View.extend({
 	},
 
 	changeModel: function() {
-		location.reload();		// resolve problem with sorting using backbone
 	},
 
 	removeModel: function() {
@@ -158,29 +172,50 @@ app.ProfilePageView = Backbone.View.extend({
 		}
 	},
 
-	renderList: function() {
-		var root = this;
+	changeTab: function() {
+		var event = event || window.event;
 
-		if (app.taskCollect.length === 0 ) return;
+		if (event.target.tagName == "A" ) {
+			var tabItem = $(event.target),
+				parent = tabItem.parents("section.list-grad"),
+				isGetOwnTask = true,
+				root = this;
 
-		this.$('#tab-my-task').html("");
+			this.activeTabHash = tabItem.prop("hash");
 
-		app.taskCollect.each(function(model, index) {
-			var view = new app.TaskItemView({ model: model });
+			parent.find("a.active").removeClass("active");
+			tabItem.addClass("active");
 
-			root.$('#tab-my-task').append( view.render() );
+			var activeTab = parent.find(this.activeTabHash);
 
-			if (model.get("isDone") === "true") {
-				view.$el.find(".task-text label").addClass("task-done");
-				view.$el.find("input[type=checkbox]").attr("checked", "checked");
-			}
-		});
+			parent.find("section.active").removeClass("active");
+
+			isGetOwnTask = (this.activeTabHash === "#tab-my-task");
+
+			$.ajax({
+				type: "GET",
+				url: "/get-users-task",
+				data: {
+					userEmail: app.loggedUser.email,
+					userName: app.loggedUser.name,
+					isGetOwnTask: isGetOwnTask
+				},
+				success: function(req) {
+					var taskList = JSON.parse( req );
+
+					if (taskList.length !== 0 ) {
+						app.taskCollect.reset();
+						root.initCollectFill( taskList );
+						root.renderList();
+					}
+
+					activeTab.addClass("active");
+				}
+			});
+		}
+
+		event.preventDefault();
+		return false;
 	}
 
 });
-
-function showCollect() {
-	app.taskCollect.each(function(model, index) {
-		console.log( new Date(+model.get("date")) );
-	});
-}
